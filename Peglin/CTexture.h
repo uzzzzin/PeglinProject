@@ -15,6 +15,12 @@ public:
     HBITMAP GetBitmap() { return m_hBit; }
     UINT GetWidth() { return m_Info.bmWidth; }
     UINT GetHeight() { return m_Info.bmHeight; }
+    //void SetTexScale(Vec2 _Scale)
+    //{
+    //    m_Info.bmWidth = _Scale.x;
+    //    m_Info.bmHeight = _Scale.y;
+    //    m_Info.bmWidthBytes = _Scale.x * 4;
+    //}
 
 private:
     virtual bool Load(const wstring& _strFilePath) override;

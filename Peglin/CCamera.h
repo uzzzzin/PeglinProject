@@ -57,5 +57,6 @@ public:
 	// 카메라가 찍고있는 위치의 물체들이 화면에 나올 수 있게 한다.
 	Vec2 GetRenderPos(Vec2 _vRealPos) { return _vRealPos - m_vDiff; }
 	Vec2 GetRealPos(Vec2 _vRenderPos) { return m_vDiff + _vRenderPos; }
+	Vec2 GetLookAtPos() { return m_vLookAt; }
 };
 

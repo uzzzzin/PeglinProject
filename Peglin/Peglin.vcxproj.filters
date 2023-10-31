@@ -38,6 +38,9 @@
     <Filter Include="Default\trash">
       <UniqueIdentifier>{d6282a35-57e8-4225-b91a-260ee6d5213b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\StartLevel">
+      <UniqueIdentifier>{b33fe1c4-7d0b-46f9-8cd9-7d0b7522fcc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -202,6 +205,9 @@
     <ClInclude Include="CPlayLevel.h">
       <Filter>Default\trash</Filter>
     </ClInclude>
+    <ClInclude Include="CStartBG.h">
+      <Filter>Game\04. Object\StartLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -360,6 +366,9 @@
     </ClCompile>
     <ClCompile Include="CPlayLevel.cpp">
       <Filter>Default\trash</Filter>
+    </ClCompile>
+    <ClCompile Include="CStartBG.cpp">
+      <Filter>Game\04. Object\StartLevel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

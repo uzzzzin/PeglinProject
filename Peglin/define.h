@@ -40,7 +40,7 @@
 #define CLONE_DISABLE(type) virtual type* Clone() {return nullptr;}
 
 
-
+#define REALCENTER Vec2(800.f, 450.f)
 
 
 
@@ -132,6 +132,7 @@ enum KEY_STATE
 enum LAYER
 {
 	DEFAULT,
+	BG,
 	TILE,
 	PLATFORM,
 	PLAYER,
