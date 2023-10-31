@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Default">
+      <UniqueIdentifier>{aed48f1e-f3c0-427f-a8f8-36913c721c3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{6a3bb606-ac67-4254-8efe-29c9c75a8aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\01. Header">
+      <UniqueIdentifier>{e2a76d27-7083-474f-ba14-90a8fdf7901d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\02. Manager">
+      <UniqueIdentifier>{b3c19997-07cd-4b5b-a41d-a935052c0ed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\03. Level">
+      <UniqueIdentifier>{92b69039-0fa4-4abf-91fb-5aa981b1d958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object">
+      <UniqueIdentifier>{4ca63f92-3624-4c89-be3c-d11cd9ced067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\05. Component">
+      <UniqueIdentifier>{08177bd0-8d59-413a-8647-ebf6874a3b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\06. Asset">
+      <UniqueIdentifier>{3dbc15d9-c3ce-4c3c-acc8-17d07404e317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\07. State">
+      <UniqueIdentifier>{c58f7768-47c4-456e-8b48-c1a3d93df73c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Peglin.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Game\01. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CAssetMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CEngine.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>Default</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CGCMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CLogMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevelMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CPathMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CTaskMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIMgr.h">
+      <Filter>Game\02. Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CLevel.h">
+      <Filter>Game\03. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CLayer.h">
+      <Filter>Game\03. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayLevel.h">
+      <Filter>Game\03. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CStartLevel.h">
+      <Filter>Game\03. Level</Filter>
+    </ClInclude>
+    <ClInclude Include="CObj.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlatform.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CGuided.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CProjectile.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CTile.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CBtnUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CPanelUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnim.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CMovement.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateMachine.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Game\06. Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>Game\06. Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CAsset.h">
+      <Filter>Game\06. Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="CState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CNormalMonIdle.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CNormalMonTrace.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Peglin.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Peglin.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Game\01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="struct.cpp">
+      <Filter>Game\01. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="CAssetMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CEngine.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="CEntity.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CGCMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CLogMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevelMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CTaskMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIMgr.cpp">
+      <Filter>Game\02. Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CLevel.cpp">
+      <Filter>Game\03. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CLayer.cpp">
+      <Filter>Game\03. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CStartLevel.cpp">
+      <Filter>Game\03. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayLevel.cpp">
+      <Filter>Game\03. Level</Filter>
+    </ClCompile>
+    <ClCompile Include="CObj.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlatform.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CGuided.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CProjectile.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CTile.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CBtnUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPanelUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnim.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CMovement.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateMachine.cpp">
+      <Filter>Game\05. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Game\06. Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>Game\06. Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CAsset.cpp">
+      <Filter>Game\06. Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="CState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CNormalMonIdle.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CNormalMonTrace.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="Peglin.cpp">
+      <Filter>Default</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
