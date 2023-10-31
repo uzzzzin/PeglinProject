@@ -12,8 +12,9 @@ CCamera::CCamera()
 	: m_Veil(nullptr)
 	, m_Alpha(0.f)
 {
-	Vec2 vResol = CEngine::GetInst()->GetResolution();
-	m_Veil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", vResol.x, vResol.y);
+	//Vec2 vResol = CEngine::GetInst()->GetResolution();
+	//m_Veil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", vResol.x, vResol.y);
+
 }
 
 CCamera::~CCamera()
@@ -22,26 +23,26 @@ CCamera::~CCamera()
 
 void CCamera::tick()
 {
-	// 방향키로 카메라가 바라보고 있는 위치를 변경
-	if (KEY_PRESSED(KEY::LEFT))
-	{
-		m_vLookAt.x -= 200.f * DT;
-	}
+	//// 방향키로 카메라가 바라보고 있는 위치를 변경
+	//if (KEY_PRESSED(KEY::LEFT))
+	//{
+	//	m_vLookAt.x -= 200.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::RIGHT))
-	{
-		m_vLookAt.x += 200.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::RIGHT))
+	//{
+	//	m_vLookAt.x += 200.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::UP))
-	{
-		m_vLookAt.y -= 200.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::UP))
+	//{
+	//	m_vLookAt.y -= 200.f * DT;
+	//}
 
-	if (KEY_PRESSED(KEY::DOWN))
-	{
-		m_vLookAt.y += 200.f * DT;
-	}
+	//if (KEY_PRESSED(KEY::DOWN))
+	//{
+	//	m_vLookAt.y += 200.f * DT;
+	//}
 
 	// 화면 해상도의 중심위치를 알아낸다.
 	Vec2 vResolution = CEngine::GetInst()->GetResolution();
@@ -94,20 +95,33 @@ void CCamera::tick()
 
 void CCamera::render(HDC _dc)
 {
-	if (0 == m_Alpha)
+	//if (0 == m_Alpha)
+	//	return;
+
+	//BLENDFUNCTION blend = {};
+	//blend.BlendOp = AC_SRC_OVER;
+	//blend.BlendFlags = 0;
+
+	//blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
+	//blend.AlphaFormat = 0; // 0
+
+	//AlphaBlend(_dc
+	//	, 0, 0, m_Veil->GetWidth(), m_Veil->GetHeight()
+	//	, m_Veil->GetDC()
+	//	, 0, 0
+	//	, m_Veil->GetWidth(), m_Veil->GetHeight()
+	//	, blend);
+
+
+	if (!DEBUG_RENDER)
 		return;
 
-	BLENDFUNCTION blend = {};
-	blend.BlendOp = AC_SRC_OVER;
-	blend.BlendFlags = 0;
+	SELECT_PEN(_dc, RED_PEN);
 
-	blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
-	blend.AlphaFormat = 0; // 0
+	Vec2 vRenderPos = GetRenderPos(m_vLookAt);
+	MoveToEx(_dc, int(vRenderPos.x - 7.f), (int)vRenderPos.y, nullptr);
+	LineTo(_dc, int(vRenderPos.x + 7.f), (int)vRenderPos.y);
 
-	AlphaBlend(_dc
-		, 0, 0, m_Veil->GetWidth(), m_Veil->GetHeight()
-		, m_Veil->GetDC()
-		, 0, 0
-		, m_Veil->GetWidth(), m_Veil->GetHeight()
-		, blend);
+	MoveToEx(_dc, int(vRenderPos.x), int(vRenderPos.y - 7.f), nullptr);
+	LineTo(_dc, int(vRenderPos.x), int(vRenderPos.y + 7.f));
 }

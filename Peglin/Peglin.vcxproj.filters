@@ -35,6 +35,9 @@
     <Filter Include="Game\03. Level\Ingame">
       <UniqueIdentifier>{9bcfca2e-dff5-4d4d-bff3-3441400c6ab7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Default\trash">
+      <UniqueIdentifier>{d6282a35-57e8-4225-b91a-260ee6d5213b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -181,9 +184,6 @@
     <ClInclude Include="CNormalMonTrace.h">
       <Filter>Game\07. State</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayLevel.h">
-      <Filter>Game\03. Level\Ingame</Filter>
-    </ClInclude>
     <ClInclude Include="CStartLevel.h">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClInclude>
@@ -198,6 +198,9 @@
     </ClInclude>
     <ClInclude Include="CStage2Level.h">
       <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayLevel.h">
+      <Filter>Default\trash</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -340,9 +343,6 @@
     <ClCompile Include="Peglin.cpp">
       <Filter>Default</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayLevel.cpp">
-      <Filter>Game\03. Level\Ingame</Filter>
-    </ClCompile>
     <ClCompile Include="CStartLevel.cpp">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClCompile>
@@ -357,6 +357,9 @@
     </ClCompile>
     <ClCompile Include="CBossStageLevel.cpp">
       <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayLevel.cpp">
+      <Filter>Default\trash</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
