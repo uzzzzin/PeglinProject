@@ -32,6 +32,9 @@
     <Filter Include="Game\07. State">
       <UniqueIdentifier>{c58f7768-47c4-456e-8b48-c1a3d93df73c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\03. Level\Ingame">
+      <UniqueIdentifier>{9bcfca2e-dff5-4d4d-bff3-3441400c6ab7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -112,12 +115,6 @@
     <ClInclude Include="CLayer.h">
       <Filter>Game\03. Level</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayLevel.h">
-      <Filter>Game\03. Level</Filter>
-    </ClInclude>
-    <ClInclude Include="CStartLevel.h">
-      <Filter>Game\03. Level</Filter>
-    </ClInclude>
     <ClInclude Include="CObj.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
@@ -183,6 +180,24 @@
     </ClInclude>
     <ClInclude Include="CNormalMonTrace.h">
       <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayLevel.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CStartLevel.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CEndLevel.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage1Level.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CBossStageLevel.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage2Level.h">
+      <Filter>Game\03. Level\Ingame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -256,12 +271,6 @@
     <ClCompile Include="CLayer.cpp">
       <Filter>Game\03. Level</Filter>
     </ClCompile>
-    <ClCompile Include="CStartLevel.cpp">
-      <Filter>Game\03. Level</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayLevel.cpp">
-      <Filter>Game\03. Level</Filter>
-    </ClCompile>
     <ClCompile Include="CObj.cpp">
       <Filter>Game\04. Object</Filter>
     </ClCompile>
@@ -330,6 +339,24 @@
     </ClCompile>
     <ClCompile Include="Peglin.cpp">
       <Filter>Default</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayLevel.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CStartLevel.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CEndLevel.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage1Level.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage2Level.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CBossStageLevel.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

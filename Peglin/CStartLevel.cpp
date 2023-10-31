@@ -11,12 +11,12 @@ void CStartLevel::init()
 
 void CStartLevel::enter()
 {
-	LOG( LOGLOG, L"시작화면 들어옴");
+	LOG( LOGLOG, L"StartLevel 들어옴");
 }
 
 void CStartLevel::exit()
 {
-	LOG( LOGLOG, L"시작화면 빠져나감");
+	LOG( LOGLOG, L"StartLevel 빠져나감");
 	DeleteAllObjects();
 }
 
@@ -27,6 +27,6 @@ void CStartLevel::tick()
 	// Enter 키가 눌리면 PlayLevel 로 전환
 	if (KEY_TAP(KEY::ENTER))
 	{
-		ChangeLevel(LEVEL_TYPE::PLAY_LEVEL);
+		ChangeLevel(LEVEL_TYPE::STAGE_1_LEVEL);
 	}
 }
