@@ -52,6 +52,13 @@ void CAnim::render(HDC _dc)
 
 	CObj* pOwnerObject = m_pAnimator->GetOwner();
 	Vec2 vRenderPos = pOwnerObject->GetRenderPos();
+	Vec2 vScale = pOwnerObject->GetScale();
+	float fXCoeffi = (vScale.x / frm.vCutSize.x);
+	float fYCoeffi = (vScale.y / frm.vCutSize.y);
+
+
+	//float coeffi = 1;
+
 
 	/*TransparentBlt(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
 					  , int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
@@ -68,9 +75,9 @@ void CAnim::render(HDC _dc)
 	blend.SourceConstantAlpha = 255; // 0 ~ 255
 	blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
-	AlphaBlend(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) + frm.vOffset.x)
-		, int(vRenderPos.y - (frm.vCutSize.y / 2.f) + frm.vOffset.y)
-		, int(frm.vCutSize.x), int(frm.vCutSize.y)
+	AlphaBlend(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) * (fXCoeffi) + frm.vOffset.x)
+		, int(vRenderPos.y - (frm.vCutSize.y / 2.f) * (fYCoeffi ) + frm.vOffset.y)
+		, int(frm.vCutSize.x)*fXCoeffi , int(frm.vCutSize.y)*fYCoeffi
 		, m_Atlas->GetDC()
 		, int(frm.vLeftTop.x), int(frm.vLeftTop.y)
 		, int(frm.vCutSize.x), int(frm.vCutSize.y)

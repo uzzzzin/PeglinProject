@@ -208,6 +208,9 @@
     <ClInclude Include="CStartBG.h">
       <Filter>Game\04. Object\StartLevel</Filter>
     </ClInclude>
+    <ClInclude Include="CStartLogo.h">
+      <Filter>Game\04. Object\StartLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -368,6 +371,9 @@
       <Filter>Default\trash</Filter>
     </ClCompile>
     <ClCompile Include="CStartBG.cpp">
+      <Filter>Game\04. Object\StartLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="CStartLogo.cpp">
       <Filter>Game\04. Object\StartLevel</Filter>
     </ClCompile>
   </ItemGroup>

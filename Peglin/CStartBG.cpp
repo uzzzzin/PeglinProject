@@ -9,7 +9,7 @@
 CStartBG::CStartBG()
 	: m_Texture(nullptr)
 {
-	m_Texture = CAssetMgr::GetInst()->LoadTexture(L"StartBGTex", L"texture\\BoardBG.png");
+	m_Texture = CAssetMgr::GetInst()->LoadTexture(L"StartBG", L"texture\\BoardBG.png");
 }
 
 CStartBG::~CStartBG()
