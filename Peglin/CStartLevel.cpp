@@ -33,8 +33,10 @@ void CStartLevel::enter()
 
 	CStartLogo* pLogo = new CStartLogo;
 
-	pLogo->SetPos(Vec2(0.f, 0.f));
-	pLogo->SetScale(Vec2(387.f, 144.f));
+	pLogo->SetScaleCoeffi(5);
+	float fScaleCoeffi = pLogo->GetfScaleCoeffi();
+	pLogo->SetPos(Vec2(-400.f, -200.f)); // 센터에 상대적임
+	pLogo->SetScale(Vec2(129.f* fScaleCoeffi, 48.f * fScaleCoeffi)); // 원본 컷 사이즈에 곱함
 	AddObject(BG, pLogo); // 어디에 넣어야 하는지 애매
 
 }

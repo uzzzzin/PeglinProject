@@ -8,6 +8,7 @@
 
 CObj::CObj()
 	: m_iLayerIdx(-1)
+	, fScaleCoeffi(1)
 {
 }
 

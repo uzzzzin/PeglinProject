@@ -12,6 +12,7 @@ class CObj
 private:
 	Vec2				m_Pos;
 	Vec2				m_Scale;
+	float				fScaleCoeffi;
 	vector<CComponent*>	m_vecComponent;
 	int					m_iLayerIdx;
 
@@ -20,9 +21,11 @@ public:
 	Vec2 GetPos() { return m_Pos; }
 	Vec2 GetRenderPos() { return CCamera::GetInst()->GetRenderPos(m_Pos); }
 	Vec2 GetScale() { return m_Scale; }
+	float GetfScaleCoeffi() { return fScaleCoeffi;  }
 
 	void SetPos(Vec2 _Pos) { m_Pos = _Pos; }
 	void SetScale(Vec2 _Scale) { m_Scale = _Scale; }
+	void SetScaleCoeffi(float _Coeffi) { fScaleCoeffi = _Coeffi; }
 
 	int GetLayerIdx() { return m_iLayerIdx; }
 
