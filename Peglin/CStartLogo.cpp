@@ -1,9 +1,10 @@
 #include "pch.h"
 #include "CStartLogo.h"
-
+#include "CKeyMgr.h"
 #include "CAssetMgr.h"
 #include "CTexture.h"
 #include "components.h"
+
 
 
 CStartLogo::CStartLogo()

@@ -13,10 +13,12 @@ class CBtnUI :
 {
     GENERATED_OBJECT(CUI);
 private:
-    CTexture* m_NormalImg;
-    CTexture* m_HoverImg;
-    CTexture* m_PressedImg;
-    CTexture* m_CurImg;
+
+    CAnimator* m_Animator;
+
+    wstring wNAnimName;
+    wstring wHAnimName;
+    wstring wPAnimName;
 
     // 콜백 (전역함수 포인터) 
     BtnCallBack m_CallBackFunc;
@@ -28,15 +30,25 @@ private:
     DelegateFunc    m_Delegate;
 
 public:
-    void SetNormalImg(CTexture* _NormalImg) { m_NormalImg = _NormalImg; }
-    void SetPressedImg(CTexture* _PressedImg) { m_PressedImg = _PressedImg; }
-    void SetHoverImg(CTexture* _HoverImg) { m_HoverImg = _HoverImg; }
+
+    //void SetNormalImg(CTexture* _NormalImg) { m_NormalImg = _NormalImg; }
+    //void SetPressedImg(CTexture* _PressedImg) { m_PressedImg = _PressedImg; }
+    //void SetHoverImg(CTexture* _HoverImg) { m_HoverImg = _HoverImg; }
     void SetCallBack(BtnCallBack _CallBack) { m_CallBackFunc = _CallBack; }
     void SetDeletage(CEntity* _Inst, DelegateFunc _Func) { m_Inst = _Inst; m_Delegate = _Func; }
+
+    void SetNormalImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
+    void SetPressedImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
+    void SetHoverImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
+    
+    wstring& GetNAnimName() { return wNAnimName; }
+    wstring& GetPAnimName() { return wPAnimName; }
+    wstring& GetHAnimName() { return wHAnimName; }
 
 public:
     virtual void tick(float _DT) override;
     virtual void render(HDC _dc) override;
+    virtual void begin();
 
 public:
     virtual void OnHovered(Vec2 _vMousePos) override;
@@ -51,6 +63,7 @@ public:
 public:
     CLONE(CBtnUI);
     CBtnUI();
+    CBtnUI(const wstring& _strName, const wstring& _strKey, const wstring& _strRelativePath);
     ~CBtnUI();
 };
 

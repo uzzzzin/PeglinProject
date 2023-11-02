@@ -77,7 +77,7 @@ void CAnim::render(HDC _dc)
 
 	AlphaBlend(_dc, int(vRenderPos.x - (frm.vCutSize.x / 2.f) * (fXCoeffi) + frm.vOffset.x)
 		, int(vRenderPos.y - (frm.vCutSize.y / 2.f) * (fYCoeffi ) + frm.vOffset.y)
-		, int(frm.vCutSize.x)*fXCoeffi , int(frm.vCutSize.y)*fYCoeffi
+		, int(frm.vCutSize.x*fXCoeffi) , int(frm.vCutSize.y*fYCoeffi)
 		, m_Atlas->GetDC()
 		, int(frm.vLeftTop.x), int(frm.vLeftTop.y)
 		, int(frm.vCutSize.x), int(frm.vCutSize.y)

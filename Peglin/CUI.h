@@ -9,12 +9,12 @@ class CUI :
 private:
     CUI* m_ParentUI;
     vector<CUI*>        m_vecChildUI;
-    Vec2                m_vFinalPos;
+    Vec2                         m_vFinalPos;
 
-    bool                m_bMouseOn;
-    bool                m_bMouseOn_Prev;
+    bool                        m_bMouseOn;
+    bool                        m_bMouseOn_Prev;
 
-    bool                m_bMouseLBtnDown;
+    bool                        m_bMouseLBtnDown;
 
 public:
     void AddChildUI(CUI* _ChildUI)

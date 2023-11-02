@@ -3,17 +3,25 @@
 
 #include "CEngine.h"
 #include "resource.h"
-
 #include "CKeyMgr.h"
+#include "CAssetMgr.h"
+
+#include "CTexture.h"
 
 CBtnUI::CBtnUI()
-	: m_NormalImg(nullptr)
-	, m_HoverImg(nullptr)
-	, m_PressedImg(nullptr)
-	, m_CurImg(nullptr)
-	, m_CallBackFunc(nullptr)
+	: m_CallBackFunc(nullptr)
+	, m_Animator(nullptr)
 	, m_Inst(nullptr)
 	, m_Delegate(nullptr)
+	, wNAnimName(L"")
+	, wHAnimName(L"")
+	, wPAnimName(L"")
+
+{
+	m_Animator = AddComponent<CAnimator>();
+}
+
+CBtnUI::CBtnUI(const wstring& _strName, const wstring& _strKey, const wstring& _strRelativePath)
 {
 }
 
@@ -21,10 +29,29 @@ CBtnUI::~CBtnUI()
 {
 }
 
+void CBtnUI::SetNormalImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+{
+	
+	m_Animator->LoadAnimation(_strRelativePath2);
+	wNAnimName = _animName;
+	m_Animator->Play(wNAnimName, true);
+}
+
+void CBtnUI::SetPressedImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+{
+	m_Animator->LoadAnimation(_strRelativePath2);
+	wPAnimName = _animName;
+
+}
+
+void CBtnUI::SetHoverImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+{
+	m_Animator->LoadAnimation(_strRelativePath2);
+	wHAnimName = _animName;
+}
+
 void CBtnUI::tick(float _DT)
 {
-
-
 	Super::tick(_DT);
 }
 
@@ -33,52 +60,39 @@ void CBtnUI::render(HDC _dc)
 	Vec2 vPos = GetFinalPos();
 	Vec2 vScale = GetScale();
 
-	if (nullptr != m_CurImg)
-	{
-
-	}
-	else
-	{
-		Rectangle(_dc
-			, (int)(vPos.x)
-			, (int)(vPos.y)
-			, (int)(vPos.x + vScale.x)
-			, (int)(vPos.y + vScale.y));
-	}
-
-	// 부모클래스(CUI) 렌더함수 호출(자식 UI 들한테 render 를 호출한다)
 	Super::render(_dc);
+}
+
+void CBtnUI::begin()
+{
+	
 }
 
 void CBtnUI::OnHovered(Vec2 _vMousePos)
 {
-	m_CurImg = m_HoverImg;
+	m_Animator->Play(wHAnimName, true);
 }
 
 void CBtnUI::MouseOn(Vec2 _vMousePos)
 {
-
 }
 
 void CBtnUI::OnUnHovered(Vec2 _vMousePos)
 {
-	m_CurImg = m_NormalImg;
+	m_Animator->Play(wNAnimName, true);
 }
 
 
 void CBtnUI::LBtnDown(Vec2 _vMousePos)
 {
-	m_CurImg = m_PressedImg;
-
-
+	m_Animator->Play(wPAnimName, true);
 }
 
 void CBtnUI::LBtnUp(Vec2 _vMousePos)
 {
-	m_CurImg = m_NormalImg;
+	m_Animator->Play(wHAnimName, true);
 }
 
-INT_PTR CALLBACK CreateTileProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
 void CBtnUI::LBtnClicked(Vec2 _vMousePos)
 {

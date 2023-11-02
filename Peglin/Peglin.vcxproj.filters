@@ -211,6 +211,10 @@
     <ClInclude Include="CStartLogo.h">
       <Filter>Game\04. Object\StartLevel</Filter>
     </ClInclude>
+    <ClInclude Include="CTextUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CUIBtnNewGame.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -376,5 +380,9 @@
     <ClCompile Include="CStartLogo.cpp">
       <Filter>Game\04. Object\StartLevel</Filter>
     </ClCompile>
+    <ClCompile Include="CTextUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CUIBtnNewGame.cpp" />
   </ItemGroup>
 </Project>
