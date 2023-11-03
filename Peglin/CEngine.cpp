@@ -83,11 +83,11 @@ void CEngine::tick()
 		m_bDebugRender ? m_bDebugRender = false : m_bDebugRender = true;
 	}
 
-
 	// LevelMgr
 	CLevelMgr::GetInst()->tick();
 	CCollisionMgr::GetInst()->tick();
 	CUIMgr::GetInst()->tick();
+
 	CLevelMgr::GetInst()->render(m_SubTex->GetDC());
 
 	// Camera render

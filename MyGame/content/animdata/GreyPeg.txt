@@ -1,9 +1,9 @@
 [ANIM_NAME]
-ExitGamePBtn
+GreyPeg
 
 [ATLAS_TEXTURE]
-ExitGamePBtnImg
-texture\exitTextOH.png
+GreyPeg
+texture\greyPeg.png
 
 
 [FRAME_COUNT]
@@ -14,8 +14,8 @@ texture\exitTextOH.png
 [LEFT_TOP]
 0.000000 0.000000
 [CUT_SIZE]
-97.000000 26.000000
+8.000000 8.000000
 [OFFSET]
-143.000000 35.500000
+0.000000 0.00000
 [DURATION]
 0.050000

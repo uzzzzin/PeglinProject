@@ -27,6 +27,6 @@ void CEndLevel::tick()
 	// Enter 키가 눌리면 PlayLevel 로 전환
 	if (KEY_TAP(KEY::ENTER))
 	{
-		ChangeLevel(LEVEL_TYPE::START_LEVEL);
+		ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
 	}
 }

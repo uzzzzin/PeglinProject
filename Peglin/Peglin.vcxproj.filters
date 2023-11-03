@@ -41,6 +41,12 @@
     <Filter Include="Game\04. Object\StartLevel">
       <UniqueIdentifier>{b33fe1c4-7d0b-46f9-8cd9-7d0b7522fcc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\StageLevel">
+      <UniqueIdentifier>{328d1cbc-41ab-4c8d-b14e-30b54b940b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\StageLevel\Peg">
+      <UniqueIdentifier>{15ecda6f-46a9-46ab-8f16-868496808445}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -215,6 +221,16 @@
       <Filter>Game\04. Object</Filter>
     </ClInclude>
     <ClInclude Include="CUIBtnNewGame.h" />
+    <ClInclude Include="CGreyPeg.h">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeg.h">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoardEditLevel.h">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClInclude>
+    <ClInclude Include="CCoinPeg.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -384,5 +400,15 @@
       <Filter>Game\04. Object</Filter>
     </ClCompile>
     <ClCompile Include="CUIBtnNewGame.cpp" />
+    <ClCompile Include="CGreyPeg.cpp">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeg.cpp">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoardEditLevel.cpp">
+      <Filter>Game\03. Level\Ingame</Filter>
+    </ClCompile>
+    <ClCompile Include="CCoinPeg.cpp" />
   </ItemGroup>
 </Project>

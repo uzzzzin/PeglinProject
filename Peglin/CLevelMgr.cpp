@@ -12,6 +12,7 @@
 #include "CStage2Level.h"
 #include "CBossStageLevel.h"
 #include "CEndLevel.h"
+#include "CBoardEditLevel.h"
 
 
 #include "CPlayer.h"
@@ -44,6 +45,7 @@ void CLevelMgr::init()
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE_2_LEVEL] = new CStage2Level;
 	m_arrLevels[(UINT)LEVEL_TYPE::STAGE_BOSS_LEVEL] = new CBossStageLevel;
 	m_arrLevels[(UINT)LEVEL_TYPE::END_LEVEL] = new CEndLevel;
+	m_arrLevels[(UINT)LEVEL_TYPE::BOARD_EDIT_LEVEL] = new CBoardEditLevel;
 
 
 	// 레벨 초기화
@@ -53,7 +55,7 @@ void CLevelMgr::init()
 	}
 
 	// Level
-	::ChangeLevel(LEVEL_TYPE::START_LEVEL);
+	::ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
 }
 
 void CLevelMgr::tick()
@@ -68,7 +70,8 @@ void CLevelMgr::render(HDC _dc)
 		return;
 
 	// Level Render
-	// 화면 Clear
+	// 화면 Clear=
+	FSelectBrush tmp(_dc, CreateSolidBrush(RGB(0, 0, 0)));
 	POINT ptResolution = CEngine::GetInst()->GetResolution();
 	Rectangle(_dc, -1, -1, ptResolution.x + 1, ptResolution.y + 1);
 
