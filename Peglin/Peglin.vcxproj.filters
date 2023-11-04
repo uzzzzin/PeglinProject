@@ -230,7 +230,9 @@
     <ClInclude Include="CBoardEditLevel.h">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClInclude>
-    <ClInclude Include="CCoinPeg.h" />
+    <ClInclude Include="CCoinPeg.h">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -409,6 +411,8 @@
     <ClCompile Include="CBoardEditLevel.cpp">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClCompile>
-    <ClCompile Include="CCoinPeg.cpp" />
+    <ClCompile Include="CCoinPeg.cpp">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
