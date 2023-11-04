@@ -1,23 +1,26 @@
 #include "pch.h"
 #include "CCoinPeg.h"
 
+
+#include "CAssetMgr.h"
+
+
+#include "components.h"
+
+
 CCoinPeg::CCoinPeg()
-	: iDieCnt(1)
-	, iCurCnt(0)
-	, bDied(false)
-	,m_Collider(nullptr)
-	, m_Animator(nullptr)
 {
-	m_Animator = AddComponent<CAnimator>(L"Animator");
-	m_Collider = AddComponent<CCollider>(L"Collider");
+	SetiDieCnt(1);
+	SetiCurCnt(0);
+	SetbDied(false);
+
+	m_Animator->LoadAnimation(L"animdata\\CoinPeg.txt");
+	m_Animator->Play(L"CoinPeg", true);
 }
 
 CCoinPeg::~CCoinPeg()
 {
 }
-
-
-
 
 void CCoinPeg::begin()
 {
@@ -25,10 +28,12 @@ void CCoinPeg::begin()
 
 void CCoinPeg::tick(float _DT)
 {
+	Super::tick(_DT);
 }
 
 void CCoinPeg::render(HDC _dc)
 {
+	Super::render(_dc);
 }
 
 void CCoinPeg::Reload()

@@ -9,6 +9,7 @@
 #include "CLogMgr.h"
 
 #include "CGreyPeg.h"
+#include "CCoinPeg.h"
 
 void CBoardEditLevel::init()
 {
@@ -26,6 +27,11 @@ void CBoardEditLevel::enter()
 	testPeg->SetPos(REALCENTER);
 	testPeg->SetScale(Vec2(20, 20));
 	AddObject(PEG, testPeg);
+
+	CCoinPeg* testPeg2 = new CCoinPeg;
+	testPeg2->SetPos(Vec2(1000.f, 450.f));
+	testPeg2->SetScale(Vec2(20, 20));
+	AddObject(PEG, testPeg2);
 
 }
 

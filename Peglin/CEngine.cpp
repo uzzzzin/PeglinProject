@@ -78,7 +78,7 @@ void CEngine::tick()
 	CKeyMgr::GetInst()->tick();
 	CCamera::GetInst()->tick();
 
-	if (KEY_TAP(KEY::NUM8))
+	if (KEY_TAP(KEY::O))
 	{
 		m_bDebugRender ? m_bDebugRender = false : m_bDebugRender = true;
 	}
