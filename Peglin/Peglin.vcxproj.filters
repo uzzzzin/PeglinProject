@@ -237,6 +237,7 @@
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
     <ClInclude Include="CRefreshPeg.h" />
+    <ClInclude Include="CBombPeg.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -422,5 +423,6 @@
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
     <ClCompile Include="CRefreshPeg.cpp" />
+    <ClCompile Include="CBombPeg.cpp" />
   </ItemGroup>
 </Project>

@@ -256,3 +256,251 @@ bool CAnim::Load(const wstring& _FilePath)
 	fclose(pFile);
 	return true;
 }
+
+bool CAnim::LoadMeta(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath)
+{
+	SetName(_strAnimKey);
+	m_Atlas = _pTexture;
+
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile, _strMetaRelativePath.c_str(), L"r");
+
+	if (nullptr == pFile)
+	{
+		LOG(LOG_LEVEL::ERR, L"파일 열기 실패");
+		return false;
+	}
+
+	// Animation 이름 로드
+	while (true)
+	{
+		wchar_t szRead[256] = {};
+		if (EOF == fwscanf_s(pFile, L"%s", szRead, 256))
+		{
+			break;
+		}
+
+		if (!wcscmp(szRead, L"%YAML"))
+		{
+			FFrame frm = {};
+			frm.vLeftTop = Vec2(0.f, 0.f);
+			frm.vCutSize = Vec2(0.f, 0.f);
+			frm.vOffset = Vec2(0.f, 0.f);
+			frm.Duration = 1.f;
+
+
+			while (true)
+			{
+				fwscanf_s(pFile, L"%s", szRead, 256);
+
+				if (!wcscmp(szRead, L"m_Rect:"))
+				{
+					while (true)
+					{
+						fwscanf_s(pFile, L"%s", szRead, 256);
+
+						if (!wcscmp(szRead, L"x:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vLeftTop.x);
+						}
+
+						if (!wcscmp(szRead, L"y:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vLeftTop.y);
+						}
+
+						if (!wcscmp(szRead, L"width:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vCutSize.x);
+						}
+						if (!wcscmp(szRead, L"height:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vCutSize.y);
+						}
+
+						if (!wcscmp(szRead, L"m_Offset:"))
+						{
+							frm.vLeftTop.y = _pTexture->GetHeight() - frm.vLeftTop.y - frm.vCutSize.y;
+							break;
+						}
+
+
+
+					}
+				}
+
+				if (!wcscmp(szRead, L"m_Offset:"))
+				{
+					while (true)
+					{
+						fwscanf_s(pFile, L"%s", szRead, 256);
+
+						if (!wcscmp(szRead, L"{x:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vOffset.x);
+
+							frm.vOffset.x = frm.vOffset.x * -1;
+						}
+						if (!wcscmp(szRead, L"y:"))
+						{
+							fwscanf_s(pFile, L"%s", szRead, 256);
+
+							int length = (int)wcslen(szRead);
+
+							if (length > 0) {
+								szRead[length - 1] = '\0';
+							}
+
+							wchar_t* end;
+							float tmp = wcstof(szRead, &end);
+							if (*end == L'\0') {
+								frm.vOffset.y = tmp;
+							}
+							break;
+						}
+						if (!wcscmp(szRead, L"m_Border:"))
+						{
+							break;
+						}
+					}
+				}
+				if (!wcscmp(szRead, L"m_Border:"))
+					break;
+
+			}
+			m_vecFrm.push_back(frm);
+
+		}
+
+
+	}
+
+	fclose(pFile);
+	return true;
+}
+
+bool CAnim::LoadMetaReverse(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath)
+{
+	SetName(_strAnimKey);
+	m_Atlas = _pTexture;
+
+	FILE* pFile = nullptr;
+
+	_wfopen_s(&pFile, _strMetaRelativePath.c_str(), L"r");
+
+	if (nullptr == pFile)
+	{
+		LOG(LOG_LEVEL::ERR, L"파일 열기 실패");
+		return false;
+	}
+
+	// Animation 이름 로드
+	while (true)
+	{
+		wchar_t szRead[256] = {};
+		if (EOF == fwscanf_s(pFile, L"%s", szRead, 256))
+		{
+			break;
+		}
+
+		if (!wcscmp(szRead, L"%YAML"))
+		{
+			FFrame frm = {};
+			frm.vLeftTop = Vec2(0.f, 0.f);
+			frm.vCutSize = Vec2(0.f, 0.f);
+			frm.vOffset = Vec2(0.f, 0.f);
+			frm.Duration = 0.1f;
+
+			// x = texture.x - x - sclae.x +1;
+			float tmpX = 0.f;
+
+			while (true)
+			{
+				fwscanf_s(pFile, L"%s", szRead, 256);
+
+				if (!wcscmp(szRead, L"m_Rect:"))
+				{
+					while (true)
+					{
+						fwscanf_s(pFile, L"%s", szRead, 256);
+
+						if (!wcscmp(szRead, L"x:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vLeftTop.x);
+						}
+
+						if (!wcscmp(szRead, L"y:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vLeftTop.y);
+						}
+
+						if (!wcscmp(szRead, L"width:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vCutSize.x);
+						}
+						if (!wcscmp(szRead, L"height:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vCutSize.y);
+						}
+
+						if (!wcscmp(szRead, L"m_Offset:"))
+						{
+							frm.vLeftTop.x = _pTexture->GetWidth() - frm.vLeftTop.x - frm.vCutSize.x + 1;
+							frm.vLeftTop.y = _pTexture->GetHeight() - frm.vLeftTop.y - frm.vCutSize.y;
+							break;
+						}
+
+
+
+					}
+				}
+
+				if (!wcscmp(szRead, L"m_Offset:"))
+				{
+					while (true)
+					{
+						fwscanf_s(pFile, L"%s", szRead, 256);
+
+						if (!wcscmp(szRead, L"{x:"))
+						{
+							fwscanf_s(pFile, L"%f", &frm.vOffset.x);
+
+						}
+						if (!wcscmp(szRead, L"y:"))
+						{
+							fwscanf_s(pFile, L"%s", szRead, 256);
+
+							int length = (int)wcslen(szRead);
+
+							if (length > 0) {
+								szRead[length - 1] = '\0';
+							}
+
+							wchar_t* end;
+							float tmp = wcstof(szRead, &end);
+							if (*end == L'\0') {
+								frm.vOffset.y = tmp;
+							}
+							break;
+						}
+						if (!wcscmp(szRead, L"m_Border:"))
+						{
+							break;
+						}
+					}
+				}
+				if (!wcscmp(szRead, L"m_Border:"))
+					break;
+
+			}
+			m_vecFrm.push_back(frm);
+
+		}
+
+
+	}
+
+	fclose(pFile);
+	return true;
+}

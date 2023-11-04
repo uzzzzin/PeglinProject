@@ -30,7 +30,10 @@ public:
         , Vec2 _vOffset, float _duration, int _MaxFrm);
 
     void SaveAnimations(const wstring& _strRelativePath);
+
     void LoadAnimation(const wstring& _strRelativePath);
+
+    void LoadAnimation(CTexture* _pTexture, const wstring& _strAnimKey, const wstring& _strMetaRelativePath, bool _bReverse);
 
 
 
