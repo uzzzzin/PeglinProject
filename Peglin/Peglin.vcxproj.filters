@@ -236,8 +236,12 @@
     <ClInclude Include="CCritPeg.h">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
-    <ClInclude Include="CRefreshPeg.h" />
-    <ClInclude Include="CBombPeg.h" />
+    <ClInclude Include="CRefreshPeg.h">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClInclude>
+    <ClInclude Include="CBombPeg.h">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -422,7 +426,11 @@
     <ClCompile Include="CCritPeg.cpp">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
-    <ClCompile Include="CRefreshPeg.cpp" />
-    <ClCompile Include="CBombPeg.cpp" />
+    <ClCompile Include="CRefreshPeg.cpp">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClCompile>
+    <ClCompile Include="CBombPeg.cpp">
+      <Filter>Game\04. Object\StageLevel\Peg</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

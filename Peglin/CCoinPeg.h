@@ -5,6 +5,15 @@ class CCoinPeg :
 {
     GENERATED_OBJECT(CPeg);
 
+private:
+    bool    bSlimed; // 슬라임화 된 페그인지
+
+public:
+    void SetbSlimed(bool _bSlimed)
+    {
+        bSlimed = _bSlimed;
+    }
+
 public:
     virtual void begin();
     virtual void tick(float _DT);

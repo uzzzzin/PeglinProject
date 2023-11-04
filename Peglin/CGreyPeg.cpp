@@ -12,13 +12,16 @@
 //}
 
 CGreyPeg::CGreyPeg()
+	:bSlimed(true)
 {
 	SetiDieCnt(1);
 	SetiCurCnt(0);
 	SetbDied(false);
 
 	m_Animator->LoadAnimation(L"animdata\\firstGreyPeg.txt");
-	m_Animator->Play(L"firstGreyPeg", true);
+	m_Animator->LoadAnimation(L"animdata\\GreyPeg.txt");
+	m_Animator->LoadAnimation(L"animdata\\SlimedGreyPeg.txt");
+
 }
 
 CGreyPeg::~CGreyPeg()
@@ -33,9 +36,12 @@ void CGreyPeg::tick(float _DT)
 {
 	Super::tick(_DT);
 
-	if (KEY_TAP(KEY::P))
+	if (bSlimed && KEY_PRESSED(S))
 	{
-		m_Animator->LoadAnimation(L"animdata\\GreyPeg.txt");
+		m_Animator->Play(L"SlimedGreyPeg", true);
+	}
+	else
+	{
 		m_Animator->Play(L"GreyPeg", true);
 	}
 
