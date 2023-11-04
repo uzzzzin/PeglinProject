@@ -10,6 +10,8 @@
 
 #include "CGreyPeg.h"
 #include "CCoinPeg.h"
+#include "CCritPeg.h"
+#include "CRefreshPeg.h"
 
 void CBoardEditLevel::init()
 {
@@ -33,6 +35,15 @@ void CBoardEditLevel::enter()
 	testPeg2->SetScale(Vec2(20, 20));
 	AddObject(PEG, testPeg2);
 
+	CCritPeg* testPeg3 = new CCritPeg;
+	testPeg3->SetPos(Vec2(1100.f, 450.f));
+	testPeg3->SetScale(Vec2(20, 20));
+	AddObject(PEG, testPeg3);
+
+	CRefreshPeg* testPeg4 = new CRefreshPeg;
+	testPeg4->SetPos(Vec2(1200.f, 450.f));
+	testPeg4->SetScale(Vec2(20, 20));
+	AddObject(PEG, testPeg4);
 }
 
 void CBoardEditLevel::exit()

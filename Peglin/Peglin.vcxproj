@@ -152,6 +152,7 @@
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CCritPeg.h" />
     <ClInclude Include="CEndLevel.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
@@ -181,6 +182,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="CProjectile.h" />
+    <ClInclude Include="CRefreshPeg.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
     <ClInclude Include="CStage1Level.h" />
@@ -235,6 +237,7 @@
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CCritPeg.cpp" />
     <ClCompile Include="CEndLevel.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
@@ -263,6 +266,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="CProjectile.cpp" />
+    <ClCompile Include="CRefreshPeg.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
     <ClCompile Include="CStage1Level.cpp" />
