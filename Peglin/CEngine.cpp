@@ -69,6 +69,7 @@ void CEngine::init(HWND _hWnd, POINT _ptResolution)
 
 	// Default GDI Object »ý¼º
 	CreateDefaultGDI();
+
 }
 
 void CEngine::tick()

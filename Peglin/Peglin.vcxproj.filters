@@ -220,7 +220,6 @@
     <ClInclude Include="CTextUI.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CUIBtnNewGame.h" />
     <ClInclude Include="CGreyPeg.h">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
@@ -242,6 +241,7 @@
     <ClInclude Include="CBombPeg.h">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
+    <ClInclude Include="CImg.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -410,7 +410,6 @@
     <ClCompile Include="CTextUI.cpp">
       <Filter>Game\04. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CUIBtnNewGame.cpp" />
     <ClCompile Include="CGreyPeg.cpp">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
@@ -432,5 +431,11 @@
     <ClCompile Include="CBombPeg.cpp">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
+    <ClCompile Include="CImg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cursor1.cur">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>
