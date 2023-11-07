@@ -58,6 +58,7 @@ public:
 
 	friend class CLevelMgr;
 	friend class CTaskMgr;
+	friend class CEditBoardUI;
 };
 
 template<typename T>

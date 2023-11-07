@@ -154,6 +154,8 @@
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CCritPeg.h" />
+    <ClInclude Include="CEditBoardUI.h" />
+    <ClInclude Include="CEditPegUI.h" />
     <ClInclude Include="CEndLevel.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
@@ -240,6 +242,8 @@
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CCritPeg.cpp" />
+    <ClCompile Include="CEditBoardUI.cpp" />
+    <ClCompile Include="CEditPegUI.cpp" />
     <ClCompile Include="CEndLevel.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />

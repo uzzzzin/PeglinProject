@@ -14,6 +14,5 @@ public:
 
 private:
 	CUI* GetPriorityCheck(CUI* _ParentUI);
-
 };
 

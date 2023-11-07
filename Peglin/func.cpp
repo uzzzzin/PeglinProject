@@ -1,9 +1,6 @@
 #include "pch.h"
-#include "func.h"
-#include "struct.h"
 #include "CEntity.h"
 #include "CTaskMgr.h"
-#include "define.h"
 
 Vec2 Rotate(Vec2 _vDir, float _angle)
 {
@@ -34,6 +31,13 @@ void ChangeLevel(LEVEL_TYPE _type)
 	task.Param_1 = (INT_PTR)_type;
 	CTaskMgr::GetInst()->AddTask(task);
 }
+
+
+//extern PEG_TYPE pegType;
+//void ChangePeg(PEG_TYPE _type)
+//{
+//	pegType = _type;
+//}
 
 void SaveWString(const wstring& _str, FILE* _File)
 {

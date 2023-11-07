@@ -17,7 +17,7 @@ CBombPeg::CBombPeg()
 	//m_Animator->LoadAnimation(pTex, L"BombPeg", L"animdata\\BombPegMeta.txt",false);
 
 	m_Animator->LoadAnimation(L"animdata\\BombPeg.txt");
-	//m_Animator->Play(L"BombPeg", true);
+	m_Animator->Play(L"BombPeg", true);
 }
 
 CBombPeg::~CBombPeg()
@@ -31,10 +31,10 @@ void CBombPeg::begin()
 void CBombPeg::tick(float _DT)
 {
 	Super::tick(_DT);
-	if (KEY_RELEASED(A))
-	{
-		m_Animator->Play(L"BombPeg", true);
-	}
+	//if (KEY_RELEASED(A))
+	//{
+	//	m_Animator->Play(L"BombPeg", true);
+	//}
 }
 
 void CBombPeg::render(HDC _dc)

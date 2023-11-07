@@ -209,3 +209,8 @@ struct FLog
 	float	  AccTime;
 };
 
+struct SavedPegsInfo
+{
+	PEG_TYPE type;
+	Vec2 pos;
+};

@@ -35,11 +35,6 @@ using namespace::Gdiplus;
 #pragma comment(lib, "dsound.lib")
 
 
-
-
-
-
-
 using std::vector;
 using std::list;
 using std::map;

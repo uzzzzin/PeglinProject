@@ -5,6 +5,7 @@
 #include "resource.h"
 #include "CKeyMgr.h"
 #include "CAssetMgr.h"
+#include "CLogMgr.h"
 
 #include "CTexture.h"
 
@@ -29,7 +30,7 @@ CBtnUI::~CBtnUI()
 {
 }
 
-void CBtnUI::SetNormalImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+void CBtnUI::SetNormalImg(const wstring& _strRelativePath2, const wstring& _animName)
 {
 	
 	m_Animator->LoadAnimation(_strRelativePath2);
@@ -37,14 +38,14 @@ void CBtnUI::SetNormalImg(const wstring& _strKey, const wstring& _strRelativePat
 	m_Animator->Play(wNAnimName, true);
 }
 
-void CBtnUI::SetPressedImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+void CBtnUI::SetPressedImg(const wstring& _strRelativePath2, const wstring& _animName)
 {
 	m_Animator->LoadAnimation(_strRelativePath2);
 	wPAnimName = _animName;
 
 }
 
-void CBtnUI::SetHoverImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName)
+void CBtnUI::SetHoverImg(const wstring& _strRelativePath2, const wstring& _animName)
 {
 	m_Animator->LoadAnimation(_strRelativePath2);
 	wHAnimName = _animName;
@@ -96,13 +97,22 @@ void CBtnUI::LBtnUp(Vec2 _vMousePos)
 
 void CBtnUI::LBtnClicked(Vec2 _vMousePos)
 {
+	float curPosX = _vMousePos.x;
+	float curPosY = _vMousePos.y;
+	wstring buffer = L"";
+	buffer += L"vPos x : " + std::to_wstring(curPosX) + L" y: " + std::to_wstring(curPosY);
+	CLogMgr::GetInst()->AddLog(FLog{ LOG_LEVEL::ERR, buffer });
+	//LOG(ERR, buffer);
+
 	if (nullptr != m_CallBackFunc)
 	{
 		m_CallBackFunc();
 	}
+	
 
 	if (nullptr != m_Inst && nullptr != m_Delegate)
 	{
 		(m_Inst->*m_Delegate)();
 	}
 }
+

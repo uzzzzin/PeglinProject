@@ -241,7 +241,13 @@
     <ClInclude Include="CBombPeg.h">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
-    <ClInclude Include="CImg.h" />
+    <ClInclude Include="CImg.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CEditBoardUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CEditPegUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -431,7 +437,13 @@
     <ClCompile Include="CBombPeg.cpp">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
-    <ClCompile Include="CImg.cpp" />
+    <ClCompile Include="CImg.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CEditBoardUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CEditPegUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

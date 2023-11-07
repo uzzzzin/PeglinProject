@@ -24,8 +24,12 @@ CUIMgr::~CUIMgr()
 void CUIMgr::tick()
 {
 	Vec2 vMousePos = CKeyMgr::GetInst()->GetMousePos();
+	
 	bool bLBtnTap = KEY_TAP(KEY::LBTN);
 	bool bLbtnReleased = KEY_RELEASED(KEY::LBTN);
+
+	bool bRBtnTap = KEY_TAP(KEY::RBTN);
+	bool bRbtnReleased = KEY_RELEASED(KEY::RBTN);
 
 	CLevel* pLevel = CLevelMgr::GetInst()->GetCurLevel();
 	if (nullptr == pLevel)
@@ -71,21 +75,46 @@ void CUIMgr::tick()
 				}
 			}
 
+			if (bRbtnReleased)
+			{
+				pUI->RBtnUp(vMousePos);
+
+				if (pUI->m_bMouseRBtnDown)
+				{
+					pUI->RBtnClicked(vMousePos);
+				}
+			}
+
+
+
 			if (bLBtnTap)
 			{
 				pUI->LBtnDown(vMousePos);
 				pUI->m_bMouseLBtnDown = true;
 
 				// reverse iterator 로 vector 내에서 erase 하기
-				std::advance(iter, 1);
+				/*std::advance(iter, 1);
+				
 				vecUI.erase(iter.base());
 
-				vecUI.push_back(m_FocuedUI);
+					vecUI.push_back(m_FocuedUI);*/
 			}
+
+			if (bRBtnTap)
+			{
+				pUI->RBtnDown(vMousePos);
+				pUI->m_bMouseRBtnDown = true;
+			}
+
 
 			if (bLbtnReleased)
 			{
 				pUI->m_bMouseLBtnDown = false;
+			}
+
+			if (bRbtnReleased)
+			{
+				pUI->m_bMouseRBtnDown = false;
 			}
 
 			break;
@@ -100,6 +129,11 @@ void CUIMgr::tick()
 			if (bLbtnReleased)
 			{
 				pUI->m_bMouseLBtnDown = false;
+			}
+
+			if (bRbtnReleased)
+			{
+				pUI->m_bMouseRBtnDown = false;
 			}
 		}
 	}
@@ -129,6 +163,5 @@ CUI* CUIMgr::GetPriorityCheck(CUI* _ParentUI)
 			pPriorityUI = pUI;
 		}
 	}
-
 	return pPriorityUI;
 }

@@ -19,8 +19,5 @@ public:
     CLONE(CImg);
     CImg();
     ~CImg();
-
-
-
 };
 

@@ -15,6 +15,7 @@ private:
     bool                        m_bMouseOn_Prev;
 
     bool                        m_bMouseLBtnDown;
+    bool                        m_bMouseRBtnDown;
 
 public:
     void AddChildUI(CUI* _ChildUI)
@@ -34,6 +35,10 @@ public:
     virtual void LBtnDown(Vec2 _vMousePos) {}
     virtual void LBtnUp(Vec2 _vMousePos) {}
     virtual void LBtnClicked(Vec2 _vMousePos) {}
+
+    virtual void RBtnDown(Vec2 _vMousePos) {}
+    virtual void RBtnUp(Vec2 _vMousePos) {}
+    virtual void RBtnClicked(Vec2 _vMousePos) {}
 
 
 public:

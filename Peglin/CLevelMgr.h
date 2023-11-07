@@ -5,6 +5,7 @@ class CLevelMgr
 {
 	SINGLETON(CLevelMgr);
 private:
+	HBRUSH m_brush;
 	class CLevel* m_pCurLevel;
 	CLevel* m_arrLevels[(UINT)LEVEL_TYPE::END];
 

@@ -1,6 +1,5 @@
 #pragma once
 
-
 Vec2 Rotate(Vec2 _vDir, float _angle);
 bool GetRotateClock(Vec2 _vDir1, Vec2 _vDir2);
 
@@ -22,6 +21,7 @@ bool IsValid(T*& _Entity)
 }
 
 void ChangeLevel(LEVEL_TYPE _type);
+void ChangePeg(PEG_TYPE _type);
 
 void SaveWString(const wstring& _str, FILE* _File);
 void LoadWString(wstring& _str, FILE* _File);

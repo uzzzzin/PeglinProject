@@ -4,6 +4,7 @@
 class CTexture;
 
 typedef  void(*BtnCallBack)(void);
+
 typedef  void(CEntity::* DelegateFunc)(void);
 
 
@@ -31,15 +32,12 @@ private:
 
 public:
 
-    //void SetNormalImg(CTexture* _NormalImg) { m_NormalImg = _NormalImg; }
-    //void SetPressedImg(CTexture* _PressedImg) { m_PressedImg = _PressedImg; }
-    //void SetHoverImg(CTexture* _HoverImg) { m_HoverImg = _HoverImg; }
     void SetCallBack(BtnCallBack _CallBack) { m_CallBackFunc = _CallBack; }
     void SetDeletage(CEntity* _Inst, DelegateFunc _Func) { m_Inst = _Inst; m_Delegate = _Func; }
 
-    void SetNormalImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
-    void SetPressedImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
-    void SetHoverImg(const wstring& _strKey, const wstring& _strRelativePath, const wstring& _strName, const wstring& _strRelativePath2, const wstring& _animName);
+    void SetNormalImg(const wstring& _strRelativePath2, const wstring& _animName);
+    void SetPressedImg(const wstring& _strRelativePath2, const wstring& _animName);
+    void SetHoverImg(const wstring& _strRelativePath2, const wstring& _animName);
     
     wstring& GetNAnimName() { return wNAnimName; }
     wstring& GetPAnimName() { return wPAnimName; }

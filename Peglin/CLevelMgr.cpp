@@ -24,7 +24,7 @@
 CLevelMgr::CLevelMgr()
 	: m_pCurLevel(nullptr)
 {
-
+	m_brush = CreateSolidBrush(RGB(0, 0, 0));
 }
 
 CLevelMgr::~CLevelMgr()
@@ -71,7 +71,7 @@ void CLevelMgr::render(HDC _dc)
 
 	// Level Render
 	// È­¸é Clear=
-	FSelectBrush tmp(_dc, CreateSolidBrush(RGB(0, 0, 0)));
+	FSelectBrush tmp(_dc, m_brush);
 	POINT ptResolution = CEngine::GetInst()->GetResolution();
 	Rectangle(_dc, -1, -1, ptResolution.x + 1, ptResolution.y + 1);
 
