@@ -26,7 +26,8 @@ void ChangePeg(PEG_TYPE _type)
 
 void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 {
-	CLevel* pCurLevel = dynamic_cast<CBoardEditLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+	CBoardEditLevel* pCurLevel = dynamic_cast<CBoardEditLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+	
 	switch (pegType)
 	{
 		case PEG_TYPE::GREY_PEG:
@@ -37,8 +38,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			GreyPegBtn->SetNormalImg(L"animdata\\firstGreyPegBtn.txt", L"firstGreyPegBtn");
 			GreyPegBtn->SetHoverImg(L"animdata\\GreyPegBtn.txt", L"GreyPegBtn");
 			GreyPegBtn->SetPressedImg(L"animdata\\GreyPegBtn.txt", L"GreyPegBtn");
-			GreyPegBtn->SetPegsType(GREY_PEG);
+			GreyPegBtn->SetPegsInfo(GREY_PEG, _vMousePos, GreyPegBtn->GetScale());
 			pCurLevel->AddObject(UI, GreyPegBtn);
+			pCurLevel->PushBack_Pegs(GreyPegBtn);
 			break;
 		}
 		case PEG_TYPE::COIN_PEG:
@@ -49,8 +51,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			CoinPegBtn->SetNormalImg(L"animdata\\CoinPegBtn.txt", L"CoinPegBtn");
 			CoinPegBtn->SetHoverImg(L"animdata\\CoinPegBtn.txt", L"CoinPegBtn");
 			CoinPegBtn->SetPressedImg(L"animdata\\CoinPegBtn.txt", L"CoinPegBtn");
-			CoinPegBtn->SetPegsType(COIN_PEG);
+			CoinPegBtn->SetPegsInfo(COIN_PEG, _vMousePos, CoinPegBtn->GetScale());
 			pCurLevel->AddObject(UI, CoinPegBtn);
+			pCurLevel->PushBack_Pegs(CoinPegBtn);
 			break;
 		}
 		case PEG_TYPE::CRITICAL_PEG:
@@ -61,8 +64,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			CritPegBtn->SetNormalImg(L"animdata\\CritPegBtn.txt", L"CritPegBtn");
 			CritPegBtn->SetHoverImg(L"animdata\\CritPegBtn.txt", L"CritPegBtn");
 			CritPegBtn->SetPressedImg(L"animdata\\CritPegBtn.txt", L"CritPegBtn");
-			CritPegBtn->SetPegsType(CRITICAL_PEG);
+			CritPegBtn->SetPegsInfo(CRITICAL_PEG, _vMousePos, CritPegBtn->GetScale());
 			pCurLevel->AddObject(UI, CritPegBtn);
+			pCurLevel->PushBack_Pegs(CritPegBtn);
 			break;
 		}
 		case PEG_TYPE::REFRESH_PEG:
@@ -73,8 +77,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			RefreshPegBtn->SetNormalImg(L"animdata\\RefreshPegBtn.txt", L"RefreshPegBtn");
 			RefreshPegBtn->SetHoverImg(L"animdata\\RefreshPegBtn.txt", L"RefreshPegBtn");
 			RefreshPegBtn->SetPressedImg(L"animdata\\RefreshPegBtn.txt", L"RefreshPegBtn");
-			RefreshPegBtn->SetPegsType(REFRESH_PEG);
+			RefreshPegBtn->SetPegsInfo(REFRESH_PEG, _vMousePos, RefreshPegBtn->GetScale());
 			pCurLevel->AddObject(UI, RefreshPegBtn);
+			pCurLevel->PushBack_Pegs(RefreshPegBtn);
 			break;
 		}
 		case PEG_TYPE::BOMB_PEG:
@@ -85,8 +90,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			BombPegBtn->SetNormalImg(L"animdata\\BombPegBtn.txt", L"BombPegBtn");
 			BombPegBtn->SetHoverImg(L"animdata\\BombPegBtn.txt", L"BombPegBtn");
 			BombPegBtn->SetPressedImg(L"animdata\\BombPegBtn.txt", L"BombPegBtn");
-			BombPegBtn->SetPegsType(REFRESH_PEG);
+			BombPegBtn->SetPegsInfo(BOMB_PEG, _vMousePos, BombPegBtn->GetScale());
 			pCurLevel->AddObject(UI, BombPegBtn);
+			pCurLevel->PushBack_Pegs(BombPegBtn);
 			break;
 		}
 		case PEG_TYPE::SLIMED_GREY_PEG:
@@ -97,8 +103,9 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			SlimedGreyPegBtn->SetNormalImg(L"animdata\\SlimedGreyPegBtn.txt", L"SlimedGreyPegBtn");
 			SlimedGreyPegBtn->SetHoverImg(L"animdata\\SlimedGreyPegBtn.txt", L"SlimedGreyPegBtn");
 			SlimedGreyPegBtn->SetPressedImg(L"animdata\\SlimedGreyPegBtn.txt", L"SlimedGreyPegBtn");
-			SlimedGreyPegBtn->SetPegsType(SLIMED_GREY_PEG);
+			SlimedGreyPegBtn->SetPegsInfo(SLIMED_GREY_PEG, _vMousePos, SlimedGreyPegBtn->GetScale());
 			pCurLevel->AddObject(UI, SlimedGreyPegBtn);
+			pCurLevel->PushBack_Pegs(SlimedGreyPegBtn);
 			break;
 		}
 		case PEG_TYPE::SLIMED_COIN_PEG:
@@ -109,7 +116,8 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 			SlimedCoinPegBtn->SetNormalImg(L"animdata\\SlimedCoinPegBtn.txt", L"SlimedCoinPegBtn");
 			SlimedCoinPegBtn->SetHoverImg(L"animdata\\SlimedCoinPegBtn.txt", L"SlimedCoinPegBtn");
 			SlimedCoinPegBtn->SetPressedImg(L"animdata\\SlimedCoinPegBtn.txt", L"SlimedCoinPegBtn");
-			SlimedCoinPegBtn->SetPegsType(SLIMED_COIN_PEG);
+			SlimedCoinPegBtn->SetPegsInfo(SLIMED_COIN_PEG, _vMousePos, SlimedCoinPegBtn->GetScale());
+			pCurLevel->AddObject(UI, SlimedCoinPegBtn);
 			pCurLevel->AddObject(UI, SlimedCoinPegBtn);
 			break;
 		}
@@ -120,11 +128,7 @@ void CEditBoardUI::LBtnClicked(Vec2 _vMousePos)
 	}
 
 }
-//
-//void CEditBoardUI::RBtnClicked(Vec2 _vMousePos)
-//{
-//
-//}
+
 
 
 

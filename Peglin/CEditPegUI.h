@@ -6,14 +6,18 @@ class CEditPegUI :
     GENERATED_OBJECT(CBtnUI);
 
 private:
-    SavedPegsInfo pegsInfo;
+    SavedPegsInfo pegsInfo = {};
 
 public:
-    void SetPegsType(PEG_TYPE _pegType)
+    void SetPegsInfo(PEG_TYPE _pegType, Vec2 _pos, Vec2 _scale)
     {
         pegsInfo.type = _pegType;
+        pegsInfo.pos = _pos;
+        pegsInfo.scale = _scale;
     }
 
+    //bool Save(const wchar_t* _path);
+   //void Load(FILE* _pFile);
 
     virtual void RBtnDown(Vec2 _vMousePos);
     virtual void RBtnUp(Vec2 _vMousePos);
@@ -24,5 +28,6 @@ public:
     CEditPegUI();
     ~CEditPegUI();
 
+    friend class CBoardEditLevel;
 };
 

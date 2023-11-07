@@ -35,6 +35,9 @@ using namespace::Gdiplus;
 #pragma comment(lib, "dsound.lib")
 
 
+// 파일탐색기
+#include "commdlg.h"
+
 using std::vector;
 using std::list;
 using std::map;

@@ -213,4 +213,5 @@ struct SavedPegsInfo
 {
 	PEG_TYPE type;
 	Vec2 pos;
+	Vec2 scale;
 };

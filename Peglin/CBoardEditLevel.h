@@ -5,7 +5,9 @@ class CBoardEditLevel :
     public CLevel
 {
 private:
-    vector<class CBtnUI*> vPegs;
+    vector<class CEditPegUI*> vPegs;
+
+    //int PegsCnt = 0;
 
 public:
     virtual void init() override;
@@ -17,11 +19,12 @@ public:
     void SaveBoard();
     void LoadBoard();
 
+    void PushBack_Pegs(CEditPegUI* _peg)
+    {
+        vPegs.push_back(_peg);
+    }
 
-
-    //void PushBack_Pegs
-
-   // friend class CEditPegUI;
+   friend class CEditPegUI;
  
 };
 

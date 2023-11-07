@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CEditPegUI.h"
+#include "CEditBoardUI.h"
 
 #include "CLogMgr.h"
 
@@ -7,8 +8,6 @@
 CEditPegUI::CEditPegUI()
 {
 	
-	pegsInfo.pos = GetPos();
-	//pegsInfo.type = pegType
 }
 
 CEditPegUI::~CEditPegUI()
@@ -18,7 +17,7 @@ CEditPegUI::~CEditPegUI()
 
 void CEditPegUI::RBtnDown(Vec2 _vMousePos)
 {
-	// Peg delete «“∞≈¿”
+	Destroy();
 }
 
 void CEditPegUI::RBtnUp(Vec2 _vMousePos)
