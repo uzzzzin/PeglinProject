@@ -40,6 +40,7 @@ void CBoardEditLevel::enter()
 	//AddObject(BG, pStartBG);;
 
 
+
 	CEditBoardUI* pStartBG = new CEditBoardUI;
 	pStartBG->SetPos(Vec2(512.f, 300.f));
 	pStartBG->SetScale(Vec2(800.f, 630.f));
@@ -73,6 +74,27 @@ void CBoardEditLevel::enter()
 	pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
 	AddObject(PLATFORM, pQueueHead);
 
+	CBtnUI* BoardSaveBtn = new CBtnUI;
+	BoardSaveBtn->SetPos(Vec2(1408.f, 400.f));
+	BoardSaveBtn->SetScale(Vec2(150.f, 50.f)); // 45*12
+	BoardSaveBtn->SetNormalImg(L"animdata\\BoardSaveBtnOUH.txt", L"BoardSaveBtnOUH");
+	BoardSaveBtn->SetHoverImg(L"animdata\\BoardSaveBtnOH.txt", L"BoardSaveBtnOH");
+	BoardSaveBtn->SetPressedImg(L"animdata\\BoardSaveBtnOH.txt", L"BoardSaveBtnOH");
+	//BoardSaveBtn->SetCallBack([]() { ChangePeg(PEG_TYPE::GREY_PEG);});
+	AddObject(UI, BoardSaveBtn);
+
+
+	CBtnUI* BoardLoadBtn = new CBtnUI;
+	BoardLoadBtn->SetPos(Vec2(1408.f, 480.f));
+	BoardLoadBtn->SetScale(Vec2(150.f, 50.f)); // 45*12
+	BoardLoadBtn->SetNormalImg(L"animdata\\BoardLoadBtnOUH.txt", L"BoardLoadBtnOUH");
+	BoardLoadBtn->SetHoverImg(L"animdata\\BoardLoadBtnOH.txt", L"BoardLoadBtnOH");
+	BoardLoadBtn->SetPressedImg(L"animdata\\BoardLoadBtnOH.txt", L"BoardLoadBtnOH");
+	//BoardSaveBtn->SetCallBack([]() { ChangePeg(PEG_TYPE::GREY_PEG);});
+	AddObject(UI, BoardLoadBtn);
+
+
+	// Queue Peg --------------------------------------------------------------------------
 	CBtnUI* GreyPegBtn = new CBtnUI;
 	GreyPegBtn->SetPos(Vec2(432.5f, 450.f));
 	GreyPegBtn->SetScale(Vec2(24, 24));
@@ -158,4 +180,12 @@ void CBoardEditLevel::tick()
 	}
 
 	
+}
+
+void CBoardEditLevel::SaveBoard()
+{
+}
+
+void CBoardEditLevel::LoadBoard()
+{
 }

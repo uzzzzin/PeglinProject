@@ -14,6 +14,11 @@ public:
     virtual void tick() override; 
 
 public:
+    void SaveBoard();
+    void LoadBoard();
+
+
+
     //void PushBack_Pegs
 
    // friend class CEditPegUI;
