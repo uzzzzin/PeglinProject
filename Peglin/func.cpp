@@ -32,13 +32,6 @@ void ChangeLevel(LEVEL_TYPE _type)
 	CTaskMgr::GetInst()->AddTask(task);
 }
 
-
-//extern PEG_TYPE pegType;
-//void ChangePeg(PEG_TYPE _type)
-//{
-//	pegType = _type;
-//}
-
 void SaveWString(const wstring& _str, FILE* _File)
 {
 	size_t iLen = _str.length();

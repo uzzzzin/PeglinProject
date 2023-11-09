@@ -5,4 +5,5 @@
 
 #include "CMovement.h"
 #include "CCollider.h"
+#include "CColliderCircle.h"
 #include "CStateMachine.h"

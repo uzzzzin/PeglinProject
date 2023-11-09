@@ -247,7 +247,12 @@
     <ClInclude Include="CEditBoardUI.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CEditPegUI.h" />
+    <ClInclude Include="CColliderWall.h" />
+    <ClInclude Include="CEditPegUI.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderCircle.h" />
+    <ClInclude Include="CObstacle.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -443,7 +448,12 @@
     <ClCompile Include="CEditBoardUI.cpp">
       <Filter>Game\04. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CEditPegUI.cpp" />
+    <ClCompile Include="CColliderWall.cpp" />
+    <ClCompile Include="CEditPegUI.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderCircle.cpp" />
+    <ClCompile Include="CObstacle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

@@ -151,6 +151,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CColliderCircle.h" />
+    <ClInclude Include="CColliderWall.h" />
     <ClInclude Include="CCollisionMgr.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CCritPeg.h" />
@@ -175,6 +177,7 @@
     <ClInclude Include="CNormalMonIdle.h" />
     <ClInclude Include="CNormalMonTrace.h" />
     <ClInclude Include="CObj.h" />
+    <ClInclude Include="CObstacle.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="CPathMgr.h" />
@@ -239,6 +242,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CColliderCircle.cpp" />
+    <ClCompile Include="CColliderWall.cpp" />
     <ClCompile Include="CCollisionMgr.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CCritPeg.cpp" />
@@ -263,6 +268,7 @@
     <ClCompile Include="CNormalMonIdle.cpp" />
     <ClCompile Include="CNormalMonTrace.cpp" />
     <ClCompile Include="CObj.cpp" />
+    <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="CPanelUI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CPeg.cpp">

@@ -8,12 +8,13 @@ class CImg :
 private:
     wstring         m_AnimName;
     CAnimator* m_Animator;
+    //CCollider*    m_Collider;
 
 public:
     void SetImg(const wstring& _strRelativePath, const wstring& _animName);
 
-        virtual void tick(float _DT);
-        virtual void render(HDC _dc);
+    virtual void tick(float _DT);
+    virtual void render(HDC _dc);
 
 public:
     CLONE(CImg);

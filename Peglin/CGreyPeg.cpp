@@ -22,6 +22,10 @@ CGreyPeg::CGreyPeg()
 	m_Animator->LoadAnimation(L"animdata\\GreyPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedGreyPeg.txt");
 
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_Collider->SetScale(Vec2(24,24));
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+
 }
 
 CGreyPeg::~CGreyPeg()
@@ -35,16 +39,6 @@ void CGreyPeg::begin()
 void CGreyPeg::tick(float _DT)
 {
 	Super::tick(_DT);
-
-	if (bSlimed && KEY_PRESSED(S))
-	{
-		m_Animator->Play(L"SlimedGreyPeg", true);
-	}
-	else
-	{
-		m_Animator->Play(L"GreyPeg", true);
-	}
-
 }
 
 void CGreyPeg::render(HDC _dc)

@@ -97,6 +97,7 @@ void CBoardEditLevel::enter()
 
 
 	// Queue Peg --------------------------------------------------------------------------
+
 	CBtnUI* GreyPegBtn = new CBtnUI;
 	GreyPegBtn->SetPos(Vec2(432.5f, 450.f));
 	GreyPegBtn->SetScale(Vec2(24, 24));
@@ -104,6 +105,7 @@ void CBoardEditLevel::enter()
 	GreyPegBtn->SetHoverImg(L"animdata\\GreyPegBtn.txt", L"GreyPegBtn");
 	GreyPegBtn->SetPressedImg(L"animdata\\GreyPegBtn.txt", L"GreyPegBtn");
 	GreyPegBtn->SetCallBack([]() { ChangePeg(PEG_TYPE::GREY_PEG);});
+	GreyPegBtn->SetDeletage(this, (DelegateFunc)&CBoardEditLevel::GreyPegType);
 	AddObject(UI, GreyPegBtn);
 
 
@@ -114,6 +116,7 @@ void CBoardEditLevel::enter()
 	CoinPegBtn->SetHoverImg(L"animdata\\CoinPegBtn.txt", L"CoinPegBtn");
 	CoinPegBtn->SetPressedImg(L"animdata\\CoinPegBtn.txt", L"CoinPegBtn");
 	CoinPegBtn->SetCallBack([]() {ChangePeg(PEG_TYPE::COIN_PEG);});
+	CoinPegBtn->SetDeletage(this, (DelegateFunc)&CBoardEditLevel::CoinPegType);
 	AddObject(UI, CoinPegBtn);
 
 	CBtnUI* CritPegBtn = new CBtnUI;
@@ -180,7 +183,13 @@ void CBoardEditLevel::tick()
 	{
 		ChangeLevel(LEVEL_TYPE::STAGE_1_LEVEL);
 	}
+
 }
+//
+//void CBoardEditLevel::render(HDC _dc)
+//{
+//	CLevel::render (_dc);
+//}
 
 void CBoardEditLevel::SaveBoard()
 {
@@ -390,4 +399,19 @@ void CBoardEditLevel::LoadBoard()
 	PushBack_Pegs(pPeg);	
 	}
 		fclose(pFile);
+}
+
+PEG_TYPE CBoardEditLevel::GreyPegType()
+{
+	CImg* cur = new CImg;
+	cur->SetPos(Vec2(444.5f, 350.f));
+	cur->SetScale(Vec2(30.f, 30.f));
+	cur->SetImg(L"animdata\\GreyPeg.txt", L"GreyPeg");
+	AddObject(PEG, cur);
+	return PEG_TYPE ::GREY_PEG;
+}
+
+PEG_TYPE CBoardEditLevel::CoinPegType()
+{
+	return PEG_TYPE::COIN_PEG;
 }

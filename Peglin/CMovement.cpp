@@ -22,15 +22,15 @@ CMovement::~CMovement()
 
 void CMovement::finaltick(float _DT)
 {
-	m_Accel = m_Force / m_Mass;
 
+	m_Accel = m_Force / m_Mass;
 	// 중력옵션 사용하는 경우
 	if (m_UseGravity && !m_Ground)
 	{
 		m_Accel += m_GravityForce;
 	}
 
-	// 정지에 가까운 상태일 경우
+	//// 정지에 가까운 상태일 경우
 	if (m_Velocity.Length() < 0.1f)
 	{
 		if (!m_Accel.IsZero())

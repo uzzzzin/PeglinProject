@@ -24,7 +24,7 @@ public:
 		x /= f;
 		y /= f;
 
-		assert(f);
+		//assert(f);
 
 		return *this;
 	}
@@ -79,7 +79,6 @@ public:
 		x -= _v.x;
 		y -= _v.y;
 	}
-
 
 
 	Vec2 operator * (Vec2 _Other) const

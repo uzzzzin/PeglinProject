@@ -16,6 +16,30 @@ private:
 	vector<CComponent*>	m_vecComponent;
 	int					m_iLayerIdx;
 
+private:
+	const float LBoundaryX = 515.f;
+	const float RBoundaryX = 1300.f;
+	const float UBoundaryY = 312.f;
+	const float DBoundaryY = 887.f;
+
+public:
+	float GetLBoundaryX()
+	{
+		return LBoundaryX;
+	}
+	float GetRBoundaryX()
+	{
+		return RBoundaryX;
+	}
+	float GetUBoundaryY()
+	{
+		return UBoundaryY;
+	}
+	float GetDBoundaryY()
+	{
+		return DBoundaryY;
+	}
+
 
 public:
 	Vec2 GetPos() { return m_Pos; }

@@ -11,8 +11,8 @@ protected:
 
     bool                            bDied; // 현재 죽었는지 안 죽었는지 -> 엔터티에 있지 않나 // false 
     
-    class CCollider*    m_Collider;
     class CAnimator* m_Animator;
+    class CColliderCircle* m_Collider;
 
 public:
     void SetiDieCnt(int _iDieCnt)
@@ -29,11 +29,15 @@ public:
     }
 
 public:
-    virtual void begin() {};
-    virtual void tick(float _DT) { CObj::tick(_DT); };
+    virtual void begin();
+    virtual void tick(float _DT);
     virtual void render(HDC _dc) { CObj::render(_dc); };
     virtual void Reload() {};  //재생성 함수
     // 충돌 관련 오버랩 함수가 필요할턴디 
+
+    //virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
+    //virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
+    //virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
 
 public:
     virtual CPeg* Clone() = 0;

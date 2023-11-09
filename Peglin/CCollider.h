@@ -36,5 +36,7 @@ public:
     CCollider(CObj* _Owner);
     CCollider(const CCollider& _Origin);
     ~CCollider();
+
+    friend class CColliderCircle;
 };
 

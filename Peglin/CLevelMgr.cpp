@@ -55,7 +55,7 @@ void CLevelMgr::init()
 	}
 
 	// Level
-	::ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
+	::ChangeLevel(LEVEL_TYPE::STAGE_1_LEVEL);
 }
 
 void CLevelMgr::tick()
