@@ -7,6 +7,7 @@
 CColliderCircle::CColliderCircle(CObj* _Owner)
 	: CCollider(_Owner) 
 {
+	SetColliderType(ColliderType::CIRCLE);
 }
 
 

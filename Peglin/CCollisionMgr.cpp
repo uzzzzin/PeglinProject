@@ -152,11 +152,25 @@ void CCollisionMgr::CollisionBtwLayer(LAYER _Left, LAYER _Right)
 
 bool CCollisionMgr::IsCollision(CCollider* _Left, CCollider* _Right)
 {
-	if (fabs(_Left->GetScale().x / 2.f + _Right->GetScale().x / 2.f) >= fabs(_Left->GetPos().x - _Right->GetPos().x)
-		&& fabs(_Left->GetScale().y / 2.f + _Right->GetScale().y / 2.f) >= fabs(_Left->GetPos().y - _Right->GetPos().y))
+	auto leftType = _Left->GetType();
+	auto rightType = _Right->GetType();
+	if (leftType == ColliderType::RECTANGLE || rightType == ColliderType::RECTANGLE)
 	{
-		return true;
-	}
+		if (fabs(_Left->GetScale().x / 2.f + _Right->GetScale().x / 2.f) >= fabs(_Left->GetPos().x - _Right->GetPos().x)
+			&& fabs(_Left->GetScale().y / 2.f + _Right->GetScale().y / 2.f) >= fabs(_Left->GetPos().y - _Right->GetPos().y))
+		{
+			return true;
+		}
 
-	return false;
+		return false;
+	}
+	else
+	{
+		if ((_Left->GetScale().x + _Right->GetScale().x) / 2 >= _Left->GetPos().Distance(_Right->GetPos()))
+		{
+			return true;
+		}
+		return false;
+	}
+	
 }

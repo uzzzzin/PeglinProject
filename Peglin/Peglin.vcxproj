@@ -179,6 +179,7 @@
     <ClInclude Include="CObj.h" />
     <ClInclude Include="CObstacle.h" />
     <ClInclude Include="components.h" />
+    <ClInclude Include="COrb.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="CPathMgr.h" />
     <ClInclude Include="CPeg.h">
@@ -269,6 +270,7 @@
     <ClCompile Include="CNormalMonTrace.cpp" />
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CObstacle.cpp" />
+    <ClCompile Include="COrb.cpp" />
     <ClCompile Include="CPanelUI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CPeg.cpp">

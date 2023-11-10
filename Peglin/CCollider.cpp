@@ -15,7 +15,7 @@ CCollider::CCollider(CObj* _Owner)
 	: CComponent(_Owner)
 	, m_iCollisionCount(0)
 {
-
+	SetColliderType(ColliderType::RECTANGLE);
 }
 
 CCollider::CCollider(const CCollider& _Origin)
@@ -34,6 +34,7 @@ CCollider::~CCollider()
 
 void CCollider::finaltick(float _DT)
 {
+	prevColPos = GetPos();
 	Vec2 vOwnerPos = GetOwner()->GetPos();
 
 	m_vFinalPos = vOwnerPos + m_vOffsetPos;
@@ -45,6 +46,9 @@ void CCollider::finaltick(float _DT)
 	assert(!(iLayerIdx < 0));
 	CLayer* pCurLayer = CLevelMgr::GetInst()->GetCurLevel()->GetLayer(iLayerIdx);
 	pCurLayer->RegisterCollider(this);
+
+
+	
 }
 
 void CCollider::render(HDC _dc)

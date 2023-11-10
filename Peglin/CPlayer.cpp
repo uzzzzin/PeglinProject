@@ -44,7 +44,7 @@ CPlayer::CPlayer()
 	m_Movement = AddComponent<CMovement>(L"PlayerMovement");
 	m_Movement->SetMass(1.f);
 	m_Movement->SetInitSpeed(200.f);
-	m_Movement->SetMaxSpeed(2000.f);
+	m_Movement->SetMaxSpeed(1000.f);
 	m_Movement->SetFrictionScale(1000.f);
 
 	m_Movement->UseGravity(false);
@@ -93,11 +93,9 @@ void CPlayer::tick(float _DT)
 	}
 	if (GetDBoundaryY() < curPos.y)
 	{
-		//LOG(ERR, L"DOWN holy....");
+		LOG(ERR, L" 페글린 지옥행");
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 	}
-
-
 
 
 	if (KEY_PRESSED(SPACE))
@@ -122,6 +120,18 @@ if (KEY_PRESSED(S))
 	m_Movement->AddForce(Vec2(0.f, 300.f));
 }
 
+
+
+	if (KEY_PRESSED(V))
+	{
+		SetPos(REALCENTER);
+		m_Movement->UseGravity(false);
+	}
+	if (KEY_TAP(LBTN)) {
+		SetPos(CKeyMgr::GetInst()->GetMousePos());
+		m_Movement->SetVelocity({0,0});
+		m_Movement->UseGravity(false);
+	}
 	prevPos = curPos;
 }
 
@@ -148,6 +158,31 @@ void CPlayer::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Othe
 		SetPos(Vec2(curPos.x, curPos.y));
 	}
 
+		//CMovement* othMove = _OtherObj->GetComponent<CMovement>();
+
+		//// 직선의 방정식
+		//Vec2 _otherPos = _OtherCol->GetPos();
+		//float a = (_otherPos.x - GetPos().x) / (_otherPos.y - GetPos().y); // 기울기
+		//float b = GetPos().y - a * GetPos().x; // y 절편
+
+
+		//// 원하는 점의 좌표 구하기.
+		//float al;
+		//float be;
+		//al = prevPos.x - ((2 * a * (a * prevPos.x - prevPos.y + b)) / (a * a + 1));
+		//be = prevPos.y - ((2 * (a * prevPos.x - prevPos.y + b) / (a * a + 1)));
+
+		//Vec2 wantPoint = Vec2(al, be);
+
+		//Vec2 wantVec = Vec2(wantPoint.x - GetPos().x, wantPoint.y - GetPos().y);
+
+		//wantPoint = wantPoint.Normalize();
+
+		////SetPos(Vec2(wantPoint.x, wantPoint.y));
+
+		//m_Movement->SetVelocity(wantPoint);
+
+
 }
 
 void CPlayer::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
@@ -172,6 +207,33 @@ void CPlayer::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 		curPos.y = GetDBoundaryY();
 		SetPos(Vec2(curPos.x, curPos.y));
 	}
+
+		//CMovement* othMove = _OtherObj->GetComponent<CMovement>();
+
+		//// 직선의 방정식
+		//Vec2 _otherPos = _OtherCol->GetPos();
+		//float a = (_otherPos.x - GetPos().x) / (_otherPos.y - GetPos().y); // 기울기
+		//float b = GetPos().y - a * GetPos().x; // y 절편
+
+
+		//// 원하는 점의 좌표 구하기.
+		//float al;
+		//float be;
+		//al = prevPos.x - ((2 * a * (a * prevPos.x - prevPos.y + b)) / (a * a + 1));
+		//be = prevPos.y - ((2 * (a * prevPos.x - prevPos.y + b) / (a * a + 1)));
+
+		//Vec2 wantPoint = Vec2(al, be);
+
+		//Vec2 wantVec = Vec2(wantPoint.x - GetPos().x, wantPoint.y - GetPos().y);
+
+		//wantVec = wantVec.Normalize();
+
+		////SetPos(Vec2(wantPoint.x, wantPoint.y));
+
+		////m_Movement->SetVelocity();
+		//m_Movement->SetVelocity(wantVec);
+
+	
 
 }
 

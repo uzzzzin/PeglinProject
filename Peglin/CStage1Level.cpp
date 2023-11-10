@@ -12,7 +12,8 @@
 #include "CColliderWall.h"
 #include "CPlatform.h"
 #include "CGreyPeg.h"
-#include "CPlayer.h"
+#include "COrb.h"
+#include "CObstacle.h"
 
 
 void CStage1Level::init()
@@ -45,10 +46,10 @@ void CStage1Level::init()
 	pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
 	AddObject(PLATFORM, pQueueHead);
 
-	CPlatform* pFloor = new CPlatform;
-	pFloor->SetPos(Vec2(912.f, 901.f));
-	pFloor->SetScale(Vec2(800.f, 2.f));
-	AddObject(PLATFORM, pFloor);
+	//CPlatform* pFloor = new CPlatform;
+	//pFloor->SetPos(Vec2(912.f, 901.f));
+	//pFloor->SetScale(Vec2(800.f, 2.f));
+	//AddObject(PLATFORM, pFloor);
 
 
 	//CGreyPeg* pTestPeg = new CGreyPeg;
@@ -56,12 +57,31 @@ void CStage1Level::init()
 	//pTestPeg->SetScale(Vec2(24,24));
 	//AddObject(PEG, pTestPeg);
 
-	CPlayer* pPlayer = new CPlayer;
-	pPlayer->SetPos(Vec2(532.f, 450.f));
-	pPlayer->SetScale(Vec2(24, 24));
-	AddObject(PLAYER, pPlayer);
+	COrb* pOrb = new COrb;
+	pOrb->SetPos(Vec2(532.f, 450.f));
+	pOrb->SetScale(Vec2(24, 24));
+	AddObject(ORB, pOrb);
 
-	CCollisionMgr::GetInst()->CheckCollision(PLAYER, PLATFORM);
+	CObstacle* pObstacle = new CObstacle;
+	pObstacle->SetPos(Vec2(700.f, 800.f));
+	pObstacle->SetScale(Vec2(108.f, 100.f));
+	pObstacle->SetImg(L"animdata\\CircleObstacle.txt", L"CircleObstacle");
+	AddObject(PLATFORM, pObstacle);
+
+	CObstacle* pObstacle2 = new CObstacle;
+	pObstacle2->SetPos(Vec2(950.f, 800.f));
+	pObstacle2->SetScale(Vec2(108.f, 100.f));
+	pObstacle2->SetImg(L"animdata\\CircleObstacle.txt", L"CircleObstacle");
+	AddObject(PLATFORM, pObstacle2);
+
+	CObstacle* pObstacle3 = new CObstacle;
+	pObstacle3->SetPos(Vec2(1150.f, 800.f));
+	pObstacle3->SetScale(Vec2(108.f, 100.f));
+	pObstacle3->SetImg(L"animdata\\CircleObstacle.txt", L"CircleObstacle");
+	AddObject(PLATFORM, pObstacle3);
+
+
+	CCollisionMgr::GetInst()->CheckCollision(ORB, PLATFORM);
 }
 
 void CStage1Level::enter()

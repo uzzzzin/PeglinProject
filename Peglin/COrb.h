@@ -1,37 +1,38 @@
 #pragma once
 #include "CObj.h"
 
-class CPlayer :
+class COrb :
     public CObj
 {
     GENERATED_OBJECT(CObj);
-private:
     class CColliderCircle* m_Collider;
     class CAnimator* m_Animator;
-    class CMovement* m_Movement;
+    class CMovement*  m_Movement;
 
 public:
-    Vec2    prevPos;
-    Vec2    curPos;
-    Vec2    m_vDir;
-    Vec2    vDest;
-
-
+    Vec2 prevPos;
+    Vec2 curPos;
+    Vec2 vDir;
+    
 public:
     Vec2 GetPrevPos()
     {
         return prevPos;
     }
-
+    Vec2 GetDir()
+    {
+        return (curPos - prevPos).Normalize();
+    }
 
     virtual void tick(float _DT) override;
+    //virtual void render(HDC _dc) override;
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
+    //virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
 
 public:
-    CLONE(CPlayer);
-    CPlayer();
-    CPlayer(const CPlayer& _Origin);
-    ~CPlayer();
+    CLONE(COrb);
+    COrb();
+    ~COrb();
 };
 
