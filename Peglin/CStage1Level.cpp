@@ -58,12 +58,12 @@ void CStage1Level::init()
 	//AddObject(PEG, pTestPeg);
 
 	COrb* pOrb = new COrb;
-	pOrb->SetPos(Vec2(532.f, 450.f));
+	pOrb->SetPos(REALCENTER);
 	pOrb->SetScale(Vec2(24, 24));
 	AddObject(ORB, pOrb);
 
 	CObstacle* pObstacle = new CObstacle;
-	pObstacle->SetPos(Vec2(700.f, 800.f));
+	pObstacle->SetPos(Vec2(800,800)); // Vec2(700.f, 800.f)
 	pObstacle->SetScale(Vec2(108.f, 100.f));
 	pObstacle->SetImg(L"animdata\\CircleObstacle.txt", L"CircleObstacle");
 	AddObject(PLATFORM, pObstacle);

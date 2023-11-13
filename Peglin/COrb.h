@@ -12,7 +12,14 @@ class COrb :
 public:
     Vec2 prevPos;
     Vec2 curPos;
+    Vec2 rPos;
+    Vec2 colPos;
     Vec2 vDir;
+
+    Vec2 m_pPos;
+    Vec2 m_cPos;
+    Vec2 m_rPos;
+    Vec2 m_colPos;
     
 public:
     Vec2 GetPrevPos()
@@ -25,7 +32,7 @@ public:
     }
 
     virtual void tick(float _DT) override;
-    //virtual void render(HDC _dc) override;
+   virtual void render(HDC _dc) override;
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     //virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
