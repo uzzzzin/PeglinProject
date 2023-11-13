@@ -51,17 +51,17 @@ void COrb::tick(float _DT)
 
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 	}
-	if (GetRBoundaryX() < curPos.x)
+	else if (GetRBoundaryX() < curPos.x)
 	{
 		//	LOG(ERR, L"RIGHT holy....");
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 	}
-	if (GetUBoundaryY() > curPos.y)
+	else if (GetUBoundaryY() > curPos.y)
 	{
 		//	LOG(ERR, L"UP holy....");
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 	}
-	if (GetDBoundaryY() < curPos.y)
+	else if (GetDBoundaryY() < curPos.y)
 	{
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 	}
@@ -190,34 +190,35 @@ void COrb::render(HDC _dc)
 void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
 	// collision wall
-	if (GetLBoundaryX() >= curPos.x || GetRBoundaryX() <= curPos.x || GetUBoundaryY() >= curPos.y || GetDBoundaryY() <= curPos.y)
+	if (GetLBoundaryX() >= curPos.x)
 	{
-		if (GetLBoundaryX() > curPos.x)
-		{
-			curPos.x = GetLBoundaryX();
-			//SetPos(Vec2(curPos.x, curPos.y));
-			m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
-		}
-		if (GetRBoundaryX() < curPos.x)
-		{
-			curPos.x = GetRBoundaryX();
-			//SetPos(Vec2(curPos.x, curPos.y));
-			m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
-		}
-		if (GetUBoundaryY() > curPos.y)
-		{
-			curPos.y = GetUBoundaryY();
-			//SetPos(Vec2(curPos.x, curPos.y));
-			m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
-		}
-		if (GetDBoundaryY() < curPos.y)
-		{
-			curPos.y = GetDBoundaryY();
-			//SetPos(Vec2(curPos.x, curPos.y));
-			m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
-		}
+		curPos.x = GetLBoundaryX();
+		//SetPos(Vec2(curPos.x, curPos.y));
+		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
+		return;
 	}
-	else if (_OtherCol->GetType() == ColliderType::CIRCLE && _OtherCol->GetPos().x - _OwnCol->GetPos().x != 0 && _OtherCol->GetPos().y - _OwnCol->GetPos().y != 0)
+	if (GetRBoundaryX() <= curPos.x)
+	{
+		curPos.x = GetRBoundaryX();
+		//SetPos(Vec2(curPos.x, curPos.y));
+		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
+		return;
+	}
+	if (GetUBoundaryY() >= curPos.y)
+	{
+		curPos.y = GetUBoundaryY();
+		//SetPos(Vec2(curPos.x, curPos.y));
+		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
+		return;
+	}
+	if (GetDBoundaryY() <= curPos.y)
+	{
+		curPos.y = GetDBoundaryY();
+		//SetPos(Vec2(curPos.x, curPos.y));
+		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
+		return;
+	}
+	if (_OtherCol->GetPos().x - _OwnCol->GetPos().x != 0 && _OtherCol->GetPos().y - _OwnCol->GetPos().y != 0)
 	{
 		m_pPos = _OwnCol->GetPrevColPos();
 		m_cPos = _OwnCol->GetPos();
@@ -225,10 +226,7 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		auto movement = GetComponent<CMovement>();
 
-		Vec2 vel = movement->GetVelocity();
-		Vec2 vReflect = m_rPos - m_cPos;
-		float speed = vel.Length();
-
+		
 		//if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0) 
 		//{
 		//	movement->SetVelocity({ -vel.x, -vel.y });
@@ -238,8 +236,15 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		float a = (_OtherCol->GetPos().y - _OwnCol->GetPos().y) / (_OtherCol->GetPos().x - _OwnCol->GetPos().x);
 		float b = _OwnCol->GetPos().y - a * _OwnCol->GetPos().x;
 
+		
+
+
 		m_rPos.x = m_pPos.x - ((2 * a * (a * m_pPos.x - m_pPos.y + b)) / (a * a + 1));
 		m_rPos.y = m_pPos.y + ((2 * (a * m_pPos.x - m_pPos.y + b) / (a * a + 1)));
+
+		Vec2 vel = movement->GetVelocity();
+		Vec2 vReflect = m_rPos - m_cPos;
+		float speed = vel.Length();
 
 		vReflect.Normalize();
 		movement->SetVelocity({ vReflect.x * speed, vReflect.y * speed });
@@ -394,26 +399,26 @@ void COrb::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 	//}
 	//else
 	//{
-		if (GetLBoundaryX() > curPos.x)
-		{
-			curPos.x = GetLBoundaryX();
-			SetPos(Vec2(curPos.x, curPos.y));
-		}
-		if (GetRBoundaryX() < curPos.x)
-		{
-			curPos.x = GetRBoundaryX();
-			SetPos(Vec2(curPos.x, curPos.y));
-		}
-		if (GetUBoundaryY() > curPos.y)
-		{
-			curPos.y = GetUBoundaryY();
-			SetPos(Vec2(curPos.x, curPos.y));
-		}
-		if (GetDBoundaryY() < curPos.y)
-		{
-			curPos.y = GetDBoundaryY();
-			SetPos(Vec2(curPos.x, curPos.y));
-		}
+		//if (GetLBoundaryX() > curPos.x)
+		//{
+		//	curPos.x = GetLBoundaryX();
+		//	SetPos(Vec2(curPos.x, curPos.y));
+		//}
+		//if (GetRBoundaryX() < curPos.x)
+		//{
+		//	curPos.x = GetRBoundaryX();
+		//	SetPos(Vec2(curPos.x, curPos.y));
+		//}
+		//if (GetUBoundaryY() > curPos.y)
+		//{
+		//	curPos.y = GetUBoundaryY();
+		//	SetPos(Vec2(curPos.x, curPos.y));
+		//}
+		//if (GetDBoundaryY() < curPos.y)
+		//{
+		//	curPos.y = GetDBoundaryY();
+		//	SetPos(Vec2(curPos.x, curPos.y));
+		//}
 	//	}
 	//}
 

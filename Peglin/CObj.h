@@ -17,10 +17,10 @@ private:
 	int					m_iLayerIdx;
 
 private:
-	const float LBoundaryX = 515.f;
+	const float LBoundaryX = 525.f;
 	const float RBoundaryX = 1300.f;
-	const float UBoundaryY = 312.f;
-	const float DBoundaryY = 887.f;
+	const float UBoundaryY = 315.f;
+	const float DBoundaryY = 870.f;
 
 public:
 	float GetLBoundaryX()
