@@ -46,3 +46,5 @@ public:
     virtual ~CPeg();
 };
 
+
+//void LoadPeg

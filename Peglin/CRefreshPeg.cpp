@@ -10,6 +10,10 @@ CRefreshPeg::CRefreshPeg()
 
 	m_Animator->LoadAnimation(L"animdata\\RefreshPeg.txt");
 	m_Animator->Play(L"RefreshPeg", true);
+
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_Collider->SetScale(Vec2(24, 24));
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 }
 
 CRefreshPeg::~CRefreshPeg()

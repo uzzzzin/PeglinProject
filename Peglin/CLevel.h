@@ -50,6 +50,9 @@ public:
 
 	CObj* FindObjectByName(const wstring& _Name);
 
+
+	void LoadPegs(const wstring& _strRelativePath); // L"Board//~~~.txt"
+
 public:
 	CLONE_DISABLE(CLevel);
 	CLevel();

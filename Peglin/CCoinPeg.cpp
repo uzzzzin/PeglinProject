@@ -9,7 +9,7 @@
 
 
 CCoinPeg::CCoinPeg()
-	:bSlimed(true)
+	:bSlimed(false)
 {
 	SetiDieCnt(1);
 	SetiCurCnt(0);
@@ -17,6 +17,10 @@ CCoinPeg::CCoinPeg()
 
 	m_Animator->LoadAnimation(L"animdata\\CoinPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedCoinPeg.txt");
+
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_Collider->SetScale(Vec2(24, 24));
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 }
 
 CCoinPeg::~CCoinPeg()
@@ -30,7 +34,7 @@ void CCoinPeg::begin()
 void CCoinPeg::tick(float _DT)
 {
 	Super::tick(_DT);
-	if (bSlimed && KEY_PRESSED(S))
+	if (bSlimed)
 	{
 		m_Animator->Play(L"SlimedCoinPeg", true);
 	}

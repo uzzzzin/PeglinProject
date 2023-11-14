@@ -11,6 +11,10 @@ CCritPeg::CCritPeg()
 	SetbDied(false);
 
 	m_Animator->LoadAnimation(L"animdata\\CritPeg.txt");
+
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_Collider->SetScale(Vec2(24, 24));
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	
 }
 

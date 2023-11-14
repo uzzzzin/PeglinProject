@@ -18,6 +18,10 @@ CBombPeg::CBombPeg()
 
 	m_Animator->LoadAnimation(L"animdata\\BombPeg.txt");
 	m_Animator->Play(L"BombPeg", true);
+
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+	m_Collider->SetScale(Vec2(24, 24));
+	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 }
 
 CBombPeg::~CBombPeg()
@@ -26,6 +30,8 @@ CBombPeg::~CBombPeg()
 
 void CBombPeg::begin()
 {
+	//SetScale(Vec2(GetScale().x, GetScale().y+5));
+	SetPos(Vec2(GetPos().x, GetPos().y + 10));
 }
 
 void CBombPeg::tick(float _DT)

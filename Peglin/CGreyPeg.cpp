@@ -38,6 +38,7 @@ void CGreyPeg::begin()
 
 void CGreyPeg::tick(float _DT)
 {
+	m_Animator->Play(L"firstGreyPeg", true);
 	Super::tick(_DT);
 }
 

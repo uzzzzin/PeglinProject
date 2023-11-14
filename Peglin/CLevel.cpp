@@ -2,9 +2,17 @@
 #include "CLevel.h"
 
 #include "CTimeMgr.h"
+#include "CPathMgr.h"
+#include "CLevelMgr.h"
 #include "CLayer.h"
 #include "CObj.h"
 #include "CTile.h"
+
+#include "CGreyPeg.h"
+#include "CCoinPeg.h"
+#include "CCritPeg.h"
+#include "CRefreshPeg.h"
+#include "CBombPeg.h"
 
 CLevel::CLevel()
 	: m_TileRow(0)
@@ -117,4 +125,138 @@ CObj* CLevel::FindObjectByName(const wstring& _Name)
 	}
 
 	return nullptr;
+}
+
+void CLevel::LoadPegs(const wstring& _strRelativePath)
+{
+	wstring strFilePath = CPathMgr::GetContentPath();
+	strFilePath += _strRelativePath;
+
+	FILE* pFile = nullptr;
+	_wfopen_s(&pFile, strFilePath.c_str(), L"r");
+
+	if (nullptr == pFile)
+	{
+		LOG(ERR, L"파일 열기 실패");
+		return;
+	}
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	SavedPegsInfo peg = {};
+
+	while (true)
+	{
+		wchar_t szRead[256] = {};
+		if (EOF == fwscanf_s(pFile, L"%s", szRead, 256))
+		{
+			break;
+		}
+		if (!wcscmp(szRead, L"\n"))
+		{
+			if (!wcscmp(szRead, L"\n"))
+			{
+				break;
+			}
+		}
+		//while (true)
+		//{
+
+		else if (!wcscmp(szRead, L"[PEG_TYPE]"))
+		{
+		fwscanf_s(pFile, L"%s", szRead, 256);
+		int p = (int)(szRead[0] - 48);
+		peg.type = (PEG_TYPE)p;
+		//fwscanf_s(pFile, L"%d", &peg.type);
+				
+		}
+		else if (!wcscmp(szRead, L"[PEG_POSITION]"))
+		{
+			fwscanf_s(pFile, L"%f", &peg.pos.x);
+			fwscanf_s(pFile, L"%f", &peg.pos.y);
+		}
+		else if (!wcscmp(szRead, L"[PEG_SCALE]"))
+		{
+			fwscanf_s(pFile, L"%f", &peg.scale.x);
+			fwscanf_s(pFile, L"%f", &peg.scale.y);
+
+			switch (peg.type)
+			{
+			case GREY_PEG:
+			{
+				CGreyPeg* realPeg = new CGreyPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				pCurLevel->AddObject(PEG, realPeg);
+				break;
+			}
+			case COIN_PEG:
+			{
+				CCoinPeg* realPeg = new CCoinPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				pCurLevel->AddObject(PEG, realPeg);
+				break;
+			}
+			case CRITICAL_PEG:
+			{
+				CCritPeg* realPeg = new CCritPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				pCurLevel->AddObject(PEG, realPeg);
+				break;
+			}
+			case REFRESH_PEG:
+			{
+				CRefreshPeg* realPeg = new CRefreshPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				pCurLevel->AddObject(PEG, realPeg);
+
+				break;
+			}
+			case BOMB_PEG:
+			{
+				CBombPeg* realPeg = new CBombPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				pCurLevel->AddObject(PEG, realPeg);
+
+				break;
+			}
+			case SLIMED_GREY_PEG:
+			{
+				CGreyPeg* realPeg = new CGreyPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				realPeg->SetbSlimed(true);
+				pCurLevel->AddObject(PEG, realPeg);
+				break;
+			}
+			case SLIMED_COIN_PEG:
+			{
+				CCoinPeg* realPeg = new CCoinPeg;
+				realPeg->SetPos(peg.pos);
+				realPeg->SetScale(peg.scale);
+				realPeg->SetbSlimed(true);
+				pCurLevel->AddObject(PEG, realPeg);
+				break;
+			}
+			default:
+			{
+				break;
+			}
+			break;
+		}
+
+		//}
+
+		
+
+		}
+
+	}
+
+
+	fclose(pFile);
+
+
 }

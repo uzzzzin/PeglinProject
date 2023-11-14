@@ -20,6 +20,7 @@
 #include "CCritPeg.h"
 #include "CRefreshPeg.h"
 #include "CBombPeg.h"
+#include "CObstacle.h"
 
 #include "resource.h"
 
@@ -166,6 +167,70 @@ void CBoardEditLevel::enter()
 	SlimedCoinPegBtn->SetCallBack([]() {ChangePeg(PEG_TYPE::SLIMED_COIN_PEG);});
 	AddObject(UI, SlimedCoinPegBtn);
 
+	// --------------------------------------------
+
+	CBtnUI* pObstacleBody = new CBtnUI;
+	pObstacleBody->SetPos(Vec2(630, 883));
+	pObstacleBody->SetScale(Vec2(49.f, 49.f));
+	pObstacleBody->SetNormalImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody->SetHoverImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody->SetPressedImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	AddObject(UI, pObstacleBody);
+	CBtnUI* pObstacle = new CBtnUI;
+	pObstacle->SetPos(Vec2(630, 833));
+	pObstacle->SetScale(Vec2(94.5f, 87.5f));
+	pObstacle->SetNormalImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle->SetHoverImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle->SetPressedImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	AddObject(UI, pObstacle);
+
+	CBtnUI* pObstacleBody2 = new CBtnUI;
+	pObstacleBody2->SetPos(Vec2(820, 883));
+	pObstacleBody2->SetScale(Vec2(49.f, 49.f));
+	pObstacleBody2->SetNormalImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody2->SetHoverImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody2->SetPressedImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	AddObject(UI, pObstacleBody2);
+	CBtnUI* pObstacle2 = new CBtnUI;
+	pObstacle2->SetPos(Vec2(820, 833));
+	pObstacle2->SetScale(Vec2(94.5f, 87.5f));
+	pObstacle2->SetNormalImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle2->SetHoverImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle2->SetPressedImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	AddObject(UI, pObstacle2);
+
+	CBtnUI* pObstacleBody3 = new CBtnUI;
+	pObstacleBody3->SetPos(Vec2(1010, 883));
+	pObstacleBody3->SetScale(Vec2(49.f, 49.f));
+	pObstacleBody3->SetNormalImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody3->SetHoverImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody3->SetPressedImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	AddObject(UI, pObstacleBody3);
+	CBtnUI* pObstacle3 = new CBtnUI;
+	pObstacle3->SetPos(Vec2(1010, 833));
+	pObstacle3->SetScale(Vec2(94.5f, 87.5f));
+	pObstacle3->SetNormalImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle3->SetHoverImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle3->SetPressedImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	AddObject(UI, pObstacle3);
+
+	CBtnUI* pObstacleBody4 = new CBtnUI;
+	pObstacleBody4->SetPos(Vec2(1200, 883));
+	pObstacleBody4->SetScale(Vec2(49.f, 49.f));
+	pObstacleBody4->SetNormalImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody4->SetHoverImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	pObstacleBody4->SetPressedImg(L"animdata\\CircleObstacleBodyBtn.txt", L"CircleObstacleBodyBtn");
+	AddObject(UI, pObstacleBody4);
+	CBtnUI* pObstacle4 = new CBtnUI;
+	pObstacle4->SetPos(Vec2(1200, 833));
+	pObstacle4->SetScale(Vec2(94.5f, 87.5f));
+	pObstacle4->SetNormalImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle4->SetHoverImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	pObstacle4->SetPressedImg(L"animdata\\CircleObstacleBtn.txt", L"CircleObstacleBtn");
+	AddObject(UI, pObstacle4);
+
+
+	
 }
 
 void CBoardEditLevel::exit()
