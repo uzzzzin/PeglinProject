@@ -26,11 +26,6 @@ CCoinPeg::~CCoinPeg()
 
 void CCoinPeg::begin()
 {
-}
-
-void CCoinPeg::tick(float _DT)
-{
-	Super::tick(_DT);
 	if (bSlimed)
 	{
 		m_Animator->Play(L"SlimedCoinPeg", true);
@@ -39,6 +34,12 @@ void CCoinPeg::tick(float _DT)
 	{
 		m_Animator->Play(L"CoinPeg", true);
 	}
+}
+
+void CCoinPeg::tick(float _DT)
+{
+	Super::tick(_DT);
+
 }
 
 void CCoinPeg::render(HDC _dc)

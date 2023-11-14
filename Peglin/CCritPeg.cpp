@@ -21,12 +21,13 @@ CCritPeg::~CCritPeg()
 
 void CCritPeg::begin()
 {
+	m_Animator->Play(L"CritPeg", true);
 }
 
 void CCritPeg::tick(float _DT)
 {
 	Super::tick(_DT);
-	m_Animator->Play(L"CritPeg", true);
+
 }
 
 void CCritPeg::render(HDC _dc)

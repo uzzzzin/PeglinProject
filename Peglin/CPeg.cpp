@@ -36,8 +36,8 @@ void CPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 {
 	if (_OtherObj->GetLayerIdx() == ORB)
 	{
-		--iDieCnt;
-		if (0 >= iDieCnt)
+		++iCurCnt;
+		if (0 >=iDieCnt- iCurCnt)
 		{
 			bCrashed = true;
 			// 죽어있는 척 할거면 페그 사라질 때의 애니메이션 처리를 해줘야 함.

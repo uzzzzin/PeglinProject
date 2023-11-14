@@ -33,11 +33,12 @@ CGreyPeg::~CGreyPeg()
 
 void CGreyPeg::begin()
 {
+	m_Animator->Play(L"firstGreyPeg", true);
 }
 
 void CGreyPeg::tick(float _DT)
 {
-	//m_Animator->Play(L"firstGreyPeg", true);
+	
 	Super::tick(_DT);
 }
 
@@ -49,3 +50,4 @@ void CGreyPeg::render(HDC _dc)
 void CGreyPeg::Reload()
 {
 }
+
