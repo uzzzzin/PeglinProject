@@ -214,3 +214,17 @@ struct SavedPegsInfo
 	Vec2 pos;
 	Vec2 scale;
 };
+
+struct OrbInfo
+{
+	ORB_TYPE type; // orb 타입
+	int damage; // 일반 데미지
+	int critDamage; // 크리티컬 데미지
+	float initSpeed; // 초기 설정 속력
+	float mass; // 질량
+	int attackCnt; // 몇마리의 몬스터를 공격하는지 (제일 가까운 순서대로 ~)
+	// wstring info; // 페그 설명들 (UI에서 쓸 예정)
+	wstring animPath; // L"animdata~.txt"
+	wstring animName; // L""
+
+};

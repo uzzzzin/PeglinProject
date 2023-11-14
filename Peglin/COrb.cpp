@@ -14,29 +14,59 @@ COrb::COrb()
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
 {
+	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
+	OrbInfo Daggorb = { DAGGORB, 1,7,200.f,1.f, 1, L"animdata\\Daggorb.txt", L"Daggorb"};
+	OrbInfo Infernorb = { INFERNORB, 3,5,400.f,1.f, 1, L"animdata\\Infernorb.txt", L"Infernorb"};
+	OrbInfo Sphear = { SPHEAR, 2,4,200.f,1.f, 2, L"animdata\\Sphear.txt", L"Sphear"};
+	OrbInfo Rubborb = { RUBBORB, 2,4,200.f,0.5f, 1 , L"animdata\\Rubborb.txt", L"Rubborb"};
+	orbs.push_back(Pebball);
+	orbs.push_back(Daggorb);
+	orbs.push_back(Infernorb);
+	orbs.push_back(Sphear);
+	orbs.push_back(Rubborb);
 
 	m_Animator = AddComponent<CAnimator>(L"OrbAnimator");
-	m_Animator->LoadAnimation(L"animdata\\BouncyBall.txt");
-	m_Animator->Play(L"BouncyBall", true);
-
-	// 충돌체 컴포넌트 추가
 	m_Collider = AddComponent<CColliderCircle>(L"OrbCollider");
+	m_Movement = AddComponent<CMovement>(L"OrbMovement");
+
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24.f, 24.f));
 
-	// Movement 컴포넌트 추가
-	m_Movement = AddComponent<CMovement>(L"OrbMovement");
-	m_Movement->SetMass(1.f);
-	m_Movement->SetInitSpeed(200.f);
-	m_Movement->SetMaxSpeed(1000.f);
-	m_Movement->SetFrictionScale(1000.f);
+	SetCurTurnOrb(INFERNORB);
 
+
+	//m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
+	//m_Animator->Play(L"Pebball", true);
+	
+	//m_Movement->SetMass(1.f);
+	//m_Movement->SetInitSpeed(200.f);
+	m_Movement->SetMaxSpeed(400.f); 
+	m_Movement->SetFrictionScale(1000.f);
 	m_Movement->UseGravity(false);
 	m_Movement->SetGravity(Vec2(0.f, 980.f));
 	m_Movement->SetGround(false);
 }
 
 COrb::~COrb()
+{
+}
+
+void COrb::SetCurTurnOrb(ORB_TYPE _type)
+{
+	UINT a = (UINT)_type;
+	curOrbType = orbs[a].type;
+	curDamage = orbs[a].damage;
+	curCritDamage = orbs[a].critDamage;
+	curAttackCnt = orbs[a].attackCnt;
+
+	m_Movement->SetInitSpeed(orbs[a].initSpeed);
+	m_Movement->SetMass(orbs[a].mass);
+
+	m_Animator->LoadAnimation(orbs[a].animPath);
+	m_Animator->Play(orbs[a].animName, true);
+}
+
+void COrb::begin()
 {
 }
 
@@ -63,6 +93,9 @@ void COrb::tick(float _DT)
 	}
 	else if (GetDBoundaryY() < curPos.y)
 	{
+		SetPos(REALCENTER);
+		m_Movement->SetVelocity({ 0,0 });
+		m_Movement->UseGravity(false);
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 	}
 

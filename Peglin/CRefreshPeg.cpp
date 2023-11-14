@@ -4,9 +4,6 @@
 
 CRefreshPeg::CRefreshPeg()
 {
-	SetiDieCnt(1);
-	SetiCurCnt(0);
-	SetbDied(false);
 
 	m_Animator->LoadAnimation(L"animdata\\RefreshPeg.txt");
 	m_Animator->Play(L"RefreshPeg", true);

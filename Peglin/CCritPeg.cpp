@@ -6,9 +6,6 @@
 
 CCritPeg::CCritPeg()
 {
-	SetiDieCnt(1);
-	SetiCurCnt(0);
-	SetbDied(false);
 
 	m_Animator->LoadAnimation(L"animdata\\CritPeg.txt");
 

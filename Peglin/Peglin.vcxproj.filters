@@ -254,6 +254,7 @@
     <ClInclude Include="CColliderCircle.h" />
     <ClInclude Include="CObstacle.h" />
     <ClInclude Include="COrb.h" />
+    <ClInclude Include="CPeglinPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -456,6 +457,7 @@
     <ClCompile Include="CColliderCircle.cpp" />
     <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="COrb.cpp" />
+    <ClCompile Include="CPeglinPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

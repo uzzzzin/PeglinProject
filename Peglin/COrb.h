@@ -5,9 +5,17 @@ class COrb :
     public CObj
 {
     GENERATED_OBJECT(CObj);
+private:
     class CColliderCircle* m_Collider;
     class CAnimator* m_Animator;
     class CMovement*  m_Movement;
+
+    vector<OrbInfo> orbs;
+
+    ORB_TYPE curOrbType;
+    int curDamage;
+    int curCritDamage; 
+    int curAttackCnt;
 
 public:
     Vec2 prevPos;
@@ -31,6 +39,9 @@ public:
         return (curPos - prevPos).Normalize();
     }
 
+    void SetCurTurnOrb(ORB_TYPE _type);
+
+    virtual void begin() override;
     virtual void tick(float _DT) override;
    virtual void render(HDC _dc) override;
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;

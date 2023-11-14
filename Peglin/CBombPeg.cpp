@@ -10,8 +10,6 @@
 CBombPeg::CBombPeg()
 {
 	SetiDieCnt(2);
-	SetiCurCnt(0);
-	SetbDied(false);
 
 	//CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"BombPeg", L"texture\\BombPeg.png");
 	//m_Animator->LoadAnimation(pTex, L"BombPeg", L"animdata\\BombPegMeta.txt",false);

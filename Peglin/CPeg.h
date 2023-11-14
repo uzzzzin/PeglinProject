@@ -9,7 +9,7 @@ protected:
     int                                iDieCnt; // 몇 번 맞으면 죽는지 // 1
     int                                iCurCnt; // 페그 생성되고 현재 몇 번 맞았는지 // 0
 
-    bool                            bDied; // 현재 죽었는지 안 죽었는지 -> 엔터티에 있지 않나 // false 
+    bool                            bCrashed; // 현재 죽었는지 안 죽었는지 -> 엔터티에 있지 않나 // false 
     
     class CAnimator* m_Animator;
     class CColliderCircle* m_Collider;
@@ -23,9 +23,9 @@ public:
     {
         iCurCnt = _iCurCnt;
     }
-    void SetbDied(bool _bDied)
+    void SetCrashed(bool _bDied)
     {
-        bDied = _bDied;
+        bCrashed = _bDied;
     }
 
 public:
@@ -35,7 +35,7 @@ public:
     virtual void Reload() {};  //재생성 함수
     // 충돌 관련 오버랩 함수가 필요할턴디 
 
-    //virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
+    virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
     //virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
     //virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
 
