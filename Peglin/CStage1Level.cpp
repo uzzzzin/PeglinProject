@@ -14,6 +14,7 @@
 #include "CGreyPeg.h"
 #include "COrb.h"
 #include "CObstacle.h"
+#include "CPeglinPlayer.h"
 
 
 void CStage1Level::init()
@@ -121,10 +122,13 @@ void CStage1Level::enter()
 	pObstacle4->SetScale(Vec2(94.5f, 87.5f));
 	pObstacle4->SetImg(L"animdata\\CircleObstacle.txt", L"CircleObstacle");
 	AddObject(PLATFORM, pObstacle4);
-
-
 	
 	LoadPegs(L"Board\\Board1.txt");
+
+	CPeglinPlayer* pPlayer = new CPeglinPlayer;
+	pPlayer->SetPos(Vec2(440.f, 207.f));
+	pPlayer->SetScale(Vec2(110.f,110.f));
+	AddObject(PEGLIN, pPlayer);
 
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PLATFORM);
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PEG);
