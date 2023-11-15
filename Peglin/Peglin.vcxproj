@@ -180,6 +180,11 @@
     <ClInclude Include="CObstacle.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="COrb.h" />
+    <ClInclude Include="COrbQueueBody.h" />
+    <ClInclude Include="COrbQueueBodyOrbCase.h" />
+    <ClInclude Include="COrbQueueChain.h" />
+    <ClInclude Include="COrbQueueHead.h" />
+    <ClInclude Include="COrbQueueHeadOrb.h" />
     <ClInclude Include="CPanelUI.h" />
     <ClInclude Include="CPathMgr.h" />
     <ClInclude Include="CPeg.h">
@@ -273,6 +278,11 @@
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="COrb.cpp" />
+    <ClCompile Include="COrbQueueBody.cpp" />
+    <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
+    <ClCompile Include="COrbQueueChain.cpp" />
+    <ClCompile Include="COrbQueueHead.cpp" />
+    <ClCompile Include="COrbQueueHeadOrb.cpp" />
     <ClCompile Include="CPanelUI.cpp" />
     <ClCompile Include="CPathMgr.cpp" />
     <ClCompile Include="CPeg.cpp">

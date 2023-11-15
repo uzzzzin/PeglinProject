@@ -30,6 +30,11 @@ public:
     Vec2 m_colPos;
     
 public:
+    ORB_TYPE GetCurOrbType()
+    {
+
+        return curOrbType;
+    }
     Vec2 GetPrevPos()
     {
         return prevPos;
@@ -39,15 +44,19 @@ public:
         return (curPos - prevPos).Normalize();
     }
 
+
     void SetCurTurnOrb(ORB_TYPE _type);
 
     virtual void begin() override;
     virtual void tick(float _DT) override;
    virtual void render(HDC _dc) override;
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
-    virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
+    //virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     //virtual void EndOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
 
+    friend class CLevel;
+    friend class COrbQueueHeadOrb;
+    friend class CPeglinPlayer;
 public:
     CLONE(COrb);
     COrb();

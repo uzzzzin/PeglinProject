@@ -1,0 +1,21 @@
+[ANIM_NAME]
+QueueBodyOrbCase
+
+[ATLAS_TEXTURE]
+QueueBodyOrbCase
+texture\QueueBodyOrbCase.png
+
+
+[FRAME_COUNT]
+1
+
+[FRAME_NUM]
+0
+[LEFT_TOP]
+0.000000 0.000000
+[CUT_SIZE]
+24.000000 24.000000
+[OFFSET]
+0.00000 0.00000
+[DURATION]
+0.050000

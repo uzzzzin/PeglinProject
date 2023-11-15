@@ -50,7 +50,7 @@ public:
 
 	CObj* FindObjectByName(const wstring& _Name);
 
-
+	//ORB_TYPE GetCurOrbType();
 	void LoadPegs(const wstring& _strRelativePath); // L"Board//~~~.txt"
 
 public:

@@ -256,6 +256,11 @@
     <ClInclude Include="COrb.h" />
     <ClInclude Include="CPeglinPlayer.h" />
     <ClInclude Include="COrbQueue.h" />
+    <ClInclude Include="COrbQueueHead.h" />
+    <ClInclude Include="COrbQueueBody.h" />
+    <ClInclude Include="COrbQueueBodyOrbCase.h" />
+    <ClInclude Include="COrbQueueChain.h" />
+    <ClInclude Include="COrbQueueHeadOrb.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -460,6 +465,11 @@
     <ClCompile Include="COrb.cpp" />
     <ClCompile Include="CPeglinPlayer.cpp" />
     <ClCompile Include="COrbQueue.cpp" />
+    <ClCompile Include="COrbQueueHead.cpp" />
+    <ClCompile Include="COrbQueueBody.cpp" />
+    <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
+    <ClCompile Include="COrbQueueChain.cpp" />
+    <ClCompile Include="COrbQueueHeadOrb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

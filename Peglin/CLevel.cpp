@@ -13,6 +13,7 @@
 #include "CCritPeg.h"
 #include "CRefreshPeg.h"
 #include "CBombPeg.h"
+#include "COrb.h"
 
 CLevel::CLevel()
 	: m_TileRow(0)
@@ -126,6 +127,11 @@ CObj* CLevel::FindObjectByName(const wstring& _Name)
 
 	return nullptr;
 }
+
+//ORB_TYPE CLevel::GetCurOrbType()
+//{
+//	return  CLevelMgr::GetInst()->GetCurLevel()->GetCurOrbType();
+//}
 
 void CLevel::LoadPegs(const wstring& _strRelativePath)
 {

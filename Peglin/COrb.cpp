@@ -3,17 +3,21 @@
 
 #include "CEngine.h"
 
+#include "CLevelMgr.h"
+#include "CLevel.h"
 #include "CAssetMgr.h"
 #include "CKeyMgr.h"
 #include "CLogMgr.h"
 
 #include "components.h"
+#include "CPeglinPlayer.h"
 
 COrb::COrb()
 	: m_Collider(nullptr)
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
 {
+	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
 	OrbInfo Daggorb = { DAGGORB, 1,7,200.f,1.f, 1, L"animdata\\Daggorb.txt", L"Daggorb"};
 	OrbInfo Infernorb = { INFERNORB, 3,5,400.f,1.f, 1, L"animdata\\Infernorb.txt", L"Infernorb"};
@@ -32,7 +36,7 @@ COrb::COrb()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24.f, 24.f));
 
-	SetCurTurnOrb(INFERNORB);
+	SetCurTurnOrb(DAGGORB);
 
 
 	//m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
@@ -45,6 +49,8 @@ COrb::COrb()
 	m_Movement->UseGravity(false);
 	m_Movement->SetGravity(Vec2(0.f, 980.f));
 	m_Movement->SetGround(false);
+
+	
 }
 
 COrb::~COrb()
@@ -53,6 +59,12 @@ COrb::~COrb()
 
 void COrb::SetCurTurnOrb(ORB_TYPE _type)
 {
+
+	if (curOrbType != _type)
+	{
+		return;
+	}
+
 	UINT a = (UINT)_type;
 	curOrbType = orbs[a].type;
 	curDamage = orbs[a].damage;
@@ -73,6 +85,16 @@ void COrb::begin()
 void COrb::tick(float _DT)
 {
 	Super::tick(_DT);
+
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
+	curOrbType = pPlayer->GetCurOrbType();
+
+	SetCurTurnOrb(curOrbType);
+
+
+
+
 	curPos = GetPos();
 
 	if (GetLBoundaryX() > curPos.x)
@@ -298,161 +320,5 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 	{
 		LOG(ERR, L"?????????");
 	}
-
-}
-//void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
-////void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
-//{
-//	if (_OtherCol->GetType() == ColliderType::CIRCLE)
-//	{
-//		prevPos = _OwnCol->GetPrevColPos();
-//		curPos = _OwnCol->GetPos();
-//		colPos = _OtherCol->GetPos();
-//
-//		auto movement = GetComponent<CMovement>();
-//
-//		Vec2 vel = movement->GetVelocity();
-//		Vec2 vReflect = rPos - curPos;
-//		float speed = vel.Length();
-//
-//		//if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0) 
-//		//{
-//		//	movement->SetVelocity({ -vel.x, -vel.y });
-//		//	return;
-//		//}
-//
-//		float a = (_OtherCol->GetPos().y - _OwnCol->GetPos().y) / (_OtherCol->GetPos().x - _OwnCol->GetPos().x);
-//		float b = _OwnCol->GetPos().y - a * _OwnCol->GetPos().x;
-//
-//		rPos.x = prevPos.x - ((2 * a * (a * prevPos.x - prevPos.y + b)) / (a * a + 1));
-//		rPos.y = prevPos.y + ((2 * (a * prevPos.x - prevPos.y + b) / (a * a + 1)));
-//
-//		vReflect.Normalize();
-//		movement->SetVelocity({ vReflect.x * speed, vReflect.y * speed });
-//
-//	}
-//	else
-//	{
-//		if (GetLBoundaryX() > curPos.x)
-//		{
-//			curPos.x = GetLBoundaryX();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetRBoundaryX() < curPos.x)
-//		{
-//			curPos.x = GetRBoundaryX();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetUBoundaryY() > curPos.y)
-//		{
-//			curPos.y = GetUBoundaryY();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetDBoundaryY() < curPos.y)
-//		{
-//			curPos.y = GetDBoundaryY();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//	}
-//}
-// 
-// 
-// 
-// 
-// 
-// 
-//{
-//	Vec2 PushVec;
-//
-//	if (_OtherCol->GetType() == ColliderType::CIRCLE)
-//	{
-//		//Vec2 vColVec = _OtherObj->GetPos() - GetPos();
-//
-//		//vColVec = Rotate(vColVec, PI / 90.f);
-//
-//
-//		//float fDot = vColVec.x * vDir.x + vColVec.y * vDir.y;
-//		//float fAngle = acosf(fDot);
-//
-//		////if (fAngle > PI/90.f)
-//		////{
-//		////	LOG(LOGLOG, L"ss");
-//		//if (vColVec.y > 0)
-//		//{
-//		//	vDir = Rotate(vColVec, PI - 2 * fAngle);
-//		//}
-//		//else
-//		//{
-//		//	vDir = Rotate(vColVec, (-1)*(PI - 2 * fAngle));
-//		//}
-//
-//		//}
-//		//else
-//		//{
-//		//	LOG(ERR, L"dd");
-//		//	vDir = Rotate(vColVec, PI - 2 * fAngle + fAngle);
-//		//}
-//		
-//
-//		//SetPos();
-//		m_Movement->SetVelocity(Vec2(abs(m_Movement->GetVelocity().x), abs(m_Movement->GetVelocity().y) )* vDir);
-//	}
-//	else
-//	{
-//		if (GetLBoundaryX() > curPos.x)
-//		{
-//			curPos.x = GetLBoundaryX();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetRBoundaryX() < curPos.x)
-//		{
-//			curPos.x = GetRBoundaryX();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetUBoundaryY() > curPos.y)
-//		{
-//			curPos.y = GetUBoundaryY();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//		if (GetDBoundaryY() < curPos.y)
-//		{
-//			curPos.y = GetDBoundaryY();
-//			SetPos(Vec2(curPos.x, curPos.y));
-//		}
-//	}
-//
-//}
-
-void COrb::Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
-{
-	//if (_OtherCol->GetType() == ColliderType::CIRCLE)
-	//{
-		//Vec2 vel = m_Movement->GetVelocity();
-		//m_Movement->SetVelocity(vel);
-	//}
-	//else
-	//{
-		//if (GetLBoundaryX() > curPos.x)
-		//{
-		//	curPos.x = GetLBoundaryX();
-		//	SetPos(Vec2(curPos.x, curPos.y));
-		//}
-		//if (GetRBoundaryX() < curPos.x)
-		//{
-		//	curPos.x = GetRBoundaryX();
-		//	SetPos(Vec2(curPos.x, curPos.y));
-		//}
-		//if (GetUBoundaryY() > curPos.y)
-		//{
-		//	curPos.y = GetUBoundaryY();
-		//	SetPos(Vec2(curPos.x, curPos.y));
-		//}
-		//if (GetDBoundaryY() < curPos.y)
-		//{
-		//	curPos.y = GetDBoundaryY();
-		//	SetPos(Vec2(curPos.x, curPos.y));
-		//}
-	//	}
-	//}
 
 }

@@ -15,6 +15,8 @@
 #include "COrb.h"
 #include "CObstacle.h"
 #include "CPeglinPlayer.h"
+#include "COrbQueue.h"
+#include "COrbQueueHeadOrb.h"
 
 
 void CStage1Level::init()
@@ -28,6 +30,10 @@ void CStage1Level::enter()
 	vLookAt /= 2.f;
 	CCamera::GetInst()->SetLookAt(vLookAt);
 
+	CPeglinPlayer* pPlayer = new CPeglinPlayer;
+	pPlayer->SetPos(Vec2(440.f, 207.f));
+	pPlayer->SetScale(Vec2(110.f, 110.f));
+	AddObject(PEGLIN, pPlayer);
 
 	CImg* pStartBG = new CImg;
 	pStartBG->SetPos(Vec2(512.f, 300.f));
@@ -35,11 +41,16 @@ void CStage1Level::enter()
 	pStartBG->SetImg(L"animdata\\BoardBGBtn.txt", L"BoardBGBtn");
 	AddObject(BG, pStartBG);
 
-	CColliderWall* pLWall = new CColliderWall;
-	pLWall->SetPos(Vec2(444.5f, 585.f));
-	pLWall->SetScale(Vec2(135.f, 630.f));
-	pLWall->SetImg(L"animdata\\LWall.txt", L"LWall");
-	AddObject(PLATFORM, pLWall);
+	//CColliderWall* pLWall = new CColliderWall;
+	//pLWall->SetPos(Vec2(444.5f, 585.f));
+	//pLWall->SetScale(Vec2(135.f, 630.f));
+	//pLWall->SetImg(L"animdata\\LWall.txt", L"LWall");
+	//AddObject(PLATFORM, pLWall);
+
+	COrbQueue* pOrbQueue = new COrbQueue;
+	pOrbQueue->SetPos(Vec2(444.5f, 585.f));
+	pOrbQueue->SetScale(Vec2(135.f, 630.f));
+	AddObject(PLATFORM, pOrbQueue);
 
 	CColliderWall* pRWall = new CColliderWall;
 	pRWall->SetPos(Vec2(1334.5f, 585.f));
@@ -53,11 +64,13 @@ void CStage1Level::enter()
 	pForest->SetImg(L"animdata\\Forest.txt", L"Forest");
 	AddObject(PLATFORM, pForest);
 
-	CImg* pQueueHead = new CImg;
-	pQueueHead->SetPos(Vec2(444.5f, 350.f));
-	pQueueHead->SetScale(Vec2(100.f, 100.f));
-	pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
-	AddObject(PLATFORM, pQueueHead);
+
+
+	//CImg* pQueueHead = new CImg;
+	//pQueueHead->SetPos(Vec2(444.5f, 360.f));
+	//pQueueHead->SetScale(Vec2(105.f, 105.f));
+	//pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
+	//AddObject(PLATFORM, pQueueHead);
 
 	//CPlatform* pFloor = new CPlatform;
 	//pFloor->SetPos(Vec2(912.f, 901.f));
@@ -74,6 +87,11 @@ void CStage1Level::enter()
 	pOrb->SetPos(REALCENTER);
 	pOrb->SetScale(Vec2(24, 24));
 	AddObject(ORB, pOrb);
+
+	COrbQueueHeadOrb* pQueueOrb = new COrbQueueHeadOrb;
+	pQueueOrb->SetPos(Vec2(444.5f, 357.f));
+	pQueueOrb->SetScale(Vec2(50, 50));
+	AddObject(PLAYER_PJ, pQueueOrb);
 
 
 	CImg* pObstacleBody = new CImg;
@@ -125,10 +143,6 @@ void CStage1Level::enter()
 	
 	LoadPegs(L"Board\\Board1.txt");
 
-	CPeglinPlayer* pPlayer = new CPeglinPlayer;
-	pPlayer->SetPos(Vec2(440.f, 207.f));
-	pPlayer->SetScale(Vec2(110.f,110.f));
-	AddObject(PEGLIN, pPlayer);
 
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PLATFORM);
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PEG);
