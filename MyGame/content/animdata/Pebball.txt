@@ -18,4 +18,4 @@ texture\Pebball.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.050000
+0.10000

@@ -11,6 +11,7 @@
 #include "CKeyMgr.h"
 #include "CPeglinPlayer.h"
 
+#include "CImg.h"
 #include "components.h"
 
 
@@ -48,7 +49,7 @@ void COrbQueue::begin()
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueBody);
 
-	for (int i = 0; i < nextOrbs.size(); ++i)
+	for (int i = 0; i < nextOrbs.size() - 1; ++i)
 	{
 		float SetPosY = 425.f + 45 * i;
 
@@ -64,9 +65,50 @@ void COrbQueue::begin()
 		CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(tmpOrbCase);
 
 		tmpOrbCase->SetPos(Vec2(444.5f, SetPosY));
-		tmpOrbCase->SetScale(Vec2(42,40));
+		tmpOrbCase->SetScale(Vec2(42, 40));
+
+		//CImg* pnextOrb = new CImg;
+		// 난 넥스트 오브들 어케 할건지 설계 하다 잔거임 기억하라 우진
+
+		CImg* pNextOrb = new CImg;
+		CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(pNextOrb);
+		pNextOrb->SetPos(Vec2(444.5f, SetPosY));
+		pNextOrb->SetScale(Vec2(25, 25));
+
+		switch (nextOrbs[i+1])
+		{
+		case PEBBALL:
+		{
+			pNextOrb->SetImg(L"animdata\\Pebball.txt", L"Pebball");
+			break;
+		}
+		case DAGGORB:
+		{
+			pNextOrb->SetImg(L"animdata\\Daggorb.txt", L"Daggorb");
+			break;
+		}
+		case INFERNORB:
+		{
+			pNextOrb->SetImg(L"animdata\\Infernorb.txt", L"Infernorb");
+			break;
+		}
+		case SPHEAR:
+		{
+			pNextOrb->SetImg(L"animdata\\Sphear.txt", L"Sphear");
+			break;
+		}
+		case RUBBORB:
+		{
+			pNextOrb->SetImg(L"animdata\\Rubborb.txt", L"Rubborb");
+			break;
+		}
+		default:
+		{
+			LOG(ERR, L"오브 대가리 이상함.");
+			break;
+		}
+		}
 	}
-	
 }
 
 void COrbQueue::tick(float _DT)
