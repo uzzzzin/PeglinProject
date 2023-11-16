@@ -8,6 +8,7 @@ private:
     class CAnimator* m_Animator;
     class CCollider* m_Collider;
     //class CMovement* m_Movement;
+    class CStateMachine* m_AI;
 
     int Coin;
     int HP;

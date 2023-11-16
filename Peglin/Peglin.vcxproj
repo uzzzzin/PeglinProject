@@ -141,6 +141,7 @@
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CAssetMgr.h" />
+    <ClInclude Include="CBeforeShootState.h" />
     <ClInclude Include="CBoardEditLevel.h" />
     <ClInclude Include="CBombPeg.h" />
     <ClInclude Include="CBossStageLevel.h" />
@@ -169,6 +170,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="CInitState.h" />
     <ClInclude Include="CKeyMgr.h" />
     <ClInclude Include="CLayer.h" />
     <ClInclude Include="CLevelMgr.h" />
@@ -177,6 +179,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="CMonsterAttackState.h" />
     <ClInclude Include="CMovement.h" />
     <ClInclude Include="CNormalMonIdle.h" />
     <ClInclude Include="CNormalMonTrace.h" />
@@ -195,6 +198,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="CPeglinAttackState.h" />
+    <ClInclude Include="CPeglinDieState.h" />
     <ClInclude Include="CPeglinPlayer.h" />
     <ClInclude Include="CPlatform.h" />
     <ClInclude Include="CPlayer.h" />
@@ -204,6 +209,7 @@
     </ClInclude>
     <ClInclude Include="CProjectile.h" />
     <ClInclude Include="CRefreshPeg.h" />
+    <ClInclude Include="CShootingState.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSoundMgr.h" />
     <ClInclude Include="CStage1Level.h" />
@@ -212,6 +218,7 @@
     <ClInclude Include="CStartLevel.h" />
     <ClInclude Include="CStartLogo.h" />
     <ClInclude Include="CState.h" />
+    <ClInclude Include="CStateClearState.h" />
     <ClInclude Include="CStateMachine.h" />
     <ClInclude Include="CTaskMgr.h" />
     <ClInclude Include="CTextUI.h" />
@@ -244,6 +251,7 @@
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CAssetMgr.cpp" />
+    <ClCompile Include="CBeforeShootState.cpp" />
     <ClCompile Include="CBoardEditLevel.cpp" />
     <ClCompile Include="CBombPeg.cpp" />
     <ClCompile Include="CBossStageLevel.cpp" />
@@ -272,6 +280,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="CInitState.cpp" />
     <ClCompile Include="CKeyMgr.cpp" />
     <ClCompile Include="CLayer.cpp" />
     <ClCompile Include="CLevelMgr.cpp" />
@@ -280,6 +289,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="CMonsterAttackState.cpp" />
     <ClCompile Include="CMovement.cpp" />
     <ClCompile Include="CNormalMonIdle.cpp" />
     <ClCompile Include="CNormalMonTrace.cpp" />
@@ -297,6 +307,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="CPeglinAttackState.cpp" />
+    <ClCompile Include="CPeglinDieState.cpp" />
     <ClCompile Include="CPeglinPlayer.cpp" />
     <ClCompile Include="CPlatform.cpp" />
     <ClCompile Include="CPlayer.cpp" />
@@ -306,6 +318,7 @@
     </ClCompile>
     <ClCompile Include="CProjectile.cpp" />
     <ClCompile Include="CRefreshPeg.cpp" />
+    <ClCompile Include="CShootingState.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSoundMgr.cpp" />
     <ClCompile Include="CStage1Level.cpp" />
@@ -314,6 +327,7 @@
     <ClCompile Include="CStartLevel.cpp" />
     <ClCompile Include="CStartLogo.cpp" />
     <ClCompile Include="CState.cpp" />
+    <ClCompile Include="CStateClearState.cpp" />
     <ClCompile Include="CStateMachine.cpp" />
     <ClCompile Include="CTaskMgr.cpp" />
     <ClCompile Include="CTextUI.cpp" />

@@ -42,7 +42,7 @@ void CLogMgr::tick(HDC _dc)
 			TextOut(_dc, LT.x, LT.y + i * int(10.f * 1.5f), (*iter).Message.c_str(), (int)(*iter).Message.length());
 			break;
 		case WARNING:
-			SetTextColor(_dc, RGB(210, 210, 153));
+			SetTextColor(_dc, RGB(80, 200, 200));
 			break;
 		case ERR:
 			SetTextColor(_dc, RGB(255, 0, 0));

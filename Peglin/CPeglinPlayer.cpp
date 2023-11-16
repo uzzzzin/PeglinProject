@@ -6,6 +6,7 @@
 CPeglinPlayer::CPeglinPlayer()
 	: m_Animator(nullptr)
 	, m_Collider(nullptr)
+	, m_AI(nullptr)
 	, myOrbsIdx(0)
 	//, m_Movement(nullptr)
 {
@@ -13,6 +14,7 @@ CPeglinPlayer::CPeglinPlayer()
 
 	m_Animator = AddComponent<CAnimator>(L"Animator");
 	m_Collider = AddComponent<CCollider>(L"Collider");
+	m_AI = AddComponent<CStateMachine>(L"AI");
 	//m_Movement = AddComponent<CMovement>(L"Movement");
 
 	m_Animator->LoadAnimation(L"animdata\\PeglinIdle.txt");

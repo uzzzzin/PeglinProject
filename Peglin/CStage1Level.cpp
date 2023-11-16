@@ -18,7 +18,6 @@
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
 
-
 void CStage1Level::init()
 {
 }

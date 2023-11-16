@@ -14,9 +14,13 @@
 #include "CImg.h"
 #include "components.h"
 
+#include "CInitState.h"
+#include "CBeforeShootState.h"
+
 
 COrbQueue::COrbQueue()
 	: m_Animator(nullptr)
+	, m_AI(nullptr)
 	, QueueHead(nullptr)
 	, QueueBody(nullptr)
 {
@@ -37,6 +41,9 @@ COrbQueue::COrbQueue()
 		nextOrbs.push_back(pPlayer->myOrbs[i]);
 	}
 
+	m_AI = AddComponent<CStateMachine>(L"AI");
+	m_AI->AddState((UINT)STATE_INIT, new CInitState);
+	m_AI->AddState((UINT)BEFORE_SHOOT, new CBeforeShootState);
 }
 
 COrbQueue::~COrbQueue()
@@ -110,6 +117,9 @@ void COrbQueue::begin()
 		}
 	}
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
+
+	m_AI->ChangeState((UINT)STATE_INIT);
+
 }
 
 void COrbQueue::tick(float _DT)
@@ -137,5 +147,5 @@ void COrbQueue::tick(float _DT)
 		}
 	}
 
-
+	//m_AI->ChangeState((UINT)BEFORE_SHOOT);
 }

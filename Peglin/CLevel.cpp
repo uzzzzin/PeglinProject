@@ -16,7 +16,7 @@
 #include "COrb.h"
 
 CLevel::CLevel()
-	: m_TileRow(0)
+	 : m_TileRow(0)
 	, m_TileCol(0)
 {
 	for (UINT i = 0; i < LAYER::END; ++i)

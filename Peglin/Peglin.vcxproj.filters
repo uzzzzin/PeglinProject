@@ -247,21 +247,66 @@
     <ClInclude Include="CEditBoardUI.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CColliderWall.h" />
     <ClInclude Include="CEditPegUI.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
-    <ClInclude Include="CColliderCircle.h" />
-    <ClInclude Include="CObstacle.h" />
-    <ClInclude Include="COrb.h" />
-    <ClInclude Include="CPeglinPlayer.h" />
-    <ClInclude Include="COrbQueue.h" />
-    <ClInclude Include="COrbQueueHead.h" />
-    <ClInclude Include="COrbQueueBody.h" />
-    <ClInclude Include="COrbQueueBodyOrbCase.h" />
-    <ClInclude Include="COrbQueueChain.h" />
-    <ClInclude Include="COrbQueueHeadOrb.h" />
-    <ClInclude Include="CEnemy.h" />
+    <ClInclude Include="CInitState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CShootingState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CBeforeShootState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderCircle.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderWall.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CEnemy.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObstacle.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrb.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueue.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueBody.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueBodyOrbCase.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueChain.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueHead.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueHeadOrb.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeglinPlayer.h">
+      <Filter>Game\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonsterAttackState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeglinAttackState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CPeglinDieState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateClearState.h">
+      <Filter>Game\07. State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -457,21 +502,66 @@
     <ClCompile Include="CEditBoardUI.cpp">
       <Filter>Game\04. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CColliderWall.cpp" />
     <ClCompile Include="CEditPegUI.cpp">
       <Filter>Game\04. Object</Filter>
     </ClCompile>
-    <ClCompile Include="CColliderCircle.cpp" />
-    <ClCompile Include="CObstacle.cpp" />
-    <ClCompile Include="COrb.cpp" />
-    <ClCompile Include="CPeglinPlayer.cpp" />
-    <ClCompile Include="COrbQueue.cpp" />
-    <ClCompile Include="COrbQueueHead.cpp" />
-    <ClCompile Include="COrbQueueBody.cpp" />
-    <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
-    <ClCompile Include="COrbQueueChain.cpp" />
-    <ClCompile Include="COrbQueueHeadOrb.cpp" />
-    <ClCompile Include="CEnemy.cpp" />
+    <ClCompile Include="CInitState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CShootingState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CBeforeShootState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderCircle.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderWall.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CEnemy.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObstacle.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrb.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueue.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueBody.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueBodyOrbCase.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueChain.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueHead.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueHeadOrb.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeglinPlayer.cpp">
+      <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonsterAttackState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeglinAttackState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeglinDieState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateClearState.cpp">
+      <Filter>Game\07. State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

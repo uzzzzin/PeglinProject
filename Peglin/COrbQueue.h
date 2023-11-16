@@ -8,6 +8,7 @@ class COrbQueue :
 protected:
     class CAnimator* m_Animator;
     class CMovement* m_Movement;
+    class CStateMachine* m_AI;
 
 private:
     class COrbQueueHead* QueueHead;
@@ -17,8 +18,6 @@ public:
     ORB_TYPE curOrb;
     int curOrbIdx;
     vector<ORB_TYPE> nextOrbs;
-
-    
 
     vector<class COrbQueueBodyOrbCase*> OrbCases;
     vector<class COrbQueueChain*> OrbChains;

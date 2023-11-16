@@ -12,10 +12,15 @@
 #include "components.h"
 #include "CPeglinPlayer.h"
 
+#include "CInitState.h"
+#include "CShootingState.h"
+#include "CPeglinAttackState.h"
+
 COrb::COrb()
 	: m_Collider(nullptr)
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
+	, m_AI(nullptr)
 {
 	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
@@ -50,7 +55,10 @@ COrb::COrb()
 	m_Movement->SetGravity(Vec2(0.f, 980.f));
 	m_Movement->SetGround(false);
 
-	
+	m_AI = AddComponent<CStateMachine>(L"AI");
+	m_AI->AddState((UINT)STATE_INIT, new CInitState);
+	m_AI->AddState((UINT)SHOOTING, new CShootingState);
+	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
 }
 
 COrb::~COrb()
@@ -115,6 +123,7 @@ void COrb::tick(float _DT)
 	}
 	else if (GetDBoundaryY() < curPos.y)
 	{
+		m_AI->ChangeState((UINT)PEGLIN_ATTACK);
 		SetPos(REALCENTER);
 		m_Movement->SetVelocity({ 0,0 });
 		m_Movement->UseGravity(false);
@@ -122,9 +131,10 @@ void COrb::tick(float _DT)
 	}
 
 
-	if (KEY_PRESSED(SPACE))
+	if (KEY_TAP(SPACE))
 	{
 		m_Movement->UseGravity(true);
+		m_AI->ChangeState((UINT)SHOOTING);
 	}
 
 
