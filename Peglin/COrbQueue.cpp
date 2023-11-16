@@ -46,13 +46,13 @@ COrbQueue::~COrbQueue()
 
 void COrbQueue::begin()
 {
-	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueBody);
 
 	for (int i = 0; i < nextOrbs.size() - 1; ++i)
 	{
 		float SetPosY = 425.f + 45 * i;
-
+		
+		// 큐 체인
 		COrbQueueChain* tmpChain = new COrbQueueChain;
 		OrbChains.push_back(tmpChain);
 		CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(tmpChain);
@@ -60,6 +60,7 @@ void COrbQueue::begin()
 		tmpChain->SetPos(Vec2(444.5f, SetPosY));
 		tmpChain->SetScale(Vec2(32, 46));
 
+		// 큐 대기열 - 오브 케이스
 		COrbQueueBodyOrbCase* tmpOrbCase = new COrbQueueBodyOrbCase;
 		OrbCases.push_back(tmpOrbCase);
 		CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(tmpOrbCase);
@@ -67,10 +68,9 @@ void COrbQueue::begin()
 		tmpOrbCase->SetPos(Vec2(444.5f, SetPosY));
 		tmpOrbCase->SetScale(Vec2(42, 40));
 
-		//CImg* pnextOrb = new CImg;
-		// 난 넥스트 오브들 어케 할건지 설계 하다 잔거임 기억하라 우진
-
+		// 오브 케이스 위에 렌더되는 오브들
 		CImg* pNextOrb = new CImg;
+		OrbImgs.push_back(pNextOrb);
 		CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(pNextOrb);
 		pNextOrb->SetPos(Vec2(444.5f, SetPosY));
 		pNextOrb->SetScale(Vec2(25, 25));
@@ -109,15 +109,33 @@ void COrbQueue::begin()
 		}
 		}
 	}
+	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
 }
 
 void COrbQueue::tick(float _DT)
 {
 	Super::tick(_DT);
 
-	if (KEY_PRESSED(F))
+	if (KEY_TAP(F))
 	{
-
+		if (380.f >= OrbCases[OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
+		{
+			LOG(ERR, L"이상한 위치야");
+			for (int i = 0; i < nextOrbs.size() - 1; ++i)
+			{
+				float SetPosY = 425.f + 45 * (i+1);        //425.f - 45 * i;
+				OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
+				OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
+				OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+			}
+		}
+		for (int i = 0; i < nextOrbs.size() - 1; ++i)
+		{
+			float SetPosY = OrbChains[i]->GetPos().y - 45;         //425.f - 45 * i;
+			OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
+			OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
+			OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+		}
 	}
 
 

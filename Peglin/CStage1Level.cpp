@@ -58,12 +58,6 @@ void CStage1Level::enter()
 	pRWall->SetImg(L"animdata\\RWall.txt", L"RWall");
 	AddObject(PLATFORM, pRWall);
 
-	CColliderWall* pForest = new CColliderWall;
-	pForest->SetPos(Vec2(800.f, 150.f));
-	pForest->SetScale(Vec2(1600.f, 300.f));
-	pForest->SetImg(L"animdata\\Forest.txt", L"Forest");
-	AddObject(PLATFORM, pForest);
-
 
 
 	//CImg* pQueueHead = new CImg;
@@ -93,6 +87,11 @@ void CStage1Level::enter()
 	pQueueOrb->SetScale(Vec2(50, 50));
 	AddObject(PLAYER_PJ, pQueueOrb);
 
+	CColliderWall* pForest = new CColliderWall;
+	pForest->SetPos(Vec2(800.f, 150.f));
+	pForest->SetScale(Vec2(1600.f, 300.f));
+	pForest->SetImg(L"animdata\\Forest.txt", L"Forest");
+	AddObject(FOREST, pForest);
 
 	CImg* pObstacleBody = new CImg;
 	pObstacleBody->SetPos(Vec2(630, 883));

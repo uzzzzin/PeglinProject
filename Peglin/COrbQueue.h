@@ -22,6 +22,7 @@ public:
 
     vector<class COrbQueueBodyOrbCase*> OrbCases;
     vector<class COrbQueueChain*> OrbChains;
+    vector<class CImg*> OrbImgs;
 
 public:
     virtual void begin() override;
