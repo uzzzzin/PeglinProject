@@ -12,6 +12,7 @@ class CCollider :
     public CComponent
 {
 private:
+    bool bOnOff;
     ColliderType m_Type;
     Vec2    m_vOffsetPos;  // Owner 로부터 떨어진 거리
     Vec2    m_vScale;      // Owner 로부터 추가 배율
@@ -26,6 +27,8 @@ public:
     virtual void render(HDC _dc) override;
 
 public:
+    bool GetBOnOff() { return bOnOff; }
+    void SetBOnOff(bool _onoff) { bOnOff = _onoff; }
     void SetOffsetPos(Vec2 _vOffsetPos) { m_vOffsetPos = _vOffsetPos; }
     void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
     Vec2 GetPos() { return m_vFinalPos; }

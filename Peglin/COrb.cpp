@@ -289,9 +289,11 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		m_cPos = _OwnCol->GetPos();
 		m_colPos = _OtherCol->GetPos();
 
-		auto movement = GetComponent<CMovement>();
-
+		if (false == _OtherCol->GetBOnOff())
+			return;
 		
+		
+		auto movement = GetComponent<CMovement>();
 		//if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0) 
 		//{
 		//	movement->SetVelocity({ -vel.x, -vel.y });
@@ -300,9 +302,6 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		float a = (_OtherCol->GetPos().y - _OwnCol->GetPos().y) / (_OtherCol->GetPos().x - _OwnCol->GetPos().x);
 		float b = _OwnCol->GetPos().y - a * _OwnCol->GetPos().x;
-
-		
-
 
 		m_rPos.x = m_pPos.x - ((2 * a * (a * m_pPos.x - m_pPos.y + b)) / (a * a + 1));
 		m_rPos.y = m_pPos.y + ((2 * (a * m_pPos.x - m_pPos.y + b) / (a * a + 1)));
@@ -313,6 +312,11 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		vReflect.Normalize();
 		movement->SetVelocity({ vReflect.x * speed, vReflect.y * speed });
+		if (!(_OtherObj->GetName() == L"Obstacle"))
+		{
+			_OtherCol->SetBOnOff(false);
+		}
+
 	}
 	else if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0 && (_OtherCol->GetPos().y - _OwnCol->GetPos().y != 0))
 	{

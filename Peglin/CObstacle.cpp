@@ -4,6 +4,7 @@
 CObstacle::CObstacle()
 	:m_Collider(nullptr)
 {
+	SetName(L"Obstacle");
 	m_Collider = AddComponent<CColliderCircle>(L"ObstacleCollider");
 	m_Collider->SetScale(Vec2(45.f, 40.f));
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));

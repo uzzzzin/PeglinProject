@@ -13,6 +13,7 @@
 
 CCollider::CCollider(CObj* _Owner)
 	: CComponent(_Owner)
+	, bOnOff(true)
 	, m_iCollisionCount(0)
 {
 	SetColliderType(ColliderType::RECTANGLE);
@@ -85,6 +86,8 @@ void CCollider::render(HDC _dc)
 
 void CCollider::BeginOverlap(CCollider* _OtherCol)
 {
+	//if (!bOnOff)
+	//	return;
 	++m_iCollisionCount;
 	GetOwner()->BeginOverlap(this, _OtherCol->GetOwner(), _OtherCol);
 }
