@@ -120,7 +120,6 @@ void COrbQueue::tick(float _DT)
 	{
 		if (380.f >= OrbCases[OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
 		{
-			LOG(ERR, L"이상한 위치야");
 			for (int i = 0; i < nextOrbs.size() - 1; ++i)
 			{
 				float SetPosY = 425.f + 45 * (i+1);        //425.f - 45 * i;

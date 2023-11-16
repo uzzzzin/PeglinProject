@@ -158,17 +158,6 @@ struct FKeyData
 	bool		bPressed;
 };
 
-
-struct FMonInfo
-{
-	wchar_t szName[50];
-	float HP;
-	float MP;
-	float Att;
-	float Int;
-	float Speed;
-};
-
 struct FTask
 {
 	TASK_TYPE Type;
@@ -227,4 +216,26 @@ struct OrbInfo
 	wstring animPath; // L"animdata~.txt"
 	wstring animName; // L""
 
+};
+
+struct EnemyInfo
+{
+	ENEMY_TYPE type; // 몬스터 타입
+	float hp; // 몬스터 체력
+	float damage; // 몬스터가 페글린에게 입힐 수 있는 데미지
+	//Vec2 InitPos; // 초기 위치
+	int initPosIdx; // 초기 위치에 해당하는 벡터의 인덱스
+	bool InitAppear; // 초기에 얘가 나타날건지
+	wstring animPath; // L"animdata\\~.txt"
+	wstring animName; // L""
+};
+
+struct FMonInfo
+{
+	wchar_t szName[50];
+	float HP;
+	float MP;
+	float Att;
+	float Int;
+	float Speed;
 };

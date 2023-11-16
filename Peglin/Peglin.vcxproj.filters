@@ -261,6 +261,7 @@
     <ClInclude Include="COrbQueueBodyOrbCase.h" />
     <ClInclude Include="COrbQueueChain.h" />
     <ClInclude Include="COrbQueueHeadOrb.h" />
+    <ClInclude Include="CEnemy.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -470,6 +471,7 @@
     <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
     <ClCompile Include="COrbQueueChain.cpp" />
     <ClCompile Include="COrbQueueHeadOrb.cpp" />
+    <ClCompile Include="CEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

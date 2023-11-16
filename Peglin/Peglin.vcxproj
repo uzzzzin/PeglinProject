@@ -159,6 +159,7 @@
     <ClInclude Include="CEditBoardUI.h" />
     <ClInclude Include="CEditPegUI.h" />
     <ClInclude Include="CEndLevel.h" />
+    <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEngine.h" />
     <ClInclude Include="CEntity.h" />
     <ClInclude Include="CGCMgr.h" />
@@ -172,7 +173,10 @@
     <ClInclude Include="CLayer.h" />
     <ClInclude Include="CLevelMgr.h" />
     <ClInclude Include="CLogMgr.h" />
-    <ClInclude Include="CMonster.h" />
+    <ClInclude Include="CMonster.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CMovement.h" />
     <ClInclude Include="CNormalMonIdle.h" />
     <ClInclude Include="CNormalMonTrace.h" />
@@ -258,6 +262,7 @@
     <ClCompile Include="CEditBoardUI.cpp" />
     <ClCompile Include="CEditPegUI.cpp" />
     <ClCompile Include="CEndLevel.cpp" />
+    <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEngine.cpp" />
     <ClCompile Include="CEntity.cpp" />
     <ClCompile Include="CGCMgr.cpp" />
@@ -271,7 +276,10 @@
     <ClCompile Include="CLayer.cpp" />
     <ClCompile Include="CLevelMgr.cpp" />
     <ClCompile Include="CLogMgr.cpp" />
-    <ClCompile Include="CMonster.cpp" />
+    <ClCompile Include="CMonster.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CMovement.cpp" />
     <ClCompile Include="CNormalMonIdle.cpp" />
     <ClCompile Include="CNormalMonTrace.cpp" />
