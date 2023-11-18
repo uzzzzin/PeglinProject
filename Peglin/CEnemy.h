@@ -28,6 +28,8 @@ public:
     void SetEnemyInfo(ENEMY_TYPE _type);
     void SetCurIdx(int _idx) { curIdx = _idx; }
     int GetCurIdx() {return curIdx; }
+    int GetCurHP() { return curHP; }
+    void DealDamage(int _damage) { curHP = curHP - _damage;  }
 
 
 public:

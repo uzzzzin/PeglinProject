@@ -314,7 +314,8 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		movement->SetVelocity({ vReflect.x * speed, vReflect.y * speed });
 		
 		// 오브 타입별로 알맞는 데미지 가져와서 입히게..
-		pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+		//pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+		pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
 		LOG(LOGLOG, L"이게 되네");
 		/*switch (curOrbType)
 		{
@@ -348,7 +349,7 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 			break;
 		}
 		}*/
-		if (!(_OtherObj->GetName() == L"Obstacle"))
+		if ((_OtherObj->GetName() == L"Obstacle"))
 		{
 			_OtherCol->SetBOnOff(false);
 			pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;

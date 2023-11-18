@@ -19,6 +19,16 @@ private:
     int myOrbsIdx;
 
 public:
+    int GetAttackDamage()
+    {
+        return AttackDamage;
+    }
+
+    void AddAttackDamage(int _damage)
+    {
+        AttackDamage = AttackDamage + _damage;
+    }
+    
     ORB_TYPE GetCurOrbType()
     {
         return myOrbs[myOrbsIdx];
