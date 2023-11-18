@@ -24,12 +24,6 @@ void CShootingState::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)PEGLIN_ATTACK);
 	}
 
-
-
-
-
-
-
 }
 
 void CShootingState::Enter()

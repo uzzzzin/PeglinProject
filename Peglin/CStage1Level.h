@@ -1,13 +1,18 @@
 #pragma once
-#include "CLevel.h"
+#include "CGeneralLevel.h"
 class CStage1Level :
-    public CLevel
+    public CGeneralLevel
 {
+
 public:
     virtual void init() override;
     virtual void enter() override;
     virtual void exit() override;
 
     virtual void tick() override;
+
+public:
+    CStage1Level();
+    ~CStage1Level();
 };
 

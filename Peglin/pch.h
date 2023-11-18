@@ -15,6 +15,7 @@
 #include <list>
 #include <map>
 #include <string>
+#include <algorithm>
 
 #pragma comment(lib, "Msimg32.lib")
 

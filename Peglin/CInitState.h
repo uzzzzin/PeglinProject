@@ -5,7 +5,9 @@ class CInitState :
     public CState
 {
 private:
+    class CGeneralLevel* m_curLevel;
     class  COrbQueue* m_Queue;
+    vector<std::pair<class CEnemy*, int>> EnemysInLevel;
 
     bool NoneState;
 

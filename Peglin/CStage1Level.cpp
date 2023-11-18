@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CStage1Level.h"
 
+
 #include "CEngine.h"
 
 #include "CKeyMgr.h"
@@ -35,10 +36,66 @@ void CStage1Level::enter()
 	pPlayer->SetScale(Vec2(110.f, 110.f));
 	AddObject(PEGLIN, pPlayer);
 
+	// --------------------------------------------- enemy start
 	CEnemy* pBlueSlime1 = new CEnemy;
-	pBlueSlime1->SetPos(Vec2(600.f, 230.f));
+	pBlueSlime1->SetCurIdx(0);
+	int i = pBlueSlime1->GetCurIdx();
+	pBlueSlime1->SetPos(Vec2(EnemyXPos[i % 7],230.f ));
 	pBlueSlime1->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime1, i);
 	AddObject(MONSTER, pBlueSlime1);
+
+
+	CEnemy* pBlueSlime2 = new CEnemy;
+	pBlueSlime2->SetCurIdx(1);
+	i = pBlueSlime2->GetCurIdx();
+	pBlueSlime2->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime2->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime2, i);
+	AddObject(MONSTER, pBlueSlime2);
+
+	CEnemy* pBlueSlime3 = new CEnemy;
+	pBlueSlime3->SetCurIdx(2);
+	i = pBlueSlime3->GetCurIdx();
+	pBlueSlime3->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime3->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime3, i);
+	AddObject(MONSTER, pBlueSlime3);
+
+	CEnemy* pBlueSlime4 = new CEnemy;
+	pBlueSlime4->SetCurIdx(3);
+	i = pBlueSlime4->GetCurIdx();
+	pBlueSlime4 ->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime4->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime4, i);
+	AddObject(MONSTER, pBlueSlime4);
+
+	CEnemy* pBlueSlime5 = new CEnemy;
+	pBlueSlime5->SetCurIdx(4);
+	i = pBlueSlime5->GetCurIdx();
+	pBlueSlime5->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime5->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime5, i);
+	AddObject(MONSTER, pBlueSlime5);
+
+	CEnemy* pBlueSlime6 = new CEnemy;
+	pBlueSlime6->SetCurIdx(5);
+	i = pBlueSlime6->GetCurIdx();
+	pBlueSlime6->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime6->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime6, i);
+	AddObject(MONSTER, pBlueSlime6);
+
+	CEnemy* pBlueSlime7 = new CEnemy;
+	pBlueSlime7->SetCurIdx(6);
+	i = pBlueSlime7->GetCurIdx();
+	pBlueSlime7->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
+	pBlueSlime7->SetScale(Vec2(78.f, 48.f));
+	SetEnemysCheck(pBlueSlime7, i);
+	AddObject(MONSTER, pBlueSlime7);
+
+	// --------------------------------------------- enemy end
+
 
 	CImg* pStartBG = new CImg;
 	pStartBG->SetPos(Vec2(512.f, 300.f));
@@ -167,4 +224,19 @@ void CStage1Level::tick()
 	{
 		ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
 	}
+}
+
+CStage1Level::CStage1Level()
+{
+	EnemyXPos.push_back(530);
+	EnemyXPos.push_back(675);
+	EnemyXPos.push_back(820);
+	EnemyXPos.push_back(965);
+	EnemyXPos.push_back(1110);
+	EnemyXPos.push_back(1255);
+	EnemyXPos.push_back(1400);
+}
+
+CStage1Level::~CStage1Level()
+{
 }

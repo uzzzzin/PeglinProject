@@ -1,13 +1,20 @@
 #include "pch.h"
 #include "CEnemy.h"
 
+#include "CLevelMgr.h"
+
+#include "CUI.h"
+#include "CImg.h"
 #include "components.h"
+#include "CLevel.h"
+
 
 CEnemy::CEnemy()
 	: EnemyInitInfo{}
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
 	, m_AI(nullptr)
+	//, hpUI(nullptr)
 {
 	EnemyInfo BlueSlime = {BLUE_SLIME, L"BlueSlime", 80, 3, L"animdata\\BlueSlimeIdle.txt", L"BlueSlimeIdle",  L"animdata\\BlueSlimeDie.txt", L"BlueSlimeDie",  L"animdata\\BlueSlimeIdle.txt", L"BlueSlimeIdle" };
 
@@ -16,7 +23,6 @@ CEnemy::CEnemy()
 	m_Animator = AddComponent<CAnimator>(L"EnemyAnimator");
 	m_Movement = AddComponent<CMovement>(L"EnemyMovement");
 	m_AI = AddComponent<CStateMachine>(L"EnemyAI");
-
 
 	SetEnemyInfo(BLUE_SLIME);
 
@@ -31,6 +37,16 @@ CEnemy::CEnemy()
 CEnemy::~CEnemy()
 {
 }
+
+//void CEnemy::begin()
+//{
+//	//CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+//	//pCurLevel->AddObject(UI, hpUI);
+//
+//		//hpUI->SetPos(Vec2(GetPos().x, GetPos().y - 100.f));
+//	//hpUI->SetScale(Vec2(96.f, 42.f));
+//	//hpUI->SetImg(L"animdata\\EnemyHealthUI.txt", L"EnemyHealthUI");
+//}
 
 void CEnemy::SetEnemyInfo(ENEMY_TYPE _type)
 {
@@ -54,4 +70,5 @@ void CEnemy::SetEnemyInfo(ENEMY_TYPE _type)
 //void CEnemy::tick(float _DT)
 //{
 //	Super::tick(_DT);
+//
 //}

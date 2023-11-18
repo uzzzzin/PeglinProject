@@ -17,13 +17,18 @@ private:
     int fullHP; // 총 체력
     int damage; // 페글린에게 입힐 수 있는 데미지
 
-
+    int curIdx; // 몇 번 째에 등장할건지 ! // 7의 나머지가 될 예정.. 
 
     vector<EnemyInfo> Enemys;
+
+    //class CImg* hpUI;
 
     //vector<float> EnemyXPos;
 public:
     void SetEnemyInfo(ENEMY_TYPE _type);
+    void SetCurIdx(int _idx) { curIdx = _idx; }
+    int GetCurIdx() {return curIdx; }
+
 
 public:
     //virtual void begin() override;
