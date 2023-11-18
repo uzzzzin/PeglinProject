@@ -12,6 +12,7 @@ private:
 
     int Coin;
     int HP;
+    int AttackDamage;
 
     vector<ORB_TYPE> myOrbs;
 

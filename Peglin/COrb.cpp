@@ -88,16 +88,17 @@ void COrb::SetCurTurnOrb(ORB_TYPE _type)
 
 void COrb::begin()
 {
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
 }
 
 void COrb::tick(float _DT)
 {
 	Super::tick(_DT);
 
-	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
+	/*CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));*/
 	curOrbType = pPlayer->GetCurOrbType();
-
 	SetCurTurnOrb(curOrbType);
 
 
@@ -123,7 +124,7 @@ void COrb::tick(float _DT)
 	}
 	else if (GetDBoundaryY() < curPos.y)
 	{
-		m_AI->ChangeState((UINT)PEGLIN_ATTACK);
+		//m_AI->ChangeState((UINT)PEGLIN_ATTACK);
 		SetPos(REALCENTER);
 		m_Movement->SetVelocity({ 0,0 });
 		m_Movement->UseGravity(false);
@@ -292,7 +293,6 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		if (false == _OtherCol->GetBOnOff())
 			return;
 		
-		
 		auto movement = GetComponent<CMovement>();
 		//if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0) 
 		//{
@@ -312,10 +312,48 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		vReflect.Normalize();
 		movement->SetVelocity({ vReflect.x * speed, vReflect.y * speed });
+		
+		// 오브 타입별로 알맞는 데미지 가져와서 입히게..
+		pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+		LOG(LOGLOG, L"이게 되네");
+		/*switch (curOrbType)
+		{
+		case PEBBALL:
+		{
+			
+			
+			
+			break;
+		}
+		case DAGGORB:
+		{
+			pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+			break;
+		}
+		case INFERNORB:
+		{
+			break;
+		}
+		case SPHEAR:
+		{
+			break;
+		}
+		case RUBBORB:
+		{
+			break;
+		}
+		default:
+		{
+			LOG(ERR, L"도데체 뭘로 치고 있는거니?");
+			break;
+		}
+		}*/
 		if (!(_OtherObj->GetName() == L"Obstacle"))
 		{
 			_OtherCol->SetBOnOff(false);
+			pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
 		}
+
 
 	}
 	else if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0 && (_OtherCol->GetPos().y - _OwnCol->GetPos().y != 0))

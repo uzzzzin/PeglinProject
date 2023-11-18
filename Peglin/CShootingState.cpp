@@ -15,14 +15,21 @@ CShootingState::~CShootingState()
 
 void CShootingState::finaltick(float _DT)
 {
-	//if (m_Orb->GetDBoundaryY() < m_Orb->curPos.y)
-	//{
-	//	m_Orb->SetPos(REALCENTER);
-	//	m_Orb->GetComponent<CMovement>()->SetVelocity({0,0});
-	//	m_Orb->GetComponent<CMovement>()->UseGravity(false);
-	//	//m_Orb->GetComponent<CMovement>()->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
-	//	//GetOwnerSM()->ChangeState((UINT)STATE_INIT);
-	//}
+	if (m_Orb->GetDBoundaryY() < m_Orb->curPos.y)
+	{
+		m_Orb->SetPos(REALCENTER);
+		m_Orb->GetComponent<CMovement>()->SetVelocity({0,0});
+		m_Orb->GetComponent<CMovement>()->UseGravity(false);
+		//m_Orb->GetComponent<CMovement>()->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
+		GetOwnerSM()->ChangeState((UINT)PEGLIN_ATTACK);
+	}
+
+
+
+
+
+
+
 }
 
 void CShootingState::Enter()

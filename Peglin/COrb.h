@@ -11,6 +11,8 @@ private:
     class CMovement*  m_Movement;
     class CStateMachine* m_AI;
 
+    class CPeglinPlayer* pPlayer;
+
     vector<OrbInfo> orbs;
 
     ORB_TYPE curOrbType;

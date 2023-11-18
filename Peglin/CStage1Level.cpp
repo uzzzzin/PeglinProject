@@ -17,6 +17,7 @@
 #include "CPeglinPlayer.h"
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
+#include "CEnemy.h"
 
 void CStage1Level::init()
 {
@@ -33,6 +34,11 @@ void CStage1Level::enter()
 	pPlayer->SetPos(Vec2(440.f, 207.f));
 	pPlayer->SetScale(Vec2(110.f, 110.f));
 	AddObject(PEGLIN, pPlayer);
+
+	CEnemy* pBlueSlime1 = new CEnemy;
+	pBlueSlime1->SetPos(Vec2(600.f, 230.f));
+	pBlueSlime1->SetScale(Vec2(78.f, 48.f));
+	AddObject(MONSTER, pBlueSlime1);
 
 	CImg* pStartBG = new CImg;
 	pStartBG->SetPos(Vec2(512.f, 300.f));

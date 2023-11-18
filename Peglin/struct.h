@@ -221,13 +221,19 @@ struct OrbInfo
 struct EnemyInfo
 {
 	ENEMY_TYPE type; // 몬스터 타입
-	float hp; // 몬스터 체력
-	float damage; // 몬스터가 페글린에게 입힐 수 있는 데미지
+	wstring name;
+	int hp; // 몬스터 체력
+	int damage; // 몬스터가 페글린에게 입힐 수 있는 데미지
 	//Vec2 InitPos; // 초기 위치
-	int initPosIdx; // 초기 위치에 해당하는 벡터의 인덱스
-	bool InitAppear; // 초기에 얘가 나타날건지
-	wstring animPath; // L"animdata\\~.txt"
-	wstring animName; // L""
+	//int initPosIdx; // 초기 위치에 해당하는 벡터의 인덱스
+	//bool InitAppear; // 초기에 얘가 나타날건지
+	wstring idleAnimPath; // L"animdata\\~.txt"
+	wstring idleAnimName; // L""
+	wstring dieAnimPath; // L"animdata\\~.txt"
+	wstring dieAnimName; // L""
+	wstring AttackAnimPath; // L"animdata\\~.txt"
+	wstring AttackdieAnimName; // L""
+
 };
 
 struct FMonInfo
