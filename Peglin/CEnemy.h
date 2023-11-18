@@ -29,6 +29,7 @@ public:
     void SetCurIdx(int _idx) { curIdx = _idx; }
     int GetCurIdx() {return curIdx; }
     int GetCurHP() { return curHP; }
+    int GetDamage() { return damage; }
     void DealDamage(int _damage) { curHP = curHP - _damage;  }
 
 

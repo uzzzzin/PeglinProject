@@ -15,6 +15,8 @@
 #include "CInitState.h"
 #include "CShootingState.h"
 #include "CPeglinAttackState.h"
+#include "CMonsterAttackState.h"
+#include "CPeglinDieState.h"
 
 COrb::COrb()
 	: m_Collider(nullptr)
@@ -59,6 +61,8 @@ COrb::COrb()
 	m_AI->AddState((UINT)STATE_INIT, new CInitState);
 	m_AI->AddState((UINT)SHOOTING, new CShootingState);
 	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
+	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
+	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);
 }
 
 COrb::~COrb()
@@ -317,38 +321,6 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		//pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
 		pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
 		LOG(LOGLOG, L"이게 되네");
-		/*switch (curOrbType)
-		{
-		case PEBBALL:
-		{
-			
-			
-			
-			break;
-		}
-		case DAGGORB:
-		{
-			pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
-			break;
-		}
-		case INFERNORB:
-		{
-			break;
-		}
-		case SPHEAR:
-		{
-			break;
-		}
-		case RUBBORB:
-		{
-			break;
-		}
-		default:
-		{
-			LOG(ERR, L"도데체 뭘로 치고 있는거니?");
-			break;
-		}
-		}*/
 		if ((_OtherObj->GetName() == L"Obstacle"))
 		{
 			_OtherCol->SetBOnOff(false);

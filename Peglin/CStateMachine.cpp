@@ -82,11 +82,11 @@ CState* CStateMachine::FindState(UINT _id)
 
 void CStateMachine::ChangeState(UINT _NextID)
 {
-	CState* pNextState = FindState(_NextID);
+ 	CState* pNextState = FindState(_NextID);
 
 	if (nullptr == pNextState)
 	{
-		LOG(LOG_LEVEL::ERR, L"!!변경할 다음 상태가 없음!!");
+		//LOG(LOG_LEVEL::ERR, L"!!변경할 다음 상태가 없음!!");
 		return;
 	}
 

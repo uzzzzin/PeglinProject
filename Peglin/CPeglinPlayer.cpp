@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CPeglinPlayer.h"
 
+#include "CMonsterAttackState.h"
+
 #include "CKeyMgr.h"
 
 CPeglinPlayer::CPeglinPlayer()
@@ -30,6 +32,8 @@ CPeglinPlayer::CPeglinPlayer()
 	myOrbs.push_back(INFERNORB);
 	myOrbs.push_back(SPHEAR);
 	myOrbs.push_back(RUBBORB);
+
+	
 }
 
 CPeglinPlayer::~CPeglinPlayer()

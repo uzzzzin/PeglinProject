@@ -18,7 +18,16 @@ void CPeglinAttackState::finaltick(float _DT)
 {
 	 int damage = m_Peglin->GetAttackDamage();
 	 m_Target->DealDamage(damage);
-	 LOG(LOGLOG, L"²ó");
+
+	 if (0 <= m_Target->GetCurHP())
+	 {
+		 m_Target->IsDead();
+		 LOG(ERR, L"²ó");
+		 //m_curLevel->GetEnemyCheck().erase(m_curLevel->GetEnemyCheck().begin());
+	 }
+	 //LOG(ERR, L"²ó");
+
+	 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 }
 
 void CPeglinAttackState::Enter()

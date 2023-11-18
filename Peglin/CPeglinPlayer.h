@@ -28,6 +28,16 @@ public:
     {
         AttackDamage = AttackDamage + _damage;
     }
+
+    void ReduceHP(int _damage)
+    {
+        HP = HP - _damage;
+    }
+
+    int GetHP()
+    {
+        return HP;
+    }
     
     ORB_TYPE GetCurOrbType()
     {

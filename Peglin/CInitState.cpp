@@ -57,10 +57,10 @@ void CInitState::finaltick(float _DT)
 
 
 		// ±¸½½ Å¥
-		if (false == NoneState)
+		if (0 == m_curLevel->GetCurTurn())
 		{
-			NoneState = true;
-			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
+			//NoneState = true;
+ 			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			return;
 		}
 
@@ -105,6 +105,6 @@ void CInitState::Enter()
 
 void CInitState::Exit()
 {
-	//m_curLevel->CurTurnPP();
+	m_curLevel->CurTurnPP();
 }
 
