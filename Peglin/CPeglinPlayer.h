@@ -28,6 +28,18 @@ public:
     {
         AttackDamage = AttackDamage + _damage;
     }
+    void AddMyOrbsIdx()
+    {
+        if (myOrbs.size() <= myOrbsIdx + 1)
+        {
+            myOrbsIdx = 0;
+        }
+        else
+        {
+            ++myOrbsIdx;
+        }
+
+    }
 
     void ReduceHP(int _damage)
     {
@@ -42,6 +54,10 @@ public:
     ORB_TYPE GetCurOrbType()
     {
         return myOrbs[myOrbsIdx];
+    }
+    ORB_TYPE GetNextOrbType()
+    {
+        return myOrbs[myOrbsIdx+1];
     }
     virtual void tick(float _DT) override;
 

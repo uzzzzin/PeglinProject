@@ -50,6 +50,15 @@
     <Filter Include="Game\04. Object\UI">
       <UniqueIdentifier>{9ed7f07c-3129-4387-a378-48a456a8da37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\04. Object\StageLevel\Orb">
+      <UniqueIdentifier>{9f99d7c9-6536-40d9-a8c5-c1b70ee06101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\StageLevel\etc">
+      <UniqueIdentifier>{5cb480a2-6f32-4071-8938-340efc8fa44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\04. Object\Etc">
+      <UniqueIdentifier>{6b88e4cd-b855-4e36-8a6e-2165552f8479}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -129,27 +138,6 @@
     </ClInclude>
     <ClInclude Include="CLayer.h">
       <Filter>Game\03. Level</Filter>
-    </ClInclude>
-    <ClInclude Include="CObj.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlatform.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CMonster.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlayer.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CGuided.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CProjectile.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
-    <ClInclude Include="CTile.h">
-      <Filter>Game\04. Object</Filter>
     </ClInclude>
     <ClInclude Include="CComponent.h">
       <Filter>Game\05. Component</Filter>
@@ -232,9 +220,6 @@
     <ClInclude Include="CBombPeg.h">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClInclude>
-    <ClInclude Include="CImg.h">
-      <Filter>Game\04. Object</Filter>
-    </ClInclude>
     <ClInclude Include="CInitState.h">
       <Filter>Game\07. State</Filter>
     </ClInclude>
@@ -243,9 +228,6 @@
     </ClInclude>
     <ClInclude Include="CBeforeShootState.h">
       <Filter>Game\07. State</Filter>
-    </ClInclude>
-    <ClInclude Include="CColliderWall.h">
-      <Filter>Game\04. Object</Filter>
     </ClInclude>
     <ClInclude Include="CMonsterAttackState.h">
       <Filter>Game\07. State</Filter>
@@ -274,28 +256,7 @@
     <ClInclude Include="CEditPegUI.h">
       <Filter>Game\04. Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="COrb.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
     <ClInclude Include="CObstacle.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueue.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueueBody.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueueBodyOrbCase.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueueChain.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueueHead.h">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="COrbQueueHeadOrb.h">
       <Filter>Game\04. Object\StageLevel</Filter>
     </ClInclude>
     <ClInclude Include="CPanelUI.h">
@@ -312,6 +273,54 @@
     </ClInclude>
     <ClInclude Include="CTextUI.h">
       <Filter>Game\04. Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="COrb.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueue.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueBody.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueBodyOrbCase.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueChain.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueHead.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="COrbQueueHeadOrb.h">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClInclude>
+    <ClInclude Include="CColliderWall.h">
+      <Filter>Game\04. Object\StageLevel\etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CTile.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlatform.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CProjectile.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CGuided.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CImg.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClInclude>
+    <ClInclude Include="CObj.h">
+      <Filter>Game\04. Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -384,27 +393,6 @@
     </ClCompile>
     <ClCompile Include="CLayer.cpp">
       <Filter>Game\03. Level</Filter>
-    </ClCompile>
-    <ClCompile Include="CObj.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CMonster.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlatform.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CGuided.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CProjectile.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="CTile.cpp">
-      <Filter>Game\04. Object</Filter>
     </ClCompile>
     <ClCompile Include="CComponent.cpp">
       <Filter>Game\05. Component</Filter>
@@ -490,9 +478,6 @@
     <ClCompile Include="CBombPeg.cpp">
       <Filter>Game\04. Object\StageLevel\Peg</Filter>
     </ClCompile>
-    <ClCompile Include="CImg.cpp">
-      <Filter>Game\04. Object</Filter>
-    </ClCompile>
     <ClCompile Include="CInitState.cpp">
       <Filter>Game\07. State</Filter>
     </ClCompile>
@@ -501,9 +486,6 @@
     </ClCompile>
     <ClCompile Include="CBeforeShootState.cpp">
       <Filter>Game\07. State</Filter>
-    </ClCompile>
-    <ClCompile Include="CColliderWall.cpp">
-      <Filter>Game\04. Object</Filter>
     </ClCompile>
     <ClCompile Include="CMonsterAttackState.cpp">
       <Filter>Game\07. State</Filter>
@@ -535,27 +517,6 @@
     <ClCompile Include="CObstacle.cpp">
       <Filter>Game\04. Object\StageLevel</Filter>
     </ClCompile>
-    <ClCompile Include="COrb.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueue.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueueBody.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueueBodyOrbCase.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueueChain.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueueHead.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="COrbQueueHeadOrb.cpp">
-      <Filter>Game\04. Object\StageLevel</Filter>
-    </ClCompile>
     <ClCompile Include="CPanelUI.cpp">
       <Filter>Game\04. Object\UI</Filter>
     </ClCompile>
@@ -570,6 +531,54 @@
     </ClCompile>
     <ClCompile Include="CTextUI.cpp">
       <Filter>Game\04. Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="COrb.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueue.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueBody.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueBodyOrbCase.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueChain.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueHead.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="COrbQueueHeadOrb.cpp">
+      <Filter>Game\04. Object\StageLevel\Orb</Filter>
+    </ClCompile>
+    <ClCompile Include="CColliderWall.cpp">
+      <Filter>Game\04. Object\StageLevel\etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlatform.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CProjectile.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CTile.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CGuided.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CImg.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>Game\04. Object\Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="CObj.cpp">
+      <Filter>Game\04. Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

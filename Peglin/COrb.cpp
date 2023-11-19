@@ -22,6 +22,7 @@ COrb::COrb()
 	: m_Collider(nullptr)
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
+	, curOrbType(ORB_TYPE_END)
 	//, m_AI(nullptr)
 {
 	SetName(L"Orb");
@@ -42,8 +43,6 @@ COrb::COrb()
 
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24.f, 24.f));
-
-	SetCurTurnOrb(DAGGORB);
 
 
 	//m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
@@ -72,9 +71,9 @@ COrb::~COrb()
 void COrb::SetCurTurnOrb(ORB_TYPE _type)
 {
 
-	if (curOrbType != _type)
+	if (curOrbType == _type)
 	{
-		return;
+ 		return;
 	}
 
 	UINT a = (UINT)_type;
@@ -94,6 +93,8 @@ void COrb::begin()
 {
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
+
+	SetCurTurnOrb(pPlayer->myOrbs[0]);
 }
 
 void COrb::tick(float _DT)
@@ -102,11 +103,8 @@ void COrb::tick(float _DT)
 
 	/*CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));*/
-	curOrbType = pPlayer->GetCurOrbType();
-	SetCurTurnOrb(curOrbType);
-
-
-
+	//curOrbType = pPlayer->GetCurOrbType();
+	//SetCurTurnOrb(curOrbType);
 
 	curPos = GetPos();
 

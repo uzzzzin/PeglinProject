@@ -4,10 +4,10 @@ class CGeneralLevel :
     public CLevel
 {
 private:
-    //vector<CEnemy*> EnemysCheck;
-    //vector<pair<class CEnemy*, int>> EnemysCheck;
-    int turnCnt;
-    vector<std::pair<class CEnemy*, int>> EnemysCheck;
+
+    int turnCnt; // 현재 몇 턴까지 왔는지
+    vector<std::pair<class CEnemy*, int>> EnemysCheck; // 레벨이 보유한 적 쉑들
+    class CPeglinPlayer* my_Peglin;
 
 public:
     vector<float> EnemyXPos;

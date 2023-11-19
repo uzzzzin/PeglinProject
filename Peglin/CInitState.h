@@ -5,8 +5,10 @@ class CInitState :
     public CState
 {
 private:
+    class CPeglinPlayer* m_Peglin;
     class CGeneralLevel* m_curLevel;
     class  COrbQueue* m_Queue;
+    class COrb* m_Orb;
     vector<std::pair<class CEnemy*, int>> EnemysInLevel;
 
     bool NoneState;

@@ -4,7 +4,9 @@
 #include "CLogMgr.h"
 #include "CGeneralLevel.h"
 #include "CEnemy.h"
+#include "CPeglinPlayer.h"
 
+#include "COrb.h"
 #include "COrbQueue.h"
 #include "COrbQueueBody.h"
 #include "COrbQueueHead.h"
@@ -32,7 +34,6 @@ void CInitState::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 		return;
 	}
-
 	// 몬스터 한칸씩 땡겨주기
 
 	for (int i = 0; i < EnemysInLevel.size(); ++i)
@@ -95,6 +96,8 @@ void CInitState::finaltick(float _DT)
 				}
 				//GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			}
+			//m_Orb->SetCurTurnOrb(ORB_TYPE(m_Queue->nextOrbs[turn% m_Queue->nextOrbs.size()]));
+			m_Orb->SetCurTurnOrb(m_Peglin->GetNextOrbType());
 			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 		}
 		// here !!!!!!!!!!!!!!!!
@@ -106,13 +109,15 @@ void CInitState::Enter()
 	LOG(WARNING, L"현재 상태 : Init_State");
 
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+	m_Peglin = dynamic_cast<CPeglinPlayer*>(m_curLevel->FindObjectByName(L"PeglinPlayer"));
 	EnemysInLevel = m_curLevel->GetEnemyCheck();
 	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
-
+	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
 }
 
 void CInitState::Exit()
 {
 	m_curLevel->CurTurnPP();
+	m_Peglin->AddMyOrbsIdx();
 }
 
