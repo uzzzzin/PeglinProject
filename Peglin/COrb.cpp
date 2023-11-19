@@ -174,47 +174,6 @@ void COrb::tick(float _DT)
 	prevPos = curPos;
 }
 
-//void COrb::render(HDC _dc)
-//{
-//	Super::render(_dc);
-//
-//	if (!DEBUG_RENDER)
-//		return;
-//
-//	// 입사각
-//	FSelectPen redpen(_dc, RED_PEN);
-//
-//	MoveToEx(_dc, int(prevPos.x - curPos.x) * (300) + curPos.x, int(prevPos.y - curPos.y) * (300) + curPos.y, nullptr);
-//	LineTo(_dc, int(curPos.x), (int)curPos.y);
-//
-//	Rectangle(_dc, int(prevPos.x - 3.f)
-//		, int(prevPos.y - 3.f)
-//		, int(prevPos.x + 3.f)
-//		, int(prevPos.y + 3.f));
-//
-//	// 반사각
-//	FSelectPen greenpen(_dc, GREEN_PEN);
-//
-//	MoveToEx(_dc, int(rPos.x - curPos.x) * 300 + curPos.x, int(rPos.y - curPos.y) * (300) + curPos.y, nullptr);
-//	LineTo(_dc, int(curPos.x), (int)curPos.y);
-//
-//	Rectangle(_dc, int(curPos.x - 3.f)
-//		, int(curPos.y - 3.f)
-//		, int(curPos.x + 3.f)
-//		, int(curPos.y + 3.f));
-//
-//	// 대칭 선분
-//	FSelectPen bluepen(_dc, BLUE_PEN);
-//	MoveToEx(_dc, int(rPos.x - colPos.x) * 300 + colPos.x, int(rPos.y - colPos.y) * (300) + colPos.y, nullptr);
-//	LineTo(_dc, int(colPos.x), (int)colPos.y);
-//
-//	Rectangle(_dc, int(colPos.x - 3.f)
-//		, int(colPos.y - 3.f)
-//		, int(colPos.x + 3.f)
-//		, int(colPos.y + 3.f));
-//}
-
-//void COrb::render(HDC _dc)
 void COrb::render(HDC _dc)
 {
 	Super::render(_dc);
@@ -263,33 +222,29 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 	if (GetLBoundaryX() >= curPos.x)
 	{
 		curPos.x = GetLBoundaryX();
-		//SetPos(Vec2(curPos.x, curPos.y));
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 		return;
 	}
 	if (GetRBoundaryX() <= curPos.x)
 	{
 		curPos.x = GetRBoundaryX();
-		//SetPos(Vec2(curPos.x, curPos.y));
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 		return;
 	}
 	if (GetUBoundaryY() >= curPos.y)
 	{
 		curPos.y = GetUBoundaryY();
-		//SetPos(Vec2(curPos.x, curPos.y));
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 		return;
 	}
 	if (GetDBoundaryY() <= curPos.y)
 	{
 		curPos.y = GetDBoundaryY();
-		//SetPos(Vec2(curPos.x, curPos.y));
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 		return;
 	}
 	if (_OtherCol->GetPos().x - _OwnCol->GetPos().x != 0 && _OtherCol->GetPos().y - _OwnCol->GetPos().y != 0)
-	{
+	{ // 일반적인 충돌인 상황
 		m_pPos = _OwnCol->GetPrevColPos();
 		m_cPos = _OwnCol->GetPos();
 		m_colPos = _OtherCol->GetPos();
@@ -298,11 +253,6 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 			return;
 		
 		auto movement = GetComponent<CMovement>();
-		//if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0) 
-		//{
-		//	movement->SetVelocity({ -vel.x, -vel.y });
-		//	return;
-		//}
 
 		float a = (_OtherCol->GetPos().y - _OwnCol->GetPos().y) / (_OtherCol->GetPos().x - _OwnCol->GetPos().x);
 		float b = _OwnCol->GetPos().y - a * _OwnCol->GetPos().x;
@@ -319,14 +269,17 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		
 		// 오브 타입별로 알맞는 데미지 가져와서 입히게..
 		//pPlayer->AttackDamage = pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
-		pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
-		LOG(LOGLOG, L"이게 되네");
-		if ((_OtherObj->GetName() == L"Obstacle"))
+
+		if (!(_OtherObj->GetName() == L"Obstacle")) // 정상적인 페그에 부딪힘
 		{
 			_OtherCol->SetBOnOff(false);
-			pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+			pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
 		}
 
+		if ((_OtherObj->GetName() == L"Obstacle"))
+		{
+			pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+		}
 
 	}
 	else if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0 && (_OtherCol->GetPos().y - _OwnCol->GetPos().y != 0))
