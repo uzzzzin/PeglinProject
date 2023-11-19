@@ -9,7 +9,7 @@ private:
     class CColliderCircle* m_Collider;
     class CAnimator* m_Animator;
     class CMovement*  m_Movement;
-    class CStateMachine* m_AI;
+   // class CStateMachine* m_AI;
 
     class CPeglinPlayer* pPlayer;
 

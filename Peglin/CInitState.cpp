@@ -24,8 +24,16 @@ CInitState::~CInitState()
 
 void CInitState::finaltick(float _DT)
 {
-	// 몬스터 한칸씩 땡겨주기
 	int turn = m_curLevel->GetCurTurn();
+
+	if (0 == turn)
+	{
+		//NoneState = true;
+		GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
+		return;
+	}
+
+	// 몬스터 한칸씩 땡겨주기
 
 	for (int i = 0; i < EnemysInLevel.size(); ++i)
 	{
@@ -54,42 +62,43 @@ void CInitState::finaltick(float _DT)
 			}
 
 		}
-
+	}
 
 		// 구슬 큐
-		if (0 == m_curLevel->GetCurTurn())
+		if (0 == turn)
 		{
 			//NoneState = true;
  			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			return;
 		}
-
-		if (380.f >= m_Queue->OrbCases[m_Queue->OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
-		{
-			for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
-			{
-				float SetPosY = 425.f + 45 * (i + 1);        //425.f - 45 * i;
-				m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
-				m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
-				m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
-			}
-			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
-		}
 		else
 		{
-			for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
+			if (380.f >= m_Queue->OrbCases[m_Queue->OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
 			{
-				float SetPosY = m_Queue->OrbChains[i]->GetPos().y - 45;         //425.f - 45 * i;
-				m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
-				m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
-				m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+				for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
+				{
+					float SetPosY = 425.f + 45 * (i + 1);        //425.f - 45 * i;
+					m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
+					m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
+					m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+				}
+				//GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
+			}
+			else
+			{
+				for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
+				{
+					float SetPosY = m_Queue->OrbChains[i]->GetPos().y - 45;         //425.f - 45 * i;
+					m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
+					m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
+					m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+				}
+				//GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			}
 			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 		}
-
-
-
-	}
+		// here !!!!!!!!!!!!!!!!
+	
 }
 
 void CInitState::Enter()
@@ -97,10 +106,9 @@ void CInitState::Enter()
 	LOG(WARNING, L"현재 상태 : Init_State");
 
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
-
 	EnemysInLevel = m_curLevel->GetEnemyCheck();
-
 	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
+
 }
 
 void CInitState::Exit()

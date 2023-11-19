@@ -72,7 +72,7 @@ CState* CStateMachine::FindState(UINT _id)
 {
 	map<UINT, CState*>::iterator iter = m_mapState.find(_id);
 
-	if (iter == m_mapState.end())
+ 	if (iter == m_mapState.end())
 	{
 		return nullptr;
 	}

@@ -22,6 +22,7 @@ void CShootingState::finaltick(float _DT)
 		m_Orb->GetComponent<CMovement>()->UseGravity(false);
 		//m_Orb->GetComponent<CMovement>()->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 		GetOwnerSM()->ChangeState((UINT)PEGLIN_ATTACK);
+		return;
 	}
 
 }

@@ -20,7 +20,7 @@
 
 COrbQueue::COrbQueue()
 	: m_Animator(nullptr)
-	, m_AI(nullptr)
+	//, m_AI(nullptr)
 	, QueueHead(nullptr)
 	, QueueBody(nullptr)
 {
@@ -41,9 +41,9 @@ COrbQueue::COrbQueue()
 		nextOrbs.push_back(pPlayer->myOrbs[i]);
 	}
 
-	m_AI = AddComponent<CStateMachine>(L"AI");
-	m_AI->AddState((UINT)STATE_INIT, new CInitState);
-	m_AI->AddState((UINT)BEFORE_SHOOT, new CBeforeShootState);
+	//m_AI = AddComponent<CStateMachine>(L"AI");
+	/*m_AI->AddState((UINT)STATE_INIT, new CInitState);
+	m_AI->AddState((UINT)BEFORE_SHOOT, new CBeforeShootState);*/
 }
 
 COrbQueue::~COrbQueue()
@@ -118,7 +118,7 @@ void COrbQueue::begin()
 	}
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
 
-	m_AI->ChangeState((UINT)STATE_INIT);
+	//m_AI->ChangeState((UINT)STATE_INIT);
 
 }
 

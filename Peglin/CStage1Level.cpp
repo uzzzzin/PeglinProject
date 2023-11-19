@@ -8,6 +8,7 @@
 #include "CLevelMgr.h"
 #include "CLogMgr.h"
 #include "CCollisionMgr.h"
+#include "components.h"
 
 #include "CImg.h"
 #include "CColliderWall.h"
@@ -19,6 +20,9 @@
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
 #include "CEnemy.h"
+//#include "CState.h"
+
+
 
 void CStage1Level::init()
 {
@@ -207,6 +211,11 @@ void CStage1Level::enter()
 
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PLATFORM);
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PEG);
+
+
+	//pPlayer.m_AI->ChangeState(UINT(STATE_INIT));
+
+	//pPlayer->GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 }
 
 void CStage1Level::exit()

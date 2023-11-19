@@ -13,7 +13,7 @@ CEnemy::CEnemy()
 	: EnemyInitInfo{}
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
-	, m_AI(nullptr)
+	//, m_AI(nullptr)
 	//, hpUI(nullptr)
 {
 	EnemyInfo BlueSlime = {BLUE_SLIME, L"BlueSlime", 80, 3, L"animdata\\BlueSlimeIdle.txt", L"BlueSlimeIdle",  L"animdata\\BlueSlimeDie.txt", L"BlueSlimeDie",  L"animdata\\BlueSlimeIdle.txt", L"BlueSlimeIdle" };
@@ -22,7 +22,7 @@ CEnemy::CEnemy()
 
 	m_Animator = AddComponent<CAnimator>(L"EnemyAnimator");
 	m_Movement = AddComponent<CMovement>(L"EnemyMovement");
-	m_AI = AddComponent<CStateMachine>(L"EnemyAI");
+	//m_AI = AddComponent<CStateMachine>(L"EnemyAI");
 
 	SetEnemyInfo(BLUE_SLIME);
 

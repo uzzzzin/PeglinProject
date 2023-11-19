@@ -5,6 +5,17 @@
 
 #include "CKeyMgr.h"
 
+#include "components.h"
+
+#include "CInitState.h"
+#include "CBeforeShootState.h"
+#include "CShootingState.h"
+#include "CPeglinAttackState.h"
+#include "CMonsterAttackState.h"
+#include "CPeglinDieState.h"
+
+
+
 CPeglinPlayer::CPeglinPlayer()
 	: m_Animator(nullptr)
 	, m_Collider(nullptr)
@@ -20,10 +31,21 @@ CPeglinPlayer::CPeglinPlayer()
 	m_Animator = AddComponent<CAnimator>(L"Animator");
 	m_Collider = AddComponent<CCollider>(L"Collider");
 	m_AI = AddComponent<CStateMachine>(L"AI");
+	
+	m_AI->AddState((UINT)STATE_INIT, new CInitState);
+	m_AI->AddState((UINT)BEFORE_SHOOT, new CBeforeShootState);
+	m_AI->AddState((UINT)SHOOTING, new CShootingState);
+	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
+	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
+	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);
+	
 	//m_Movement = AddComponent<CMovement>(L"Movement");
 
 	m_Animator->LoadAnimation(L"animdata\\PeglinIdle.txt");
 	m_Animator->Play(L"PeglinIdle", true);
+
+
+
 
 	m_Collider->SetScale(Vec2(76.f,90.f));
 
@@ -33,7 +55,7 @@ CPeglinPlayer::CPeglinPlayer()
 	myOrbs.push_back(SPHEAR);
 	myOrbs.push_back(RUBBORB);
 
-	
+ 	m_AI->ChangeState(UINT(STATE_INIT));
 }
 
 CPeglinPlayer::~CPeglinPlayer()

@@ -22,7 +22,7 @@ COrb::COrb()
 	: m_Collider(nullptr)
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
-	, m_AI(nullptr)
+	//, m_AI(nullptr)
 {
 	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
@@ -57,12 +57,12 @@ COrb::COrb()
 	m_Movement->SetGravity(Vec2(0.f, 980.f));
 	m_Movement->SetGround(false);
 
-	m_AI = AddComponent<CStateMachine>(L"AI");
+	/*m_AI = AddComponent<CStateMachine>(L"AI");
 	m_AI->AddState((UINT)STATE_INIT, new CInitState);
 	m_AI->AddState((UINT)SHOOTING, new CShootingState);
 	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
 	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
-	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);
+	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);*/
 }
 
 COrb::~COrb()
@@ -139,7 +139,7 @@ void COrb::tick(float _DT)
 	if (KEY_TAP(SPACE))
 	{
 		m_Movement->UseGravity(true);
-		m_AI->ChangeState((UINT)SHOOTING);
+		pPlayer->m_AI->ChangeState((UINT)SHOOTING);
 	}
 
 

@@ -8,7 +8,7 @@ class COrbQueue :
 protected:
     class CAnimator* m_Animator;
     class CMovement* m_Movement;
-    class CStateMachine* m_AI;
+   // class CStateMachine* m_AI;
 
 private:
     class COrbQueueHead* QueueHead;
