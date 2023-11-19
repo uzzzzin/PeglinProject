@@ -10,7 +10,7 @@
 CBombPeg::CBombPeg()
 {
 	SetiDieCnt(2);
-
+	SetName(L"BombPeg");
 	//CTexture* pTex = CAssetMgr::GetInst()->LoadTexture(L"BombPeg", L"texture\\BombPeg.png");
 	//m_Animator->LoadAnimation(pTex, L"BombPeg", L"animdata\\BombPegMeta.txt",false);
 

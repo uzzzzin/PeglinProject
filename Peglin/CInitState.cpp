@@ -15,7 +15,6 @@
 #include "CImg.h"
 
 CInitState::CInitState()
-	: NoneState(false)
 {
 }
 
@@ -24,9 +23,40 @@ CInitState::~CInitState()
 }
 
 
+void CInitState::Enter()
+{
+	LOG(WARNING, L"현재 상태 : Init_State");
+
+	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+
+	m_Peglin = dynamic_cast<CPeglinPlayer*>(m_curLevel->FindObjectByName(L"PeglinPlayer")); // GetOwnerSM()->GetOwner()
+	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
+	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
+	
+	if (0 == m_curLevel->GetCurTurn() && !bRealInit)
+	{
+		bRealInit = true;
+		return;
+	}
+
+	// 턴이 한 번 이상 돌았을 때
+	m_curLevel->CurTurnPP();
+	m_Peglin->AddMyOrbsIdx();
+	m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[0]);
+}
+
+
+void CInitState::Exit()
+{
+	
+}
+
+
+
 void CInitState::finaltick(float _DT)
 {
 	int turn = m_curLevel->GetCurTurn();
+	vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();
 
 	if (0 == turn)
 	{
@@ -102,22 +132,5 @@ void CInitState::finaltick(float _DT)
 		}
 		// here !!!!!!!!!!!!!!!!
 	
-}
-
-void CInitState::Enter()
-{
-	LOG(WARNING, L"현재 상태 : Init_State");
-
-	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
-	m_Peglin = dynamic_cast<CPeglinPlayer*>(m_curLevel->FindObjectByName(L"PeglinPlayer"));
-	EnemysInLevel = m_curLevel->GetEnemyCheck();
-	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
-	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
-}
-
-void CInitState::Exit()
-{
-	m_curLevel->CurTurnPP();
-	m_Peglin->AddMyOrbsIdx();
 }
 

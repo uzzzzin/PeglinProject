@@ -11,7 +11,7 @@
 CCoinPeg::CCoinPeg()
 	:bSlimed(false)
 {
-
+	SetName(L"CoinPeg");
 	m_Animator->LoadAnimation(L"animdata\\CoinPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedCoinPeg.txt");
 

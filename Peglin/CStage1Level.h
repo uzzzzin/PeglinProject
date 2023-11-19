@@ -3,6 +3,8 @@
 class CStage1Level :
     public CGeneralLevel
 {
+private:
+    class CPeglinPlayer* my_Peglin; // Æä±Û¸°
 
 public:
     virtual void init() override;

@@ -4,7 +4,7 @@
 
 CRefreshPeg::CRefreshPeg()
 {
-
+	SetName(L"RefreshPeg");
 	m_Animator->LoadAnimation(L"animdata\\RefreshPeg.txt");
 	m_Animator->Play(L"RefreshPeg", true);
 

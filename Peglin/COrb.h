@@ -9,13 +9,15 @@ private:
     class CColliderCircle* m_Collider;
     class CAnimator* m_Animator;
     class CMovement*  m_Movement;
-   // class CStateMachine* m_AI;
 
-    class CPeglinPlayer* pPlayer;
+    //class CPeglinPlayer* pPlayer;
 
-    vector<OrbInfo> orbs;
+    vector<OrbInfo> orbs; // 오브들 정보들이 담겨 있다.
+
+    vector<std::pair<PEG_TYPE, int>> hitOrbs;
 
     ORB_TYPE curOrbType;
+
     int curDamage;
     int curCritDamage; 
     int curAttackCnt;
@@ -34,19 +36,19 @@ public:
     
 public:
     ORB_TYPE GetCurOrbType()
-    {
+    { return curOrbType; }
 
-        return curOrbType;
-    }
     Vec2 GetPrevPos()
-    {
-        return prevPos;
-    }
-    Vec2 GetDir()
-    {
-        return (curPos - prevPos).Normalize();
-    }
+    {   return prevPos;}
 
+    Vec2 GetDir()
+    {    return (curPos - prevPos).Normalize(); }
+
+    vector<OrbInfo> GetOrbsInfo()
+    {  return orbs;}
+
+    vector<std::pair<PEG_TYPE, int>> GetHitOrbsCnt()
+    { return hitOrbs;}
 
     void SetCurTurnOrb(ORB_TYPE _type);
 

@@ -15,10 +15,10 @@ CBeforeShootState::~CBeforeShootState()
 
 void CBeforeShootState::finaltick(float _DT)
 {
-	//if (KEY_TAP(SPACE))
-	//{
-		//GetOwnerSM()->ChangeState((UINT)SHOOTING);
-	//}
+	if (KEY_TAP(SPACE))
+	{
+		GetOwnerSM()->ChangeState((UINT)SHOOTING);
+	}
 }
 
 void CBeforeShootState::Enter()

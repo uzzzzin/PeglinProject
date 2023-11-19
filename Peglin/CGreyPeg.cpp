@@ -14,7 +14,7 @@
 CGreyPeg::CGreyPeg()
 	:bSlimed(true)
 {
-
+	SetName(L"GreyPeg");
 	m_Animator->LoadAnimation(L"animdata\\firstGreyPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\GreyPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedGreyPeg.txt");

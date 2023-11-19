@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CStage1Level.h"
-
-
+#include "CGeneralLevel.h"
+#include "CPeglinPlayer.h"
 #include "CEngine.h"
 
 #include "CKeyMgr.h"
@@ -16,7 +16,7 @@
 #include "CGreyPeg.h"
 #include "COrb.h"
 #include "CObstacle.h"
-#include "CPeglinPlayer.h"
+
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
 #include "CEnemy.h"
@@ -34,11 +34,6 @@ void CStage1Level::enter()
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 	CCamera::GetInst()->SetLookAt(vLookAt);
-
-	CPeglinPlayer* pPlayer = new CPeglinPlayer;
-	pPlayer->SetPos(Vec2(440.f, 207.f));
-	pPlayer->SetScale(Vec2(110.f, 110.f));
-	AddObject(PEGLIN, pPlayer);
 
 	// --------------------------------------------- enemy start
 	CEnemy* pBlueSlime1 = new CEnemy;
@@ -237,13 +232,11 @@ void CStage1Level::tick()
 
 CStage1Level::CStage1Level()
 {
-	EnemyXPos.push_back(530);
-	EnemyXPos.push_back(675);
-	EnemyXPos.push_back(820);
-	EnemyXPos.push_back(965);
-	EnemyXPos.push_back(1110);
-	EnemyXPos.push_back(1255);
-	EnemyXPos.push_back(1400);
+	my_Peglin = new CPeglinPlayer;
+	my_Peglin->SetPos(Vec2(440.f, 207.f));
+	my_Peglin->SetScale(Vec2(110.f, 110.f));
+
+	AddObject(PEGLIN, my_Peglin);
 }
 
 CStage1Level::~CStage1Level()

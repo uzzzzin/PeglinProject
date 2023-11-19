@@ -13,6 +13,7 @@
 #include "CPeglinAttackState.h"
 #include "CMonsterAttackState.h"
 #include "CPeglinDieState.h"
+#include "CGeneralLevel.h"
 
 
 
@@ -44,9 +45,6 @@ CPeglinPlayer::CPeglinPlayer()
 	m_Animator->LoadAnimation(L"animdata\\PeglinIdle.txt");
 	m_Animator->Play(L"PeglinIdle", true);
 
-
-
-
 	m_Collider->SetScale(Vec2(76.f,90.f));
 
 	myOrbs.push_back(PEBBALL);
@@ -60,6 +58,33 @@ CPeglinPlayer::CPeglinPlayer()
 
 CPeglinPlayer::~CPeglinPlayer()
 {
+}
+
+void CPeglinPlayer::AddMyOrbsIdx()
+{
+}
+
+ORB_TYPE CPeglinPlayer::GetCurOrbType()
+{
+	CGeneralLevel* pCurLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+	 int turn = pCurLevel->GetCurTurn();
+
+	 myOrbsIdx = turn % myOrbs.size();
+	 return myOrbs[myOrbsIdx];
+}
+
+ORB_TYPE CPeglinPlayer::GetNextOrbType()
+{
+	CGeneralLevel* pCurLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+	int turn = pCurLevel->GetCurTurn();
+
+	myOrbsIdx = turn % myOrbs.size();
+
+	if ((myOrbsIdx + 1) >= myOrbs.size())
+	{
+		return myOrbs[1];
+	}
+	return myOrbs[myOrbsIdx + 1];
 }
 
 void CPeglinPlayer::tick(float _DT)

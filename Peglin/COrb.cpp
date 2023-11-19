@@ -37,6 +37,14 @@ COrb::COrb()
 	orbs.push_back(Sphear);
 	orbs.push_back(Rubborb);
 
+	hitOrbs.push_back(make_pair(GREY_PEG, 0 ));
+	hitOrbs.push_back(make_pair(COIN_PEG, 0));
+	hitOrbs.push_back(make_pair(CRITICAL_PEG, 0));
+	hitOrbs.push_back(make_pair(REFRESH_PEG, 0));
+	hitOrbs.push_back(make_pair(BOMB_PEG, 0));
+
+
+
 	m_Animator = AddComponent<CAnimator>(L"OrbAnimator");
 	m_Collider = AddComponent<CColliderCircle>(L"OrbCollider");
 	m_Movement = AddComponent<CMovement>(L"OrbMovement");
@@ -71,7 +79,7 @@ COrb::~COrb()
 void COrb::SetCurTurnOrb(ORB_TYPE _type)
 {
 
-	if (curOrbType == _type)
+	if (curOrbType == _type) // 지금 오브 옷이 나중 오브와 같다면
 	{
  		return;
 	}
@@ -92,19 +100,12 @@ void COrb::SetCurTurnOrb(ORB_TYPE _type)
 void COrb::begin()
 {
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
-
-	SetCurTurnOrb(pPlayer->myOrbs[0]);
+	// SetCurTurnOrb(pPlayer->myOrbs[0]); 이거 오브말고 스테이트에서 해야 함
 }
 
 void COrb::tick(float _DT)
 {
 	Super::tick(_DT);
-
-	/*CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));*/
-	//curOrbType = pPlayer->GetCurOrbType();
-	//SetCurTurnOrb(curOrbType);
 
 	curPos = GetPos();
 
@@ -137,7 +138,7 @@ void COrb::tick(float _DT)
 	if (KEY_TAP(SPACE))
 	{
 		m_Movement->UseGravity(true);
-		pPlayer->m_AI->ChangeState((UINT)SHOOTING);
+		//pPlayer->m_AI->ChangeState((UINT)SHOOTING); // BeforeShooting 으로 가라
 	}
 
 
@@ -270,13 +271,39 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		if (!(_OtherObj->GetName() == L"Obstacle")) // 정상적인 페그에 부딪힘
 		{
+			LOG(LOGLOG, L"Obstacle에 부딪힌 게 아님.");
 			_OtherCol->SetBOnOff(false);
-			pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
+
+			if (L"GreyPeg" == _OtherObj->GetName())
+			{
+				++(hitOrbs[0].second);
+			}
+			else if (L"CoinPeg" == _OtherObj->GetName())
+			{
+				++(hitOrbs[1].second);
+			}
+			else if (L"CritPeg" == _OtherObj->GetName())
+			{
+				++(hitOrbs[2].second);
+			}
+			else if (L"RefreshPeg" == _OtherObj->GetName())
+			{
+				++(hitOrbs[3].second);
+			}
+			else if (L"BombPeg" == _OtherObj->GetName())
+			{
+				++(hitOrbs[4].second);
+			}
+			else
+			{
+				LOG(ERR, L"페그 데미지 이상한 게 들어왔는데? 사곤데?");
+			}
+			//pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
 		}
 
 		if ((_OtherObj->GetName() == L"Obstacle"))
 		{
-			pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
+			//pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
 		}
 
 	}
