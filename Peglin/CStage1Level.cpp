@@ -20,8 +20,6 @@
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
 #include "CEnemy.h"
-//#include "CState.h"
-
 
 
 void CStage1Level::init()
@@ -35,19 +33,26 @@ void CStage1Level::enter()
 	vLookAt /= 2.f;
 	CCamera::GetInst()->SetLookAt(vLookAt);
 
+	//my_Peglin->GetComponent<class CStateMachine>()->ChangeState(UINT(STATE_INIT));
+	my_Peglin = new CPeglinPlayer;
+	my_Peglin->SetPos(Vec2(440.f, 207.f));
+	my_Peglin->SetScale(Vec2(110.f, 110.f));
+
+	AddObject(PEGLIN, my_Peglin);
+
 	// --------------------------------------------- enemy start
-	CEnemy* pBlueSlime1 = new CEnemy;
-	pBlueSlime1->SetCurIdx(0);
-	int i = pBlueSlime1->GetCurIdx();
-	pBlueSlime1->SetPos(Vec2(EnemyXPos[i % 7],230.f ));
-	pBlueSlime1->SetScale(Vec2(78.f, 48.f));
-	SetEnemysCheck(pBlueSlime1, i);
-	AddObject(MONSTER, pBlueSlime1);
+	//CEnemy* pBlueSlime1 = new CEnemy;
+	//pBlueSlime1->SetCurIdx(0);
+	//int i = pBlueSlime1->GetCurIdx();
+	//pBlueSlime1->SetPos(Vec2(EnemyXPos[i % 7],230.f ));
+	//pBlueSlime1->SetScale(Vec2(78.f, 48.f));
+	//SetEnemysCheck(pBlueSlime1, i);
+	//AddObject(MONSTER, pBlueSlime1);
 
 
 	CEnemy* pBlueSlime2 = new CEnemy;
 	pBlueSlime2->SetCurIdx(1);
-	i = pBlueSlime2->GetCurIdx();
+	int i = pBlueSlime2->GetCurIdx();
 	pBlueSlime2->SetPos(Vec2(EnemyXPos[i % 7], 230.f));
 	pBlueSlime2->SetScale(Vec2(78.f, 48.f));
 	SetEnemysCheck(pBlueSlime2, i);
@@ -108,6 +113,12 @@ void CStage1Level::enter()
 	//pLWall->SetImg(L"animdata\\LWall.txt", L"LWall");
 	//AddObject(PLATFORM, pLWall);
 
+	//CImg* pQueueHead = new CImg;
+	//pQueueHead->SetPos(Vec2(444.5f, 360.f));
+	//pQueueHead->SetScale(Vec2(105.f, 105.f));
+	//pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
+	//AddObject(PLATFORM, pQueueHead);
+
 	COrbQueue* pOrbQueue = new COrbQueue;
 	pOrbQueue->SetPos(Vec2(444.5f, 585.f));
 	pOrbQueue->SetScale(Vec2(135.f, 630.f));
@@ -118,14 +129,6 @@ void CStage1Level::enter()
 	pRWall->SetScale(Vec2(45.f, 630.f));
 	pRWall->SetImg(L"animdata\\RWall.txt", L"RWall");
 	AddObject(PLATFORM, pRWall);
-
-
-
-	//CImg* pQueueHead = new CImg;
-	//pQueueHead->SetPos(Vec2(444.5f, 360.f));
-	//pQueueHead->SetScale(Vec2(105.f, 105.f));
-	//pQueueHead->SetImg(L"animdata\\QueueHead.txt", L"QueueHead");
-	//AddObject(PLATFORM, pQueueHead);
 
 	//CPlatform* pFloor = new CPlatform;
 	//pFloor->SetPos(Vec2(912.f, 901.f));
@@ -143,10 +146,10 @@ void CStage1Level::enter()
 	pOrb->SetScale(Vec2(24, 24));
 	AddObject(ORB, pOrb);
 
-	COrbQueueHeadOrb* pQueueOrb = new COrbQueueHeadOrb;
-	pQueueOrb->SetPos(Vec2(444.5f, 357.f));
-	pQueueOrb->SetScale(Vec2(50, 50));
-	AddObject(PLAYER_PJ, pQueueOrb);
+	//COrbQueueHeadOrb* pQueueOrb = new COrbQueueHeadOrb;
+	//pQueueOrb->SetPos(Vec2(444.5f, 357.f));
+	//pQueueOrb->SetScale(Vec2(50, 50));
+	//AddObject(PLAYER_PJ, pQueueOrb);
 
 	CColliderWall* pForest = new CColliderWall;
 	pForest->SetPos(Vec2(800.f, 150.f));
@@ -231,12 +234,9 @@ void CStage1Level::tick()
 }
 
 CStage1Level::CStage1Level()
+	: my_Peglin(nullptr)
 {
-	my_Peglin = new CPeglinPlayer;
-	my_Peglin->SetPos(Vec2(440.f, 207.f));
-	my_Peglin->SetScale(Vec2(110.f, 110.f));
 
-	AddObject(PEGLIN, my_Peglin);
 }
 
 CStage1Level::~CStage1Level()

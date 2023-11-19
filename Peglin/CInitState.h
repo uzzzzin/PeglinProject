@@ -9,7 +9,11 @@ private:
     class CGeneralLevel* m_curLevel;
 
     class  COrbQueue* m_Queue;
+    class COrbQueueHeadOrb* m_HeadOrb;
     class COrb* m_Orb;
+
+
+
     //vector<std::pair<class CEnemy*, int>> EnemysInLevel;
 
     bool bRealInit = false; // 진짜 맨첨인지만 알려주는

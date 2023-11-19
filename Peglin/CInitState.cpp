@@ -8,6 +8,7 @@
 
 #include "COrb.h"
 #include "COrbQueue.h"
+#include "COrbQueueHeadOrb.h"
 #include "COrbQueueBody.h"
 #include "COrbQueueHead.h"
 #include "COrbQueueChain.h"
@@ -16,6 +17,7 @@
 
 CInitState::CInitState()
 {
+	
 }
 
 CInitState::~CInitState()
@@ -28,13 +30,15 @@ void CInitState::Enter()
 	LOG(WARNING, L"현재 상태 : Init_State");
 
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
-
 	m_Peglin = dynamic_cast<CPeglinPlayer*>(m_curLevel->FindObjectByName(L"PeglinPlayer")); // GetOwnerSM()->GetOwner()
 	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
+	m_HeadOrb = dynamic_cast<COrbQueueHeadOrb*>(m_Queue->QueueHeadOrb);
 	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
-	
+
+
 	if (0 == m_curLevel->GetCurTurn() && !bRealInit)
 	{
+		m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[0]);
 		bRealInit = true;
 		return;
 	}
@@ -42,7 +46,8 @@ void CInitState::Enter()
 	// 턴이 한 번 이상 돌았을 때
 	m_curLevel->CurTurnPP();
 	m_Peglin->AddMyOrbsIdx();
-	m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[0]);
+	m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[m_curLevel->GetCurTurn() % m_Peglin->GetOrbs().size()]);
+	m_HeadOrb->OrbAnimPlay(m_Peglin->GetCurOrbType());
 }
 
 
@@ -64,8 +69,8 @@ void CInitState::finaltick(float _DT)
 		GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 		return;
 	}
-	// 몬스터 한칸씩 땡겨주기
 
+	// 몬스터 한칸씩 땡겨주기
 	for (int i = 0; i < EnemysInLevel.size(); ++i)
 	{
 		if (0 == i)
@@ -98,39 +103,44 @@ void CInitState::finaltick(float _DT)
 		// 구슬 큐
 		if (0 == turn)
 		{
-			//NoneState = true;
  			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			return;
 		}
 		else
 		{
-			if (380.f >= m_Queue->OrbCases[m_Queue->OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
+			if ( 0 == m_Peglin->GetMyOrbIdx()) // 구슬 리필
 			{
 				for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
 				{
-					float SetPosY = 425.f + 45 * (i + 1);        //425.f - 45 * i;
+					float SetPosY = 425.f + 45 * i;        //425.f - 45 * i;
 					m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
 					m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
 					m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
 				}
-				//GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 			}
 			else
 			{
 				for (int i = 0; i < m_Queue->nextOrbs.size() - 1; ++i)
 				{
-					float SetPosY = m_Queue->OrbChains[i]->GetPos().y - 45;         //425.f - 45 * i;
-					m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
-					m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
-					m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+					float SetPosY = m_Queue->OrbChains[i]->GetPos().y - 45;
+
+						if (i < m_Peglin->GetMyOrbIdx() )
+						{
+							m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY + 5000.f));
+							m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY + 5000.f));
+							m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY + 5000.f));
+						}
+						else
+						{
+							m_Queue->OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
+							m_Queue->OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
+							m_Queue->OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
+						}
+
 				}
-				//GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
+
 			}
-			//m_Orb->SetCurTurnOrb(ORB_TYPE(m_Queue->nextOrbs[turn% m_Queue->nextOrbs.size()]));
-			m_Orb->SetCurTurnOrb(m_Peglin->GetNextOrbType());
 			GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
 		}
-		// here !!!!!!!!!!!!!!!!
-	
 }
 

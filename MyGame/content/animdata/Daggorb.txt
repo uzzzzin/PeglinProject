@@ -18,7 +18,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 1
@@ -29,7 +29,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 2
@@ -40,7 +40,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 3
@@ -51,7 +51,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 4
@@ -62,7 +62,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 5
@@ -73,7 +73,7 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000
 
 [FRAME_NUM]
 6
@@ -84,4 +84,4 @@ texture\Daggorb.png
 [OFFSET]
 0.00000 0.00000
 [DURATION]
-0.10000
+0.15000

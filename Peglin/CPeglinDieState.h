@@ -3,6 +3,9 @@
 class CPeglinDieState :
     public CState
 {
+private:
+    class CPeglinPlayer* m_Peglin;
+    class CGeneralLevel* m_curLevel;
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

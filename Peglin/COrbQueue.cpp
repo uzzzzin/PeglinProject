@@ -5,6 +5,7 @@
 #include "COrbQueueHead.h"
 #include "COrbQueueChain.h"
 #include "COrbQueueBodyOrbCase.h"
+#include "COrbQueueHeadOrb.h"
 
 #include "CLevelMgr.h"
 #include "CLevel.h"
@@ -23,6 +24,7 @@ COrbQueue::COrbQueue()
 	//, m_AI(nullptr)
 	, QueueHead(nullptr)
 	, QueueBody(nullptr)
+	, QueueHeadOrb(nullptr)
 {
 	SetName(L"OrbQueue");
 	m_Animator = AddComponent<CAnimator>(L"Animator");
@@ -31,6 +33,7 @@ COrbQueue::COrbQueue()
 
 	QueueHead = new COrbQueueHead;
 	QueueBody = new COrbQueueBody;
+	QueueHeadOrb = new COrbQueueHeadOrb;
 
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	CPeglinPlayer* pPlayer = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
@@ -40,20 +43,17 @@ COrbQueue::COrbQueue()
 	{
 		nextOrbs.push_back(pPlayer->myOrbs[i]);
 	}
-
-	//m_AI = AddComponent<CStateMachine>(L"AI");
-	/*m_AI->AddState((UINT)STATE_INIT, new CInitState);
-	m_AI->AddState((UINT)BEFORE_SHOOT, new CBeforeShootState);*/
 }
 
 COrbQueue::~COrbQueue()
 {
-
 }
 
 void COrbQueue::begin()
 {
 	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueBody);
+	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
+	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHeadOrb);
 
 	for (int i = 0; i < nextOrbs.size() - 1; ++i)
 	{
@@ -111,41 +111,20 @@ void COrbQueue::begin()
 		}
 		default:
 		{
-			LOG(ERR, L"오브 대가리 이상함.");
+			LOG(ERR, L"오브 큐  대가리 이미지 이상함.");
 			break;
 		}
 		}
+		// 큐 머리에 렌더되는 오브 이미지 QueueHeadOrb Img
+		QueueHeadOrb->OrbAnimPlay(ORB_TYPE(nextOrbs[0]));
+		QueueHeadOrb->SetPos(Vec2(444.5f, 357.f));
+		QueueHeadOrb->SetScale(Vec2(50, 50));
 	}
-	CLevelMgr::GetInst()->GetCurLevel()->GetLayer(PLATFORM)->AddObject(QueueHead);
-
-	//m_AI->ChangeState((UINT)STATE_INIT);
 
 }
 
 void COrbQueue::tick(float _DT)
 {
 	Super::tick(_DT);
-
-	if (KEY_TAP(F))
-	{
-		if (380.f >= OrbCases[OrbCases.size() - 1]->GetPos().y) // 구슬 큐 리로드
-		{
-			for (int i = 0; i < nextOrbs.size() - 1; ++i)
-			{
-				float SetPosY = 425.f + 45 * (i+1);        //425.f - 45 * i;
-				OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
-				OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
-				OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
-			}
-		}
-		for (int i = 0; i < nextOrbs.size() - 1; ++i)
-		{
-			float SetPosY = OrbChains[i]->GetPos().y - 45;         //425.f - 45 * i;
-			OrbChains[i]->SetPos(Vec2(444.5f, SetPosY));
-			OrbCases[i]->SetPos(Vec2(444.5f, SetPosY));
-			OrbImgs[i]->SetPos(Vec2(444.5f, SetPosY));
-		}
-	}
-
-	//m_AI->ChangeState((UINT)BEFORE_SHOOT);
 }
+

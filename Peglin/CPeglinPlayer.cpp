@@ -53,7 +53,7 @@ CPeglinPlayer::CPeglinPlayer()
 	myOrbs.push_back(SPHEAR);
 	myOrbs.push_back(RUBBORB);
 
- 	m_AI->ChangeState(UINT(STATE_INIT));
+ 	//m_AI->ChangeState(UINT(STATE_INIT));
 }
 
 CPeglinPlayer::~CPeglinPlayer()
@@ -85,6 +85,11 @@ ORB_TYPE CPeglinPlayer::GetNextOrbType()
 		return myOrbs[1];
 	}
 	return myOrbs[myOrbsIdx + 1];
+}
+
+void CPeglinPlayer::begin()
+{
+	m_AI->ChangeState(UINT(STATE_INIT));
 }
 
 void CPeglinPlayer::tick(float _DT)

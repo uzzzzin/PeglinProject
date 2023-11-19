@@ -9,32 +9,21 @@
 COrbQueueHeadOrb::COrbQueueHeadOrb()
 	: m_Animator(nullptr)
 {
-
 	m_Animator = AddComponent<CAnimator>(L"Animator");
 	m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
 	m_Animator->LoadAnimation(L"animdata\\Daggorb.txt");
 	m_Animator->LoadAnimation(L"animdata\\Infernorb.txt");
 	m_Animator->LoadAnimation(L"animdata\\Sphear.txt");
 	m_Animator->LoadAnimation(L"animdata\\Rubborb.txt");
-
-	//curOrbType = CLevelMgr::GetInst()->GetCurLevel()->GetLayer(ORB)->GetObjects().begin()->
-	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	COrb* pOrb = dynamic_cast<COrb*>(pCurLevel->FindObjectByName(L"Orb"));
-	 curOrbType = pOrb->GetCurOrbType();
-
 }
 
 COrbQueueHeadOrb::~COrbQueueHeadOrb()
 {
 }
 
-void COrbQueueHeadOrb::tick(float _DT)
+void COrbQueueHeadOrb::OrbAnimPlay(ORB_TYPE _orbType)
 {
-	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	COrb* pOrb = dynamic_cast<COrb*>(pCurLevel->FindObjectByName(L"Orb"));
-	curOrbType = pOrb->GetCurOrbType();
-
-	switch (curOrbType)
+	switch (_orbType)
 	{
 	case PEBBALL:
 	{
@@ -63,10 +52,8 @@ void COrbQueueHeadOrb::tick(float _DT)
 	}
 	default:
 	{
-		LOG(ERR, L"오브 대가리 이상함.");
+		LOG(ERR, L"오브 대가리 이미지가 매우 매우 이상함.");
 		break;
 	}
-
 	}
-	
 }

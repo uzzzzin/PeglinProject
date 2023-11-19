@@ -10,7 +10,8 @@ private:
     ORB_TYPE curOrbType;
 
 public:
-    virtual void tick(float _DT) override;
+    void OrbAnimPlay(ORB_TYPE _orbType);
+    //virtual void tick(float _DT) override;
 
 public:
     CLONE(COrbQueueHeadOrb);

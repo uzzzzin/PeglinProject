@@ -53,6 +53,7 @@ public:
     //{
     //    return myOrbs[myOrbsIdx+1];
     //}
+    virtual void begin() override;
     virtual void tick(float _DT) override;
 
 public:

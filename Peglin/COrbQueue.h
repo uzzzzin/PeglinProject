@@ -13,6 +13,9 @@ protected:
 private:
     class COrbQueueHead* QueueHead;
     class COrbQueueBody* QueueBody;
+public:
+    class COrbQueueHeadOrb* QueueHeadOrb;
+
 
 public:
     ORB_TYPE curOrb;

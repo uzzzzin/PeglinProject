@@ -100,7 +100,7 @@ void COrb::SetCurTurnOrb(ORB_TYPE _type)
 void COrb::begin()
 {
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	// SetCurTurnOrb(pPlayer->myOrbs[0]); 이거 오브말고 스테이트에서 해야 함
+	SetCurTurnOrb(dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"))->myOrbs[0]); //이거 오브말고 스테이트에서 해야 함
 }
 
 void COrb::tick(float _DT)
