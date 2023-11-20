@@ -141,6 +141,7 @@
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CAsset.h" />
     <ClInclude Include="CAssetMgr.h" />
+    <ClInclude Include="CAttackProjectile.h" />
     <ClInclude Include="CBeforeShootState.h" />
     <ClInclude Include="CBoardEditLevel.h" />
     <ClInclude Include="CBombPeg.h" />
@@ -227,6 +228,7 @@
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTile.h" />
     <ClInclude Include="CTimeMgr.h" />
+    <ClInclude Include="CTransform.h" />
     <ClInclude Include="CUI.h" />
     <ClInclude Include="CUIMgr.h" />
     <ClInclude Include="define.h" />
@@ -253,6 +255,7 @@
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CAsset.cpp" />
     <ClCompile Include="CAssetMgr.cpp" />
+    <ClCompile Include="CAttackProjectile.cpp" />
     <ClCompile Include="CBeforeShootState.cpp" />
     <ClCompile Include="CBoardEditLevel.cpp" />
     <ClCompile Include="CBombPeg.cpp" />
@@ -338,6 +341,7 @@
     <ClCompile Include="CTexture.cpp" />
     <ClCompile Include="CTile.cpp" />
     <ClCompile Include="CTimeMgr.cpp" />
+    <ClCompile Include="CTransform.cpp" />
     <ClCompile Include="CUI.cpp" />
     <ClCompile Include="CUIMgr.cpp" />
     <ClCompile Include="func.cpp" />

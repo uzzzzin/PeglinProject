@@ -14,6 +14,7 @@ CCoinPeg::CCoinPeg()
 	SetName(L"CoinPeg");
 	m_Animator->LoadAnimation(L"animdata\\CoinPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedCoinPeg.txt");
+	m_Animator->LoadAnimation(L"animdata\\CritCoinPeg.txt");
 
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24, 24));
@@ -38,6 +39,19 @@ void CCoinPeg::begin()
 
 void CCoinPeg::tick(float _DT)
 {
+	if (!m_Collider->GetBOnOff())
+	{
+		Super::tick(_DT);
+		return;
+	}
+	if (GetCritMode())
+	{
+		m_Animator->Play(L"CritCoinPeg", true);
+	}
+	else
+	{
+		m_Animator->Play(L"CoinPeg", true);
+	}
 	Super::tick(_DT);
 
 }

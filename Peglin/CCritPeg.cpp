@@ -1,8 +1,13 @@
 #include "pch.h"
 #include "CCritPeg.h"
 
+
 #include "CAssetMgr.h"
+#include "CLevelMgr.h"
+#include "CLevel.h"
+
 #include "components.h"
+
 
 CCritPeg::CCritPeg()
 {
@@ -37,5 +42,17 @@ void CCritPeg::render(HDC _dc)
 
 void CCritPeg::Reload()
 {
+}
+
+void CCritPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+{
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	vector <CPeg*> allPegs = pCurLevel->GetPegs();
+
+	for (int i = 0; i < pCurLevel->GetPegs().size(); ++i)
+	{		
+		allPegs[i]->CritModeOn();
+	}
+	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
 }
 

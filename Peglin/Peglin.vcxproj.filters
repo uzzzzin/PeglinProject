@@ -323,6 +323,10 @@
     <ClInclude Include="CStage1Level.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="CAttackProjectile.h" />
+    <ClInclude Include="CTransform.h">
+      <Filter>Game\05. Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -581,6 +585,10 @@
     <ClCompile Include="CPeglinHealth.cpp" />
     <ClCompile Include="CStage1Level.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CAttackProjectile.cpp" />
+    <ClCompile Include="CTransform.cpp">
+      <Filter>Game\05. Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

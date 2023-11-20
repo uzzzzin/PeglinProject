@@ -7,6 +7,7 @@ CPeg::CPeg()
 : iDieCnt(1)
 , iCurCnt(0)
 , bCrashed(false)
+, bCritMode(false)
 , m_Animator(nullptr)
 , m_Collider(nullptr)
 {

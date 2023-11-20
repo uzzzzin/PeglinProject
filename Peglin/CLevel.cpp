@@ -192,6 +192,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetPos(peg.pos);
 				realPeg->SetScale(peg.scale);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 				break;
 			}
 			case COIN_PEG:
@@ -200,6 +201,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetPos(peg.pos);
 				realPeg->SetScale(peg.scale);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 				break;
 			}
 			case CRITICAL_PEG:
@@ -208,6 +210,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetPos(peg.pos);
 				realPeg->SetScale(peg.scale);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 				break;
 			}
 			case REFRESH_PEG:
@@ -216,6 +219,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetPos(peg.pos);
 				realPeg->SetScale(peg.scale);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 
 				break;
 			}
@@ -225,6 +229,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetPos(peg.pos);
 				realPeg->SetScale(peg.scale);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 
 				break;
 			}
@@ -235,6 +240,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetScale(peg.scale);
 				realPeg->SetbSlimed(true);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 				break;
 			}
 			case SLIMED_COIN_PEG:
@@ -244,6 +250,7 @@ void CLevel::LoadPegs(const wstring& _strRelativePath)
 				realPeg->SetScale(peg.scale);
 				realPeg->SetbSlimed(true);
 				pCurLevel->AddObject(PEG, realPeg);
+				pegs.push_back(realPeg);
 				break;
 			}
 			default:

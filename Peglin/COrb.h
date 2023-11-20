@@ -62,6 +62,7 @@ public:
     friend class CLevel;
     friend class COrbQueueHeadOrb;
     friend class CPeglinPlayer;
+
 public:
     CLONE(COrb);
     COrb();

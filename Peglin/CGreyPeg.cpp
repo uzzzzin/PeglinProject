@@ -18,6 +18,7 @@ CGreyPeg::CGreyPeg()
 	m_Animator->LoadAnimation(L"animdata\\firstGreyPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\GreyPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\SlimedGreyPeg.txt");
+	m_Animator->LoadAnimation(L"animdata\\CritGreyPeg.txt");
 
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24,24));
@@ -38,7 +39,19 @@ void CGreyPeg::begin()
 
 void CGreyPeg::tick(float _DT)
 {
-	
+	if (!m_Collider->GetBOnOff())
+	{
+		Super::tick(_DT);
+		return;
+	}
+	if (GetCritMode())
+	{
+		m_Animator->Play(L"CritGreyPeg", true);
+	}
+	else
+	{
+		m_Animator->Play(L"firstGreyPeg", true);
+	}
 	Super::tick(_DT);
 }
 
@@ -50,4 +63,11 @@ void CGreyPeg::render(HDC _dc)
 void CGreyPeg::Reload()
 {
 }
+
+//void CGreyPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+//{
+//	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+//
+//	
+//}
 

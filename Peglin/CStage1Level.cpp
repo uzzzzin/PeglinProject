@@ -22,6 +22,7 @@
 #include "CEnemy.h"
 
 #include "CPeglinHealth.h"
+#include "CAttackProjectile.h"
 
 
 void CStage1Level::init()

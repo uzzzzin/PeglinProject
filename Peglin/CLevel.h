@@ -15,6 +15,8 @@ private:
 	UINT	m_TileRow;
 	UINT	m_TileCol;
 
+	vector<class CPeg*> pegs;
+
 
 public:
 	virtual void init() = 0;
@@ -47,6 +49,11 @@ public:
 	void CreateTile(UINT _Row, UINT _Col);
 	UINT GetTileCol() { return m_TileCol; }
 	UINT GetTileRow() { return m_TileRow; }
+
+	vector<CPeg*> GetPegs()
+	{
+		return pegs;
+	}
 
 	CObj* FindObjectByName(const wstring& _Name);
 

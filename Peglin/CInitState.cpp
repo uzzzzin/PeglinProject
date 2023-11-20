@@ -5,6 +5,7 @@
 #include "CGeneralLevel.h"
 #include "CEnemy.h"
 #include "CPeglinPlayer.h"
+#include "CPeg.h"
 
 #include "COrb.h"
 #include "COrbQueue.h"
@@ -17,7 +18,6 @@
 
 CInitState::CInitState()
 {
-	
 }
 
 CInitState::~CInitState()
@@ -35,11 +35,23 @@ void CInitState::Enter()
 	m_HeadOrb = dynamic_cast<COrbQueueHeadOrb*>(m_Queue->QueueHeadOrb);
 	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
 
+	vector <CPeg*> allPegs = m_curLevel->GetPegs();
+
+	for (int i = 0; i < m_curLevel->GetPegs().size(); ++i)
+	{
+		allPegs[i]->CritModeOff();
+	}
 
 	if (0 == m_curLevel->GetCurTurn() && !bRealInit)
 	{
 		m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[0]);
 		bRealInit = true;
+		GetOwnerSM()->AddDataToBlackboard(L"orbs", m_Orb->GetOrbsInfo());
+		GetOwnerSM()->AddDataToBlackboard(L"Pebball Data", &m_Orb->GetOrbsInfo()[0]);
+		GetOwnerSM()->AddDataToBlackboard(L"Daggorb Data", &m_Orb->GetOrbsInfo()[1]);
+		GetOwnerSM()->AddDataToBlackboard(L"Infernorb Data", &m_Orb->GetOrbsInfo()[2]);
+		GetOwnerSM()->AddDataToBlackboard(L"Sphear Data", &m_Orb->GetOrbsInfo()[3]);
+		GetOwnerSM()->AddDataToBlackboard(L"Rubborb Data", &m_Orb->GetOrbsInfo()[4]);
 		return;
 	}
 

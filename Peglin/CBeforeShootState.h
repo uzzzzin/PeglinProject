@@ -5,8 +5,8 @@ class CBeforeShootState :
     public CState
 {
 private:
-   class  CPeglinPlayer* m_Peglin;
-    class COrb* m_Orb;
+   //class  CPeglinPlayer* m_Peglin;
+   // class COrb* m_Orb;
 
 public:
     virtual void finaltick(float _DT);

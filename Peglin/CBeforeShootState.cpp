@@ -24,8 +24,8 @@ void CBeforeShootState::finaltick(float _DT)
 void CBeforeShootState::Enter()
 {
 	LOG(WARNING, L"현재 상태 : BeforeShoot_State");
-	m_Peglin = dynamic_cast<CPeglinPlayer*>(CLevelMgr::GetInst()->GetCurLevel()->FindObjectByName(L"PeglinPlayer"));
-	m_Orb = dynamic_cast<COrb*>(CLevelMgr::GetInst()->GetCurLevel()->FindObjectByName(L"Orb"));
+	//m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
+	//m_Orb = dynamic_cast<COrb*>(CLevelMgr::GetInst()->GetCurLevel()->FindObjectByName(L"Orb"));
 }
 
 void CBeforeShootState::Exit()

@@ -5,8 +5,9 @@ class CPeglinAttackState :
 {
 private:
     class CGeneralLevel* m_curLevel;
-    class CPeglinPlayer* m_Peglin;
     class CEnemy* m_Target;
+
+    class CAttackProjectile* m_Projectile;
 
 public:
     virtual void finaltick(float _DT);

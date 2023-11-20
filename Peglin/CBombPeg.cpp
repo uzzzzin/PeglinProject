@@ -54,13 +54,23 @@ void CBombPeg::Reload()
 
 void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	//if (!(m_Collider->GetBOnOff()))
+	//{
+	//	return;
+	//}
 	//Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+
+
+	bCrashed = false;
+	m_Collider->SetBOnOff(true);
+
 	if (_OtherObj->GetLayerIdx() == ORB)
 	{
 		++iCurCnt;
 		if (1 == iDieCnt - iCurCnt)
 		{
 			m_Animator->Play(L"BombPeg", true);
+			m_Collider->SetBOnOff(true);
 		}
 		if (0 >= iDieCnt - iCurCnt)
 		{
@@ -68,5 +78,6 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 			m_Animator->Play(L"CrashedPeg", false);
 		}
 	}
+
 }
 
