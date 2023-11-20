@@ -59,25 +59,50 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	//	return;
 	//}
 	//Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+	if (0 >= iDieCnt - iCurCnt)
+	{
+		m_Collider->SetBOnOff(false);
+		return;
+	}
 
+	++iCurCnt;
 
 	bCrashed = false;
 	m_Collider->SetBOnOff(true);
 
+	if (0 >= iDieCnt - iCurCnt)
+	{
+		bCrashed = true;
+		m_Animator->Play(L"CrashedPeg", false);
+	}
+
 	if (_OtherObj->GetLayerIdx() == ORB)
 	{
-		++iCurCnt;
 		if (1 == iDieCnt - iCurCnt)
 		{
 			m_Animator->Play(L"BombPeg", true);
 			m_Collider->SetBOnOff(true);
 		}
-		if (0 >= iDieCnt - iCurCnt)
-		{
-			bCrashed = true;
-			m_Animator->Play(L"CrashedPeg", false);
-		}
+		
 	}
+
+	//bCrashed = false;
+	//m_Collider->SetBOnOff(true);
+
+	//if (_OtherObj->GetLayerIdx() == ORB)
+	//{
+	//	++iCurCnt;
+	//	if (1 == iDieCnt - iCurCnt)
+	//	{
+	//		m_Animator->Play(L"BombPeg", true);
+	//		m_Collider->SetBOnOff(true);
+	//	}
+	//	if (0 >= iDieCnt - iCurCnt)
+	//	{
+	//		bCrashed = true;
+	//		m_Animator->Play(L"CrashedPeg", false);
+	//	}
+	//}
 
 }
 
