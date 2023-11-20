@@ -271,7 +271,7 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 
 		if (!(_OtherObj->GetName() == L"Obstacle")) // Á¤»óÀûÀÎ Æä±×¿¡ ºÎµúÈû
 		{
-			LOG(LOGLOG, L"Obstacle¿¡ ºÎµúÈù °Ô ¾Æ´Ô.");
+			//LOG(LOGLOG, L"Obstacle¿¡ ºÎµúÈù °Ô ¾Æ´Ô.");
 			_OtherCol->SetBOnOff(false);
 
 			if (L"GreyPeg" == _OtherObj->GetName())

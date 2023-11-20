@@ -181,9 +181,6 @@
     <ClInclude Include="CEndLevel.h">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClInclude>
-    <ClInclude Include="CStage1Level.h">
-      <Filter>Game\03. Level\Ingame</Filter>
-    </ClInclude>
     <ClInclude Include="CBossStageLevel.h">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClInclude>
@@ -322,6 +319,10 @@
     <ClInclude Include="CObj.h">
       <Filter>Game\04. Object</Filter>
     </ClInclude>
+    <ClInclude Include="CPeglinHealth.h" />
+    <ClInclude Include="CStage1Level.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -437,9 +438,6 @@
       <Filter>Game\03. Level\Ingame</Filter>
     </ClCompile>
     <ClCompile Include="CEndLevel.cpp">
-      <Filter>Game\03. Level\Ingame</Filter>
-    </ClCompile>
-    <ClCompile Include="CStage1Level.cpp">
       <Filter>Game\03. Level\Ingame</Filter>
     </ClCompile>
     <ClCompile Include="CStage2Level.cpp">
@@ -579,6 +577,10 @@
     </ClCompile>
     <ClCompile Include="CObj.cpp">
       <Filter>Game\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CPeglinHealth.cpp" />
+    <ClCompile Include="CStage1Level.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

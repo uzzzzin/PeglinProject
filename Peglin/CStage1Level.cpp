@@ -21,6 +21,8 @@
 #include "COrbQueueHeadOrb.h"
 #include "CEnemy.h"
 
+#include "CPeglinHealth.h"
+
 
 void CStage1Level::init()
 {
@@ -37,8 +39,12 @@ void CStage1Level::enter()
 	my_Peglin = new CPeglinPlayer;
 	my_Peglin->SetPos(Vec2(440.f, 207.f));
 	my_Peglin->SetScale(Vec2(110.f, 110.f));
-
 	AddObject(PEGLIN, my_Peglin);
+
+	CPeglinHealth* pPeglinHealth = new CPeglinHealth;
+	pPeglinHealth->SetPos(Vec2(190,400));
+	pPeglinHealth->SetScale(Vec2(256,68));
+	AddObject(WORLD_STATIC, pPeglinHealth);
 
 	// --------------------------------------------- enemy start
 	//CEnemy* pBlueSlime1 = new CEnemy;

@@ -14,7 +14,6 @@ CProjectile::CProjectile()
 
 CProjectile::CProjectile(const CProjectile& _Origin)
 	: m_Collider(nullptr)
-	, m_Speed(_Origin.m_Speed)
 	, m_Angle(_Origin.m_Angle)
 {
 	m_Collider = GetComponent<CCollider>();

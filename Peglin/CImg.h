@@ -13,6 +13,7 @@ private:
 public:
     void SetImg(const wstring& _strRelativePath, const wstring& _animName);
 
+    //virtual void begin() override;
     virtual void tick(float _DT);
     virtual void render(HDC _dc);
 
