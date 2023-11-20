@@ -9,7 +9,12 @@ private:
     EnemyInfo EnemyInitInfo;
     class CAnimator* m_Animator;
     class CMovement* m_Movement;
-    //class CStateMachine* m_AI;
+    
+    CTexture* m_blood;      // ÇÇ
+    CTexture* m_HealthUI; // UI
+    CTexture* m_slash;
+
+    vector<CTexture*> Nums;
 
     int curHP;
 
@@ -36,7 +41,7 @@ public:
 public:
     //virtual void begin() override;
     //virtual void tick(float _DT) override;
-    //virtual void render(HDC _dc) override;
+    virtual void render(HDC _dc) override;
 
 
 

@@ -56,9 +56,7 @@ void CPeglinHealth::render(HDC _dc)
 	CGeneralLevel* pCurLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
 	CPeglinPlayer* pPeglin = dynamic_cast<CPeglinPlayer*>(pCurLevel->FindObjectByName(L"PeglinPlayer"));
 
-	//int hp = pPeglin->GetHP();
-
-	int hp = 50;
+	int hp = pPeglin->GetHP();
 
 	// HealthUI
 	BLENDFUNCTION blend = {};
@@ -121,7 +119,6 @@ void CPeglinHealth::render(HDC _dc)
 
 	// HP
 	int hp1 = hp / 10;
-	Nums[hp1];
 	int hp2 = hp % 10;
 
 	if (!(100 == hp))
