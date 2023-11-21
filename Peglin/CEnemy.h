@@ -8,7 +8,8 @@ class CEnemy :
 private:
     EnemyInfo EnemyInitInfo;
     class CAnimator* m_Animator;
-    class CMovement* m_Movement;
+    //class CMovement* m_Movement;
+    class CTransform* m_Transform;
     
     CTexture* m_blood;      // ÇÇ
     CTexture* m_HealthUI; // UI
@@ -46,6 +47,7 @@ public:
     //virtual void begin() override;
     //virtual void tick(float _DT) override;
     virtual void render(HDC _dc) override;
+    virtual void finaltick(float _DT) override;
 
 
 

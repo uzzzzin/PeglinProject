@@ -73,7 +73,8 @@ void CInitState::Enter()
 			else // 맨 처음에 있는 애가 0번째 idx에 있지 않다면
 			{
 				--EnemysInLevel[i].second;
-				EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
+				//EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
+				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.35f);
 			}
 		}
 		else // 맨 처음에 있는 에너미가 아닌 경우
@@ -85,7 +86,8 @@ void CInitState::Enter()
 			else
 			{
 				--EnemysInLevel[i].second;
-				EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
+				//EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
+				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.35f);
 			}
 
 		}
@@ -103,6 +105,11 @@ void CInitState::Exit()
 void CInitState::finaltick(float _DT)
 {
 	int turn = m_curLevel->GetCurTurn();
+
+	for (int i = 0; i < m_curLevel->GetEnemyCheck().size(); ++i)
+	{
+		m_curLevel->GetEnemyCheck()[i].first->finaltick(_DT);
+	}
 
 
 	if (0 == turn)

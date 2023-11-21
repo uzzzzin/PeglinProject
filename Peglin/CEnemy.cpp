@@ -13,7 +13,7 @@
 CEnemy::CEnemy()
 	: EnemyInitInfo{}
 	, m_Animator(nullptr)
-	, m_Movement(nullptr)
+	, m_Transform(nullptr)
 	, m_blood(nullptr)
 	, m_HealthUI(nullptr)
 	, m_slash(nullptr)
@@ -23,16 +23,16 @@ CEnemy::CEnemy()
 	Enemys.push_back(BlueSlime);
 
 	m_Animator = AddComponent<CAnimator>(L"EnemyAnimator");
-	m_Movement = AddComponent<CMovement>(L"EnemyMovement");
+	m_Transform = AddComponent<CTransform>(L"EnemyTransform");
 	//m_AI = AddComponent<CStateMachine>(L"EnemyAI");
 
 	SetEnemyInfo(BLUE_SLIME);
 
-	m_Movement->SetMaxSpeed(400.f);
-	m_Movement->SetFrictionScale(1000.f);
-	m_Movement->UseGravity(false);
-	m_Movement->SetGravity(Vec2(0.f, 980.f));
-	m_Movement->SetGround(true);
+	//m_Movement->SetMaxSpeed(400.f);
+	//m_Movement->SetFrictionScale(1000.f);
+	//m_Movement->UseGravity(false);
+	//m_Movement->SetGravity(Vec2(0.f, 980.f));
+	//m_Movement->SetGround(true);
 
 	m_blood = CAssetMgr::GetInst()->LoadTexture(L"MonsterBlood", L"texture\\MonsterBlood.png");
 	m_HealthUI = CAssetMgr::GetInst()->LoadTexture(L"SlimeHealth", L"texture\\EnemyHealth.png");
@@ -236,4 +236,9 @@ void CEnemy::render(HDC _dc)
 
 
 	Super::render(_dc);
+}
+
+void CEnemy::finaltick(float _DT)
+{
+	Super::finaltick(_DT);
 }
