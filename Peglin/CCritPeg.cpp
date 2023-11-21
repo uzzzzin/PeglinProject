@@ -44,6 +44,10 @@ void CCritPeg::Reload()
 {
 }
 
+void CCritPeg::Refresh()
+{
+}
+
 void CCritPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();

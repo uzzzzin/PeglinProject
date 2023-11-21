@@ -52,6 +52,10 @@ void CBombPeg::Reload()
 {
 }
 
+void CBombPeg::Refresh()
+{
+}
+
 void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
 	//if (!(m_Collider->GetBOnOff()))

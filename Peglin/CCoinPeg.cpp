@@ -64,3 +64,10 @@ void CCoinPeg::render(HDC _dc)
 void CCoinPeg::Reload()
 {
 }
+
+void CCoinPeg::Refresh()
+{
+	m_Collider->SetBOnOff(true);
+	bCrashed = false;
+	iDieCnt = 0;
+}

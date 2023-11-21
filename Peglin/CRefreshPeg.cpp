@@ -41,15 +41,21 @@ void CRefreshPeg::Reload()
 
 void CRefreshPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
-	//CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
-	//vector <CPeg*> allPegs = pCurLevel->GetPegs();
-	////for (int i = 0; i < pCurLevel->GetPegs().size(); ++i)
-	////{
-	////	//allPegs[i]->
-	////}
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	vector <CPeg*> &allPegs = pCurLevel->GetPegs();
+	for (int i = 0; i < pCurLevel->GetPegs().size(); ++i)
+	{
+		allPegs[i]->Refresh();
+
+	}
 	//allPegs.clear();
 
 	//pCurLevel->LoadPegs(L"Board\\Board1.txt");
 
-	////Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+	//Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+}
+
+void CRefreshPeg::Refresh()
+{
+	m_Collider->SetBOnOff(true);
 }

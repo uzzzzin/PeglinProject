@@ -77,23 +77,12 @@ void CPeglinAttackState::Enter()
 
 void CPeglinAttackState::Exit()
 {
-
-	/*for (int i = 0; i < m_curLevel->GetEnemyCheck().size(); ++i)
+	vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
+	if (vector1.size() == 0)
 	{
-		if (m_curLevel->GetEnemyCheck()[0].first->IsDead())
-		{
-			LOG(ERR, L"¸ó½ºÅÍ Á×À½");
-		}
-	}*/
-	//for (int i = 0; i < m_curLevel->GetEnemyCheck().size(); ++i)
-//{
-//	if (m_curLevel->GetEnemyCheck()[i].first->IsDead())
-//	{
-//		LOG(ERR, L"¸ó½ºÅÍ Á×À½");
-//		m_curLevel->GetEnemyCheck().erase(m_curLevel->GetEnemyCheck().begin() + i);
-//		--i;
-//	}
-//}
+		GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
+	}
+
 }
 
 void CPeglinAttackState::render(HDC _dc)

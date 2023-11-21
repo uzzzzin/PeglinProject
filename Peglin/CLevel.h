@@ -50,7 +50,7 @@ public:
 	UINT GetTileCol() { return m_TileCol; }
 	UINT GetTileRow() { return m_TileRow; }
 
-	vector<CPeg*> GetPegs()
+	vector<CPeg*>& GetPegs()
 	{
 		return pegs;
 	}

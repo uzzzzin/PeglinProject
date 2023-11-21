@@ -21,6 +21,8 @@ public:
     virtual void Reload();  //재생성 함수
     // 충돌 관련 오버랩 함수가 필요할턴디 
 
+    virtual void Refresh() override;
+
    // virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
 
 

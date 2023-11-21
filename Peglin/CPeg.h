@@ -49,6 +49,11 @@ public:
     virtual void render(HDC _dc) { CObj::render(_dc); };
     virtual void Reload() {};  //재생성 함수
     // 충돌 관련 오버랩 함수가 필요할턴디 
+    virtual void Refresh() {};
+
+
+
+
 
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
     //virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);

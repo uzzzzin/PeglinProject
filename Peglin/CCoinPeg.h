@@ -21,6 +21,8 @@ public:
     virtual void Reload();  //재생성 함수
     // 충돌 관련 오버랩 함수가 필요할턴디  // 충돌할 때 코인 올라가야함 
 
+    virtual void Refresh() override;
+
 
 public:
     CLONE(CCoinPeg);

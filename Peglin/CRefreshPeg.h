@@ -14,6 +14,7 @@ public:
 
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
 
+    virtual void Refresh() override;
 
 public:
     CLONE(CRefreshPeg);

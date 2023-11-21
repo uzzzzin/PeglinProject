@@ -64,6 +64,13 @@ void CGreyPeg::Reload()
 {
 }
 
+void CGreyPeg::Refresh()
+{
+	m_Collider->SetBOnOff(true);
+	bCrashed = false;
+	iDieCnt = 0;
+}
+
 //void CGreyPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 //{
 //	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
