@@ -13,6 +13,7 @@ public:
     virtual void finaltick(float _DT);
     virtual void Enter();
     virtual void Exit();
+    virtual void render(HDC _dc);
 
 public:
     CLONE(CPeglinAttackState);

@@ -12,6 +12,7 @@ private:
 
 public:
     virtual void tick(float _DT) override;
+    virtual void finaltick(float _DT) override;
     virtual void begin() override;
     
 public:

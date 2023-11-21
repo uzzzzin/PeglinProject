@@ -30,6 +30,7 @@ public:
 
 public:
     virtual void finaltick(float _DT) override;
+    virtual void render(HDC _dc) override;
 
 
 public:

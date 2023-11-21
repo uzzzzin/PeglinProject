@@ -14,7 +14,6 @@ CAttackProjectile::CAttackProjectile()
 {
 	m_Transform = AddComponent<CTransform>(L"Transform");
 	m_Animator = AddComponent<CAnimator>(L"Animator");
-	m_Collider = AddComponent<CCollider>(L"Collider");
 
 	m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
 	m_Animator->LoadAnimation(L"animdata\\Daggorb.txt");
@@ -23,7 +22,7 @@ CAttackProjectile::CAttackProjectile()
 	m_Animator->LoadAnimation(L"animdata\\Rubborb.txt");
 	m_Animator->LoadAnimation(L"animdata\\EnemyStoneProjectile.txt");
 
-	//m_Animator->Play(L"Infernorb", true);
+	m_Animator->Play(L"Infernorb", true);
 }
 
 CAttackProjectile::~CAttackProjectile()
@@ -35,6 +34,11 @@ void CAttackProjectile::tick(float _DT)
 	Super::tick(_DT);
 
 	 //GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
+}
+
+void CAttackProjectile::finaltick(float _DT)
+{
+	Super::finaltick(_DT);
 }
 
 void CAttackProjectile::begin()

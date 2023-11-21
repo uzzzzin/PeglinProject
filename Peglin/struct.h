@@ -111,6 +111,15 @@ public:
 		return Vec2(x / _f, y / _f);
 	}
 
+	bool operator ==(Vec2 _v)
+	{
+		return this->x == _v.x && this->y && _v.y;
+	}
+
+	bool operator !=(Vec2 _v) {
+		return !this->operator==(_v);
+	}
+
 	void operator /= (float _f)
 	{
 		assert(_f);

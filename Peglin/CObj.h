@@ -100,7 +100,7 @@ public:
 	virtual void tick(float _DT);
 
 	// 상속받은 자식 클래스에서 재정의(override) 할 수 없음
-	virtual void finaltick(float _DT) final;
+	virtual void finaltick(float _DT);
 
 	// 렌더링 함수
 	virtual void render(HDC _dc);

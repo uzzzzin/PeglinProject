@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "CRefreshPeg.h"
 
+#include "CLevelMgr.h"
+
+#include "CLevel.h"
+
 
 CRefreshPeg::CRefreshPeg()
 {
@@ -33,4 +37,19 @@ void CRefreshPeg::render(HDC _dc)
 
 void CRefreshPeg::Reload()
 {
+}
+
+void CRefreshPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+{
+	//CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
+	//vector <CPeg*> allPegs = pCurLevel->GetPegs();
+	////for (int i = 0; i < pCurLevel->GetPegs().size(); ++i)
+	////{
+	////	//allPegs[i]->
+	////}
+	//allPegs.clear();
+
+	//pCurLevel->LoadPegs(L"Board\\Board1.txt");
+
+	////Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
 }

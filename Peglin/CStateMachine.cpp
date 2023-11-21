@@ -54,6 +54,14 @@ void CStateMachine::finaltick(float _DT)
 	}
 }
 
+void CStateMachine::render(HDC _dc)
+{
+	if (nullptr != m_pCurState)
+	{
+		m_pCurState->render(_dc);
+	}
+}
+
 void CStateMachine::AddState(UINT _id, CState* _State)
 {
 	CState* pFindState = FindState(_id);
