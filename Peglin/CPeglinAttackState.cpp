@@ -60,11 +60,10 @@ void CPeglinAttackState::Enter()
 	 m_Projectile->SetPos(Vec2(GetOwnerSM()->GetOwner()->GetPos().x + 40.f , GetOwnerSM()->GetOwner()->GetPos().y+20.f));
 	 m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
 	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.4f);
-
 	 damage = m_Peglin->GetAttackDamage();
 
 	 UINT curOrb = (UINT)dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetCurOrbType();
-
+	 m_Projectile->PlayAnimation((ORB_TYPE)curOrb);
 }
 
 void CPeglinAttackState::Exit()

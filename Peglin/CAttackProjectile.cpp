@@ -22,7 +22,6 @@ CAttackProjectile::CAttackProjectile()
 	m_Animator->LoadAnimation(L"animdata\\Rubborb.txt");
 	m_Animator->LoadAnimation(L"animdata\\EnemyStoneProjectile.txt");
 
-	m_Animator->Play(L"Infernorb", true);
 }
 
 CAttackProjectile::~CAttackProjectile()
@@ -46,5 +45,41 @@ void CAttackProjectile::begin()
 	//m_Transform->MoveTo(), 2.f);
 	// 
 	//CGeneralLevel* pCurLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
+}
+
+void CAttackProjectile::PlayAnimation(ORB_TYPE _type)
+{
+	ORB_TYPE orb_type = _type;
+	switch (orb_type)
+	{
+	case PEBBALL:
+	{
+		m_Animator->Play(L"Pebball", true);
+		break;
+	}
+	case DAGGORB:
+	{
+		m_Animator->Play(L"Daggorb", true);
+		break;
+	}
+	case INFERNORB:
+	{
+		m_Animator->Play(L"Infernorb", true);
+		break;
+	}
+	case SPHEAR:
+	{
+		m_Animator->Play(L"Sphear", true);
+		break;
+	}
+	case RUBBORB:
+	{
+		m_Animator->Play(L"Rubborb", true);
+		break;
+	}
+	default:
+		LOG(LOGLOG, L"ภฬป๓วั Projectile");
+		break;
+	}
 }
 
