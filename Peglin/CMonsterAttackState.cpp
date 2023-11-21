@@ -15,17 +15,28 @@ CMonsterAttackState::~CMonsterAttackState()
 
 void CMonsterAttackState::finaltick(float _DT)
 {
-	int damage = m_AttackEnemy->GetDamage();
-	m_Peglin->ReduceHP(damage);
 
-	if (0 >= m_Peglin->GetHP())
+	if (m_curLevel->EnemyXPos[0] == m_AttackEnemy->GetPos().x) // 몬스터의 공격 사거리에 페글린이 들어옴
 	{
-		GetOwnerSM()->ChangeState((UINT)PEGLIN_DIE);
+		int damage = m_AttackEnemy->GetDamage();
+		m_Peglin->ReduceHP(damage);
+
+		if (0 >= m_Peglin->GetHP())
+		{
+			GetOwnerSM()->ChangeState((UINT)PEGLIN_DIE);
+		}
+		else
+		{
+			GetOwnerSM()->ChangeState((UINT)STATE_INIT);
+		}
 	}
 	else
 	{
 		GetOwnerSM()->ChangeState((UINT)STATE_INIT);
 	}
+
+
+	
 }
 
 void CMonsterAttackState::Enter()

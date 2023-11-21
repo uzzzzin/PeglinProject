@@ -46,7 +46,7 @@ void CPeglinAttackState::finaltick(float _DT)
 
 			 // LOG(ERR, L"몬스터는 사망할 예정");
 		 }
-		 GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
+		 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 	 }
 
 	 
@@ -59,7 +59,7 @@ void CPeglinAttackState::Enter()
 	 m_Target = m_curLevel->GetEnemyCheck()[0].first;
 	 m_Projectile->SetPos(Vec2(GetOwnerSM()->GetOwner()->GetPos().x + 40.f , GetOwnerSM()->GetOwner()->GetPos().y+20.f));
 	 m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
-	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.4f);
+	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.35f);
 	 damage = m_Peglin->GetAttackDamage();
 
 	 UINT curOrb = (UINT)dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetCurOrbType();
