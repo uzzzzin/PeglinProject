@@ -14,6 +14,7 @@
 #include "CAttackProjectile.h"
 
 CPeglinAttackState::CPeglinAttackState()
+	: damage(0)
 {
 	m_Projectile = new CAttackProjectile;
 	m_Projectile->SetScale(Vec2(22, 22));
@@ -26,13 +27,10 @@ CPeglinAttackState::~CPeglinAttackState()
 
 void CPeglinAttackState::finaltick(float _DT)
 {
-	int damage = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetAttackDamage();
-
-	
-	 
 	 m_Projectile->finaltick(_DT);
 	 if (m_Projectile->GetPos() == m_Target->GetPos())
 	 {
+
 		 m_Target->DealDamage(damage);
 
 		 if (0 >= m_Target->GetCurHP())
@@ -43,11 +41,12 @@ void CPeglinAttackState::finaltick(float _DT)
 			 auto ii = vector1[0];
 			 vector1.erase(vector1.begin());
 			 delete ii.first;
-			 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
+
+			 GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
 
 			 // LOG(ERR, L"몬스터는 사망할 예정");
 		 }
-		 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
+		 GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
 	 }
 
 	 
@@ -59,24 +58,20 @@ void CPeglinAttackState::Enter()
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
 	 m_Target = m_curLevel->GetEnemyCheck()[0].first;
 	 m_Projectile->SetPos(Vec2(GetOwnerSM()->GetOwner()->GetPos().x + 40.f , GetOwnerSM()->GetOwner()->GetPos().y+20.f));
-
+	 m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
 	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.4f);
-	 // m_Peglin->GetCurOrbType()].animName, true
+
+	 damage = m_Peglin->GetAttackDamage();
 
 	 UINT curOrb = (UINT)dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetCurOrbType();
-	  //vector<OrbInfo>* vv = (vector<OrbInfo>*)GetOwnerSM()->GetDataFromBlackboard(L"orbs");
-	 
-	  //&vv[0].
 
-
-
-	//// m_Projectile->GetComponent<CAnimator>()->Play( );
-	// m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 4.f);
-	//
 }
 
 void CPeglinAttackState::Exit()
 {
+
+	m_Peglin->SetAttackDamage(0);
+
 	vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
 	if (vector1.size() == 0)
 	{

@@ -33,7 +33,16 @@ void CMonsterAttackState::Enter()
 	LOG(LOGLOG, L"현재 상태 : Monster Attack State");
 	m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
-	m_AttackEnemy = m_curLevel->GetEnemyCheck()[0].first;
+	if (0 == m_curLevel->GetEnemyCheck().size())
+	{
+		GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
+		return;
+	}
+	else
+	{
+		m_AttackEnemy = m_curLevel->GetEnemyCheck()[0].first;
+	}
+	
 }
 
 void CMonsterAttackState::Exit()

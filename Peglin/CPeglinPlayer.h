@@ -20,6 +20,7 @@ public:
     int GetMyOrbIdx() { return myOrbsIdx; } // 현재 턴의 오브를 들고 올
     vector<ORB_TYPE> GetOrbs() { return myOrbs; } // 페글린이 보유한 오브들 벡터를 들고 올
     int GetAttackDamage() { return AttackDamage; }
+    void SetAttackDamage(int _damage) { AttackDamage = _damage;  }
     void AddAttackDamage(int _damage) { AttackDamage = AttackDamage + _damage;   }
     
     void AddMyOrbsIdx();

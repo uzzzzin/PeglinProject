@@ -13,6 +13,7 @@
 #include "CPeglinAttackState.h"
 #include "CMonsterAttackState.h"
 #include "CPeglinDieState.h"
+#include "CStateClearState.h"
 #include "CGeneralLevel.h"
 
 
@@ -39,6 +40,7 @@ CPeglinPlayer::CPeglinPlayer()
 	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
 	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
 	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);
+	m_AI->AddState((UINT)STAGE_CLEAR, new CStateClearState);
 	
 	//m_Movement = AddComponent<CMovement>(L"Movement");
 
