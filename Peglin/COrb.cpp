@@ -166,9 +166,14 @@ void COrb::tick(float _DT)
 		m_Movement->UseGravity(false);
 	}
 	if (KEY_TAP(LBTN)) {
-		SetPos(CKeyMgr::GetInst()->GetMousePos());
-		m_Movement->SetVelocity({ 0,0 });
-		m_Movement->UseGravity(false);
+		//SetPos(CKeyMgr::GetInst()->GetMousePos());
+
+		Vec2 go = CKeyMgr::GetInst()->GetMousePos() - Vec2(GetPos());
+		 //go.Normalize();
+
+		m_Movement->SetVelocity(go);
+		 m_Movement->AddForce(go);
+		m_Movement->UseGravity(true);
 	}
 	prevPos = curPos;
 }
