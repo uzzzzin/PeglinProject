@@ -16,7 +16,7 @@ CBombPeg::CBombPeg()
 
 	m_Animator->LoadAnimation(L"animdata\\BombPeg.txt");
 	m_Animator->LoadAnimation(L"animdata\\BombPegBefore.txt");
-
+	m_Animator->LoadAnimation(L"animdata\\CrashedBombPeg.txt");
 
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24, 24));
@@ -77,7 +77,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	if (0 >= iDieCnt - iCurCnt)
 	{
 		bCrashed = true;
-		m_Animator->Play(L"CrashedPeg", false);
+		m_Animator->Play(L"CrashedBombPeg", false);
 	}
 
 	if (_OtherObj->GetLayerIdx() == ORB)

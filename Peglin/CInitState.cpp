@@ -74,7 +74,7 @@ void CInitState::Enter()
 			{
 				--EnemysInLevel[i].second;
 				//EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
-				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.35f);
+				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.9f);
 			}
 		}
 		else // 맨 처음에 있는 에너미가 아닌 경우
@@ -87,7 +87,7 @@ void CInitState::Enter()
 			{
 				--EnemysInLevel[i].second;
 				//EnemysInLevel[i].first->SetPos(Vec2(m_curLevel->EnemyXPos[i], EnemysInLevel[i].first->GetPos().y));
-				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.35f);
+				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.9f);
 			}
 
 		}

@@ -106,7 +106,7 @@ void CPeglinHealth::render(HDC _dc)
 	blend3.AlphaFormat = AC_SRC_ALPHA; // 0
 
 	AlphaBlend(_dc
-		, int((vRenderPos.x - vScale.x / 2.f) + 133.f)
+		, int((vRenderPos.x - vScale.x / 2.f) + 140.f)
 		, int((vRenderPos.y - vScale.y / 2.f) -  20.f)
 		, m_100->GetWidth() * 0.8
 		, m_100->GetHeight() * 0.8
@@ -172,7 +172,7 @@ void CPeglinHealth::render(HDC _dc)
 		blend4.AlphaFormat = AC_SRC_ALPHA; // 0
 
 		AlphaBlend(_dc
-			, int((vRenderPos.x - vScale.x / 2.f) + 60.f)
+			, int((vRenderPos.x - vScale.x / 2.f) + 70.f)
 			, int((vRenderPos.y - vScale.y / 2.f) - 20.f)
 			, m_Num100->GetWidth() * 0.8
 			, m_Num100->GetHeight() * 0.8
