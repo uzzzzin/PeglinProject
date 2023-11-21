@@ -14,7 +14,7 @@ public:
 
     void SetEnemysCheck(CEnemy* _enemy, int _initIdx) { EnemysCheck.push_back(make_pair(_enemy, _initIdx));}
 
-    vector<std::pair<class CEnemy*, int>> GetEnemyCheck() { return EnemysCheck; }
+    vector<std::pair<class CEnemy*, int>>& GetEnemyCheck() { return EnemysCheck; }
 
     int GetCurTurn() { return turnCnt; }
     void CurTurnPP() { ++turnCnt; }

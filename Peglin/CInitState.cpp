@@ -36,7 +36,7 @@ void CInitState::Enter()
 	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
 
 	vector <CPeg*> allPegs = m_curLevel->GetPegs();
-
+	vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();
 	for (int i = 0; i < m_curLevel->GetPegs().size(); ++i)
 	{
 		allPegs[i]->CritModeOff();
@@ -60,27 +60,6 @@ void CInitState::Enter()
 	m_Peglin->AddMyOrbsIdx();
 	m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[m_curLevel->GetCurTurn() % m_Peglin->GetOrbs().size()]);
 	m_HeadOrb->OrbAnimPlay(m_Peglin->GetCurOrbType());
-}
-
-
-void CInitState::Exit()
-{
-	
-}
-
-
-
-void CInitState::finaltick(float _DT)
-{
-	int turn = m_curLevel->GetCurTurn();
-	vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();
-
-	if (0 == turn)
-	{
-		//NoneState = true;
-		GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
-		return;
-	}
 
 	// 몬스터 한칸씩 땡겨주기
 	for (int i = 0; i < EnemysInLevel.size(); ++i)
@@ -111,6 +90,28 @@ void CInitState::finaltick(float _DT)
 
 		}
 	}
+}
+
+
+void CInitState::Exit()
+{
+	
+}
+
+
+
+void CInitState::finaltick(float _DT)
+{
+	int turn = m_curLevel->GetCurTurn();
+
+
+	if (0 == turn)
+	{
+		//NoneState = true;
+		GetOwnerSM()->ChangeState((UINT)BEFORE_SHOOT);
+		return;
+	}
+
 
 		// 구슬 큐
 		if (0 == turn)

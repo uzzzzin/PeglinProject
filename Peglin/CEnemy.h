@@ -23,6 +23,8 @@ private:
     int damage; // 페글린에게 입힐 수 있는 데미지
 
     int curIdx; // 몇 번 째에 등장할건지 ! // 7의 나머지가 될 예정.. 
+    
+    bool enemyDead;
 
     vector<EnemyInfo> Enemys;
 
@@ -37,6 +39,8 @@ public:
     int GetDamage() { return damage; }
     void DealDamage(int _damage) { curHP = curHP - _damage;  }
 
+    void SetEnemyDead(bool _dead) { enemyDead = _dead; }
+    bool GetEnemyDead() { return enemyDead; }
 
 public:
     //virtual void begin() override;

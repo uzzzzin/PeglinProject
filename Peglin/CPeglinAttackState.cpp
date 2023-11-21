@@ -28,16 +28,25 @@ void CPeglinAttackState::finaltick(float _DT)
 {
 	int damage = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetAttackDamage();
 
-	 m_Target->DealDamage(damage);
-	 if (0 >= m_Target->GetCurHP())
-	 {
-		 m_Target->Destroy();
-		 LOG(ERR, L"몬스터는 사망할 예정");
-	 }
+	
 	 
 	 m_Projectile->finaltick(_DT);
 	 if (m_Projectile->GetPos() == m_Target->GetPos())
 	 {
+		 m_Target->DealDamage(damage);
+
+		 if (0 >= m_Target->GetCurHP())
+		 {
+			 m_Target->SetEnemyDead(true);
+
+			 vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
+			 auto ii = vector1[0];
+			 vector1.erase(vector1.begin());
+			 delete ii.first;
+			 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
+
+			 // LOG(ERR, L"몬스터는 사망할 예정");
+		 }
 		 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 	 }
 
