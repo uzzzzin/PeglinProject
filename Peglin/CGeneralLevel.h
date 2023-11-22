@@ -18,6 +18,7 @@ public:
 
     int GetCurTurn() { return turnCnt; }
     void CurTurnPP() { ++turnCnt; }
+    void ResetTurn() { turnCnt = 0; }
 
 public:
     CLONE_DISABLE(CGeneralLevel);

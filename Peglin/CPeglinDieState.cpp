@@ -26,4 +26,5 @@ void CPeglinDieState::Enter()
 
 void CPeglinDieState::Exit()
 {
+	m_curLevel->ResetTurn();
 }
