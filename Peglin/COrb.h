@@ -44,10 +44,10 @@ public:
     Vec2 GetDir()
     {    return (curPos - prevPos).Normalize(); }
 
-    vector<OrbInfo> GetOrbsInfo()
+    vector<OrbInfo>& GetOrbsInfo()
     {  return orbs;}
 
-    vector<std::pair<PEG_TYPE, int>> GetHitOrbsCnt()
+    vector<std::pair<PEG_TYPE, int>>& GetHitOrbsCnt()
     { return hitOrbs;}
 
     void SetCurTurnOrb(ORB_TYPE _type);

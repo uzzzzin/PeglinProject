@@ -17,7 +17,7 @@ void CTransform::finaltick(float _DT)
 {
 	Vec2 vPos = GetOwner()->GetPos();
 	Vec2 vDir = m_Point - vPos;
-	if (vDir.Length() <= 1.f) {
+	if (vDir.Length() <= 5.f) {
 		GetOwner()->SetPos(m_Point);
 		return;
 	}

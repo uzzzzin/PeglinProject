@@ -36,7 +36,7 @@ void CInitState::Enter()
 	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
 
 	vector <CPeg*> allPegs = m_curLevel->GetPegs();
-	vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();
+	vector<std::pair<class CEnemy*, int>>& EnemysInLevel = m_curLevel->GetEnemyCheck();
 	for (int i = 0; i < m_curLevel->GetPegs().size(); ++i)
 	{
 		allPegs[i]->CritModeOff();
@@ -62,13 +62,13 @@ void CInitState::Enter()
 	m_HeadOrb->OrbAnimPlay(m_Peglin->GetCurOrbType());
 
 	// 몬스터 한칸씩 땡겨주기
-	for (int i = 0; i < EnemysInLevel.size(); ++i)
+	for (int i = 0; i < EnemysInLevel.size(); ++i) // vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();
 	{
-		if (0 == i)
+		if (0 == i) // 맨 처음 몬스터는 여기서 동작
 		{
 			if (0 == EnemysInLevel[i].second)
 			{
-
+				int a = 0;
 			}
 			else // 맨 처음에 있는 애가 0번째 idx에 있지 않다면
 			{
@@ -77,11 +77,13 @@ void CInitState::Enter()
 				EnemysInLevel[i].first->GetComponent<CTransform>()->MoveTo(Vec2(m_curLevel->EnemyXPos[EnemysInLevel[i].second], EnemysInLevel[i].first->GetPos().y), 0.9f);
 			}
 		}
+
 		else // 맨 처음에 있는 에너미가 아닌 경우
 		{
 			if (EnemysInLevel[i - 1].second == ((EnemysInLevel[i].second) - 1)) // 내 바로 앞에 있는 적의 idx가 내가 앞으로 갈 idx와 같다면
 			{
 				// 아무것도 안 해야 함
+				int a = 0;
 			}
 			else
 			{

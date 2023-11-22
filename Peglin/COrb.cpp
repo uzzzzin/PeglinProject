@@ -175,6 +175,18 @@ void COrb::tick(float _DT)
 		 m_Movement->AddForce(go);
 		m_Movement->UseGravity(true);
 	}
+
+
+
+	if (KEY_TAP(RBTN))
+	{
+		SetPos(CKeyMgr::GetInst()->GetMousePos());
+		m_Movement->SetVelocity({ 0,0 });
+		m_Movement->UseGravity(false);
+	}
+
+
+
 	prevPos = curPos;
 }
 

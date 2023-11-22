@@ -42,11 +42,13 @@ void CShootingState::Exit()
 	// 오브들이 충돌한 페그 -> 데미지 수치 계산
 	//int damage = 0;
 
-	vector<OrbInfo >info = m_Orb->GetOrbsInfo();
+	vector<OrbInfo >&info = m_Orb->GetOrbsInfo();
 	for (int i = 0; i < m_Orb->GetHitOrbsCnt().size(); ++i)
 	{
 		pPeglin->AddAttackDamage((info[i].damage)* (m_Orb->GetHitOrbsCnt()[i].second));
+		m_Orb->GetHitOrbsCnt()[i].second = 0;
 		 // 현재 데미지 +  오브의 고유 일반 데미지 *  페그 맞은 개수 
 	}
+
 
 }

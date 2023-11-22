@@ -9,6 +9,7 @@
 
 void CPeglinDieState::finaltick(float _DT)
 {
+
 }
 
 void CPeglinDieState::Enter()
@@ -19,7 +20,7 @@ void CPeglinDieState::Enter()
 	m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
 
 	m_Peglin->GetComponent<CAnimator>()->LoadAnimation(L"animdata\\PeglinDie.txt");
-	m_Peglin->GetComponent<CAnimator>()->Play(L"PeglinDie",false);
+	m_Peglin->GetComponent<CAnimator>()->Play(L"PeglinAngel",false);
 }
 
 void CPeglinDieState::Exit()

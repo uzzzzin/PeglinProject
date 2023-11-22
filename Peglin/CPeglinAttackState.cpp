@@ -41,9 +41,13 @@ void CPeglinAttackState::finaltick(float _DT)
 			 auto ii = vector1[0];
 			 vector1.erase(vector1.begin());
 			 delete ii.first;
+			 if (vector1.size() == 0)
+			 {
+				 GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
+			 }
 
-			// GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
-			 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
+			 //GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
+			// GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 			 // LOG(ERR, L"몬스터는 사망할 예정");
 		 }
 		 GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
@@ -72,11 +76,7 @@ void CPeglinAttackState::Exit()
 	m_Peglin->SetAttackDamage(0);
 
 	vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
-	if (vector1.size() == 0)
-	{
-		GetOwnerSM()->ChangeState((UINT)STAGE_CLEAR);
-	}
-
+	
 }
 
 void CPeglinAttackState::render(HDC _dc)
