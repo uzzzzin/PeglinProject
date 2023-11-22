@@ -12,8 +12,9 @@ private:
     vector<CTexture*> RedNums;
 
     int damageNum;
-
     int alphaCnt;
+    Vec2 initPos;
+
 
 public:
     void SetDamageNum(int _num)
@@ -33,6 +34,22 @@ public:
 
         alphaCnt = alphaCnt - 1;
     }
+    void alphaCntReset()
+    {
+        alphaCnt = 255;
+    }
+
+    void SetInitPos(Vec2 _initPos)
+    {
+        initPos = _initPos;
+    }
+
+    Vec2 GetInitPos()
+    {
+        return initPos;
+    }
+
+
 public:
     //virtual void begin() override;
     //virtual void tick(float _DT) override;

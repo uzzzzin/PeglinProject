@@ -16,6 +16,8 @@ CMonsterAttackState::CMonsterAttackState()
 	m_PeglinDamageUI->SetPos(Vec2(435.f, 160.f));
 	m_PeglinDamageUI->SetScale(Vec2(15, 15));
 
+	m_PeglinDamageUI->SetInitPos(m_PeglinDamageUI->GetPos());
+
 }
 
 CMonsterAttackState::~CMonsterAttackState()
@@ -89,5 +91,7 @@ void CMonsterAttackState::render(HDC _dc)
 
 void CMonsterAttackState::Exit()
 {
+	m_PeglinDamageUI->alphaCntReset();
+	m_PeglinDamageUI->SetPos(m_PeglinDamageUI->GetInitPos());
 }
 
