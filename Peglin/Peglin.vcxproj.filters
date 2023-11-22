@@ -327,6 +327,7 @@
     <ClInclude Include="CTransform.h">
       <Filter>Game\05. Component</Filter>
     </ClInclude>
+    <ClInclude Include="CPeglinDamaged.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -590,6 +591,7 @@
     <ClCompile Include="CTransform.cpp">
       <Filter>Game\05. Component</Filter>
     </ClCompile>
+    <ClCompile Include="CPeglinDamaged.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

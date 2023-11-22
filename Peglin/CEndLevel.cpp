@@ -36,7 +36,7 @@ void CEndLevel::enter()
 	pNewGameBtn->SetNormalImg(L"animdata\\NewGameNBtn.txt", L"NewGameNBtn");
 	pNewGameBtn->SetHoverImg(L"animdata\\NewGameHBtn.txt", L"NewGameHBtn");
 	pNewGameBtn->SetPressedImg(L"animdata\\NewGamePBtn.txt", L"NewGamePBtn");
-	pNewGameBtn->SetCallBack([]() {ChangeLevel(LEVEL_TYPE::STAGE_1_LEVEL);});
+	pNewGameBtn->SetCallBack([]() {ChangeLevel(LEVEL_TYPE::START_LEVEL);});
 	AddObject(UI, pNewGameBtn);
 
 	CBtnUI* pExitGameBtn = new CBtnUI;

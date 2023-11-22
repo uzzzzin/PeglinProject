@@ -58,6 +58,11 @@ void CPeglinHealth::render(HDC _dc)
 
 	int hp = pPeglin->GetHP();
 
+	if (hp < 0)
+	{
+		hp = 0;
+	}
+
 	// HealthUI
 	BLENDFUNCTION blend = {};
 	blend.BlendOp = AC_SRC_OVER;

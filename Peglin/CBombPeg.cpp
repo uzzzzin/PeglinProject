@@ -76,6 +76,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 
 	if (0 >= iDieCnt - iCurCnt)
 	{
+		CCamera::GetInst()->Shake(0.06f, 6);
 		bCrashed = true;
 		m_Animator->Play(L"CrashedBombPeg", false);
 	}

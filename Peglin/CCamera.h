@@ -6,6 +6,7 @@ enum class CAM_EFFECT
 {
 	FADE_IN,
 	FADE_OUT,
+	SHAKE
 };
 
 struct FCamEvent
@@ -13,6 +14,7 @@ struct FCamEvent
 	CAM_EFFECT	Type;
 	float		AccTime;
 	float		Duration;
+	int		ShakingSize;
 };
 
 
@@ -49,6 +51,16 @@ public:
 		evnt.Type = CAM_EFFECT::FADE_OUT;
 		evnt.AccTime = 0.f;
 		evnt.Duration = _time;
+		m_EventList.push_back(evnt);
+	}
+
+	void Shake(float _time,  int _size)
+	{
+		FCamEvent evnt = {};
+		evnt.Type = CAM_EFFECT::SHAKE;
+		evnt.AccTime = 0;
+		evnt.Duration = _time;
+		evnt.ShakingSize = _size;
 		m_EventList.push_back(evnt);
 	}
 

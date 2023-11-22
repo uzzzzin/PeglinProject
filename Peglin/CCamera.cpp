@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CCamera.h"
+#include <time.h>
 
 #include "CEngine.h"
 #include "CKeyMgr.h"
@@ -14,7 +15,7 @@ CCamera::CCamera()
 {
 	//Vec2 vResol = CEngine::GetInst()->GetResolution();
 	//m_Veil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", vResol.x, vResol.y);
-
+	srand(time(NULL));
 }
 
 CCamera::~CCamera()
@@ -90,6 +91,29 @@ void CCamera::tick()
 			float alpha = fRatio;
 			m_Alpha = (UINT)(alpha * 255);
 		}
+	}
+
+	else if (evnt.Type == CAM_EFFECT::SHAKE)
+	{
+		evnt.AccTime += DT;
+
+		if(evnt.Duration <= evnt.AccTime)
+		{
+			m_EventList.pop_front();
+		}
+		else
+		{
+			Vec2 vPos = REALCENTER;
+
+			int x = rand() % evnt.ShakingSize - evnt.ShakingSize / 2;
+			int y = rand() % evnt.ShakingSize - evnt.ShakingSize / 2;
+
+			vPos.x += x;
+			vPos.y += y;
+			SetLookAt(vPos);
+		}
+
+		
 	}
 }
 

@@ -35,8 +35,17 @@ void CPeglinAttackState::finaltick(float _DT)
 
 		 if (0 >= m_Target->GetCurHP())
 		 {
-			 m_Target->SetEnemyDead(true);
+			 CCamera::GetInst()->Shake(0.27f, 19);
+		 }
+		 else
+		 {
+			 CCamera::GetInst()->Shake(0.15f, 6);
+		 }
 
+		 if (0 >= m_Target->GetCurHP())
+		 {
+			 m_Target->SetEnemyDead(true);
+			 
 			 vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
 			 auto ii = vector1[0];
 			 vector1.erase(vector1.begin());
@@ -59,11 +68,12 @@ void CPeglinAttackState::finaltick(float _DT)
 void CPeglinAttackState::Enter()
 {
 	LOG(LOGLOG, L"현재 상태 : Peglin Attack State");
+
 	m_curLevel = dynamic_cast<CGeneralLevel*>(CLevelMgr::GetInst()->GetCurLevel());
 	 m_Target = m_curLevel->GetEnemyCheck()[0].first;
 	 m_Projectile->SetPos(Vec2(GetOwnerSM()->GetOwner()->GetPos().x + 40.f , GetOwnerSM()->GetOwner()->GetPos().y+20.f));
 	 m_Peglin = dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner());
-	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.4f);
+	 m_Projectile->GetComponent<CTransform>()->MoveTo(m_Target->GetPos(), 0.3f);
 	 damage = m_Peglin->GetAttackDamage();
 
 	 UINT curOrb = (UINT)dynamic_cast<CPeglinPlayer*>(GetOwnerSM()->GetOwner())->GetCurOrbType();

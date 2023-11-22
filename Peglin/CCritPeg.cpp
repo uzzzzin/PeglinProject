@@ -50,6 +50,7 @@ void CCritPeg::Refresh()
 
 void CCritPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	vector <CPeg*> allPegs = pCurLevel->GetPegs();
 
@@ -57,6 +58,7 @@ void CCritPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	{		
 		allPegs[i]->CritModeOn();
 	}
+	CCamera::GetInst()->Shake(0.06f, 4);
 	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
 }
 

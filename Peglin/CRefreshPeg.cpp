@@ -41,6 +41,7 @@ void CRefreshPeg::Reload()
 
 void CRefreshPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	CCamera::GetInst()->Shake(0.06f, 4);
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	vector <CPeg*> &allPegs = pCurLevel->GetPegs();
 	for (int i = 0; i < pCurLevel->GetPegs().size(); ++i)
