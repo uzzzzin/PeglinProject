@@ -17,7 +17,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 1
@@ -28,7 +28,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 2
@@ -39,7 +39,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 3
@@ -50,7 +50,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 4
@@ -61,7 +61,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 5
@@ -72,7 +72,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 6
@@ -83,7 +83,7 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000
 
 [FRAME_NUM]
 7
@@ -94,4 +94,4 @@ texture\Peglin.png
 [OFFSET]
 0.000000 0.000000
 [DURATION]
-0.10000
+0.12000

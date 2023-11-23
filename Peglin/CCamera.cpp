@@ -13,8 +13,8 @@ CCamera::CCamera()
 	: m_Veil(nullptr)
 	, m_Alpha(0.f)
 {
-	//Vec2 vResol = CEngine::GetInst()->GetResolution();
-	//m_Veil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", vResol.x, vResol.y);
+	Vec2 vResol = CEngine::GetInst()->GetResolution();
+	m_Veil = CAssetMgr::GetInst()->CreateTexture(L"VeilTex", vResol.x, vResol.y);
 	srand(time(NULL));
 }
 
@@ -119,22 +119,22 @@ void CCamera::tick()
 
 void CCamera::render(HDC _dc)
 {
-	//if (0 == m_Alpha)
-	//	return;
+	if (0 == m_Alpha)
+		return;
 
-	//BLENDFUNCTION blend = {};
-	//blend.BlendOp = AC_SRC_OVER;
-	//blend.BlendFlags = 0;
+	BLENDFUNCTION blend = {};
+	blend.BlendOp = AC_SRC_OVER;
+	blend.BlendFlags = 0;
 
-	//blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
-	//blend.AlphaFormat = 0; // 0
+	blend.SourceConstantAlpha = m_Alpha; // 0 ~ 255
+	blend.AlphaFormat = 0; // 0
 
-	//AlphaBlend(_dc
-	//	, 0, 0, m_Veil->GetWidth(), m_Veil->GetHeight()
-	//	, m_Veil->GetDC()
-	//	, 0, 0
-	//	, m_Veil->GetWidth(), m_Veil->GetHeight()
-	//	, blend);
+	AlphaBlend(_dc
+		, 0, 0, m_Veil->GetWidth(), m_Veil->GetHeight()
+		, m_Veil->GetDC()
+		, 0, 0
+		, m_Veil->GetWidth(), m_Veil->GetHeight()
+		, blend);
 
 
 	if (!DEBUG_RENDER)

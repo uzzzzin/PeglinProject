@@ -15,6 +15,7 @@
 #include "CPeglinDieState.h"
 #include "CStateClearState.h"
 #include "CGeneralLevel.h"
+#include "CStartLevelEnterState.h"
 
 
 
@@ -41,6 +42,7 @@ CPeglinPlayer::CPeglinPlayer()
 	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
 	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);
 	m_AI->AddState((UINT)STAGE_CLEAR, new CStateClearState);
+	m_AI->AddState((UINT)START_LEVEL_ENTER, new CStartLevelEnterState);
 	
 	//m_Movement = AddComponent<CMovement>(L"Movement");
 

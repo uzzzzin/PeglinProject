@@ -19,6 +19,10 @@ void CBeforeShootState::finaltick(float _DT)
 	{
 		GetOwnerSM()->ChangeState((UINT)SHOOTING);
 	}
+	if (KEY_TAP(_3) )
+	{
+		GetOwnerSM()->ChangeState((UINT)PEGLIN_DIE);
+	}
 }
 
 void CBeforeShootState::Enter()

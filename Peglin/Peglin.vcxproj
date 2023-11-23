@@ -219,6 +219,7 @@
     <ClInclude Include="CStage2Level.h" />
     <ClInclude Include="CStartBG.h" />
     <ClInclude Include="CStartLevel.h" />
+    <ClInclude Include="CStartLevelEnterState.h" />
     <ClInclude Include="CStartLogo.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CStateClearState.h" />
@@ -333,6 +334,7 @@
     <ClCompile Include="CStage2Level.cpp" />
     <ClCompile Include="CStartBG.cpp" />
     <ClCompile Include="CStartLevel.cpp" />
+    <ClCompile Include="CStartLevelEnterState.cpp" />
     <ClCompile Include="CStartLogo.cpp" />
     <ClCompile Include="CState.cpp" />
     <ClCompile Include="CStateClearState.cpp" />

@@ -234,10 +234,10 @@ void CStage1Level::tick()
 	CLevel::tick();
 
 	// Enter 키가 눌리면 PlayLevel 로 전환
-	if (KEY_TAP(KEY::ENTER))
-	{
-		ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
-	}
+	//if (KEY_TAP(KEY::ENTER))
+	//{
+	//	ChangeLevel(LEVEL_TYPE::BOARD_EDIT_LEVEL);
+	//}
 }
 
 CStage1Level::CStage1Level()

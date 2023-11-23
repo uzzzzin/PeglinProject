@@ -328,6 +328,7 @@
       <Filter>Game\05. Component</Filter>
     </ClInclude>
     <ClInclude Include="CPeglinDamaged.h" />
+    <ClInclude Include="CStartLevelEnterState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -592,6 +593,7 @@
       <Filter>Game\05. Component</Filter>
     </ClCompile>
     <ClCompile Include="CPeglinDamaged.cpp" />
+    <ClCompile Include="CStartLevelEnterState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

@@ -31,7 +31,7 @@ texture\Peglin.png
 0.10000
 
 [FRAME_NUM]
-0
+2
 [LEFT_TOP]
 160.000000 128.000000
 [CUT_SIZE]
@@ -42,7 +42,7 @@ texture\Peglin.png
 0.10000
 
 [FRAME_NUM]
-0
+3
 [LEFT_TOP]
 192.000000 128.000000
 [CUT_SIZE]
@@ -53,7 +53,7 @@ texture\Peglin.png
 0.10000
 
 [FRAME_NUM]
-0
+4
 [LEFT_TOP]
 224.000000 128.000000
 [CUT_SIZE]
