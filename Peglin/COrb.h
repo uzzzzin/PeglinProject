@@ -69,6 +69,17 @@ public:
     {
         return accDamage;
     }
+    void alphaCntMM()
+    {
+        if (alphaCnt <= 0)
+            return;
+
+        alphaCnt = alphaCnt - 1;
+    }
+    void alphaCntReset()
+    {
+        alphaCnt = 255;
+    }
 
 
 
@@ -77,6 +88,7 @@ public:
 
     virtual void begin() override;
     virtual void tick(float _DT) override;
+    //virtual void finaltick(float _DT) override;
    virtual void render(HDC _dc) override;
     virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;
     //virtual void Overlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol) override;

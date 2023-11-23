@@ -20,6 +20,8 @@ CShootingState::~CShootingState()
 
 void CShootingState::finaltick(float _DT)
 {
+	m_Orb->alphaCntMM();
+	//m_Orb->finaltick(_DT);
 
 	//if (0 != m_Orb->GetHitOrbsCnt().size())
 	//{
@@ -75,4 +77,5 @@ void CShootingState::Exit()
 void CShootingState::render(HDC _dc)
 {
 	m_Orb->render(_dc);
+
 }

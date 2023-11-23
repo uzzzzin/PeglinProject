@@ -105,6 +105,7 @@ void COrb::SetAccDamagePos(Vec2 _pos)
 {
 	accDamagePos = _pos;
 	accDamage = accDamage + orbs[curOrbType].damage;
+	alphaCntReset();
 }
 
 void COrb::begin()
@@ -196,9 +197,13 @@ void COrb::tick(float _DT)
 	}
 
 
-
 	prevPos = curPos;
 }
+
+//void COrb::finaltick(float _DT)
+//{
+//	Super::finaltick(_DT);
+//}
 
 
 int COrb::digitCal(int _accDamage)

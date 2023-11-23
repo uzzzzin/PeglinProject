@@ -3,6 +3,7 @@
 class CShootingState :
     public CState
 {
+    
 private:
     class COrb* m_Orb;
     vector<OrbInfo> info;
