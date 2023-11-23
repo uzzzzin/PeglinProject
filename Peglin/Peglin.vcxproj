@@ -189,6 +189,10 @@
     <ClInclude Include="CObstacle.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="COrb.h" />
+    <ClInclude Include="COrbDamage.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="COrbQueueBody.h" />
     <ClInclude Include="COrbQueueBodyOrbCase.h" />
     <ClInclude Include="COrbQueueChain.h" />
@@ -303,6 +307,10 @@
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="COrb.cpp" />
+    <ClCompile Include="COrbDamage.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="COrbQueueBody.cpp" />
     <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
     <ClCompile Include="COrbQueueChain.cpp" />

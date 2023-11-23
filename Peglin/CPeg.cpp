@@ -2,6 +2,7 @@
 #include "CPeg.h"
 
 #include "CColliderWall.h"
+#include "COrb.h"
 
 CPeg::CPeg()
 : iDieCnt(1)
@@ -14,6 +15,8 @@ CPeg::CPeg()
 	m_Animator = AddComponent<CAnimator>(L"PegAnimator");
 	m_Animator->LoadAnimation(L"animdata\\CrashedPeg.txt");	
 	m_Collider = AddComponent<CColliderCircle>(L"PegCollider");
+
+
 }
 
 //CPeg::CPeg(const CPeg& _Origin)
@@ -41,6 +44,11 @@ void CPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 	}
 	if (_OtherObj->GetLayerIdx() == ORB)
 	{
+		// 데미지 여기에 띄워주세요
+		COrb* orb = dynamic_cast<COrb*>(_OtherObj);
+		orb->SetAccDamagePos(Vec2(GetPos().x, GetPos().y - (GetScale().y/2) - 2.f));
+
+
 		++iCurCnt;
 		if (0 >=iDieCnt- iCurCnt)
 		{

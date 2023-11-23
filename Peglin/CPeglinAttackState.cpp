@@ -82,7 +82,6 @@ void CPeglinAttackState::Enter()
 
 void CPeglinAttackState::Exit()
 {
-
 	m_Peglin->SetAttackDamage(0);
 
 	vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();

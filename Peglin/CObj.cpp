@@ -3,6 +3,7 @@
 
 #include "CComponent.h"
 #include "CTaskMgr.h"
+#include "CAssetMgr.h"
 
 #include "CEngine.h"
 

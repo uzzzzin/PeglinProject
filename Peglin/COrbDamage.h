@@ -1,6 +1,6 @@
 #pragma once
 #include "CObj.h"
-class CPeglinDamaged :
+class COrbDamage :
     public CObj
 {
     GENERATED_OBJECT(CObj);
@@ -9,15 +9,18 @@ private:
     class CTexture* m_PeglinDamagedUI;
     class CTransform* m_Transform;
 
-    vector<CTexture*> RedNums;
+    vector<CTexture*> WhiteNums;
 
     int damageNum;
     int alphaCnt;
 
-    Vec2 initPos;
-
 
 public:
+    void AddDamageNum(int _num)
+    {
+        damageNum = _num + damageNum;
+    }
+
     void SetDamageNum(int _num)
     {
         damageNum = _num;
@@ -40,16 +43,6 @@ public:
         alphaCnt = 255;
     }
 
-    void SetInitPos(Vec2 _initPos)
-    {
-        initPos = _initPos;
-    }
-
-    Vec2 GetInitPos()
-    {
-        return initPos;
-    }
-
 
 public:
     //virtual void begin() override;
@@ -57,11 +50,9 @@ public:
     virtual void render(HDC _dc) override;
     virtual void finaltick(float _DT) override;
 
-
-
 public:
-    CLONE(CPeglinDamaged);
-    CPeglinDamaged();
-    ~CPeglinDamaged();
+    CLONE(COrbDamage);
+    COrbDamage();
+    ~COrbDamage();
 };
 

@@ -8,6 +8,7 @@
 #include "CAssetMgr.h"
 #include "CKeyMgr.h"
 #include "CLogMgr.h"
+#include "CTexture.h"
 
 #include "components.h"
 #include "CPeglinPlayer.h"
@@ -23,7 +24,7 @@ COrb::COrb()
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
 	, curOrbType(ORB_TYPE_END)
-	//, m_AI(nullptr)
+	, alphaCnt(255)
 {
 	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
@@ -44,7 +45,6 @@ COrb::COrb()
 	hitOrbs.push_back(make_pair(BOMB_PEG, 0));
 
 
-
 	m_Animator = AddComponent<CAnimator>(L"OrbAnimator");
 	m_Collider = AddComponent<CColliderCircle>(L"OrbCollider");
 	m_Movement = AddComponent<CMovement>(L"OrbMovement");
@@ -52,9 +52,6 @@ COrb::COrb()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24.f, 24.f));
 
-
-	//m_Animator->LoadAnimation(L"animdata\\Pebball.txt");
-	//m_Animator->Play(L"Pebball", true);
 	
 	//m_Movement->SetMass(1.f);
 	//m_Movement->SetInitSpeed(200.f);
@@ -64,12 +61,18 @@ COrb::COrb()
 	m_Movement->SetGravity(Vec2(0.f, 980.f));
 	m_Movement->SetGround(false);
 
-	/*m_AI = AddComponent<CStateMachine>(L"AI");
-	m_AI->AddState((UINT)STATE_INIT, new CInitState);
-	m_AI->AddState((UINT)SHOOTING, new CShootingState);
-	m_AI->AddState((UINT)PEGLIN_ATTACK, new CPeglinAttackState);
-	m_AI->AddState((UINT)MONSTER_ATTACK, new CMonsterAttackState);
-	m_AI->AddState((UINT)PEGLIN_DIE, new CPeglinDieState);*/
+	Nums.resize(10);
+
+	for (int i = 0; i < 10; ++i)
+	{
+		wstring name = L"Number";
+		name += std::to_wstring(i);
+		wstring pngname = name;
+		pngname = L"texture\\" + name + L".png";
+		CTexture* pTexture = CAssetMgr::GetInst()->LoadTexture(name, pngname);
+		Nums[i] = pTexture;
+	}
+
 }
 
 COrb::~COrb()
@@ -95,6 +98,13 @@ void COrb::SetCurTurnOrb(ORB_TYPE _type)
 
 	m_Animator->LoadAnimation(orbs[a].animPath);
 	m_Animator->Play(orbs[a].animName, true);
+}
+
+
+void COrb::SetAccDamagePos(Vec2 _pos)
+{
+	accDamagePos = _pos;
+	accDamage = accDamage + orbs[curOrbType].damage;
 }
 
 void COrb::begin()
@@ -190,11 +200,146 @@ void COrb::tick(float _DT)
 	prevPos = curPos;
 }
 
+
+int COrb::digitCal(int _accDamage)
+{
+	int fir = accDamage / 100; // 백의자리
+	int sec = (accDamage % 100) / 10; // 십의자리
+	int thi = (accDamage % 100) % 10; // 일의자리
+
+	if (fir != 0)
+	{
+		return 3;
+	}
+
+	if (fir == 0 && sec != 0)
+	{
+		// 두자릿수
+		return 2;
+	}
+
+	if (fir == 0 && sec == 0 && thi != 0)
+	{
+		// 한자릿수
+		return 1;
+	}
+	if (fir == 0 && sec == 0 && thi == 0)
+	{
+		return 0;
+	}
+	return -1;
+}
+
+void COrb::SetAccDamage(int _damage)
+{
+	accDamage = _damage;
+}
+
+
 void COrb::render(HDC _dc)
 {
-	Super::render(_dc);
+	Super::render(_dc); 
 
+	Vec2 vRenderPos = accDamagePos; //= GetPos();
+	Vec2 vScale = GetScale();
 
+	 int digit = digitCal(accDamage); // 자릿수
+
+	 int fir = accDamage / 100; // 백의자리
+	 int sec = (accDamage % 100) / 10; // 십의자리
+	 int thi = (accDamage % 100) % 10; // 일의자리
+
+	 if (fir > 9)
+	 {
+		 fir = 9;
+		 sec = 9;
+		 thi = 9;
+	 }
+
+	 BLENDFUNCTION blend2 = {};
+
+	 switch (digit)
+	 {
+		 case 3:
+		 {
+			 // 백의 자리
+			 blend2.BlendOp = AC_SRC_OVER;
+			 blend2.BlendFlags = 0;
+
+			 blend2.SourceConstantAlpha = alphaCnt; // 0 ~ 255
+			 blend2.AlphaFormat = AC_SRC_ALPHA; // 0
+
+			 AlphaBlend(_dc
+				 , int((vRenderPos.x - vScale.x / 2.f) - 2)
+				 , int((vRenderPos.y - vScale.y / 2.f) - 19)
+				 , Nums[fir]->GetWidth() * 0.43
+				 , Nums[fir]->GetHeight() * 0.43
+				 , Nums[fir]->GetDC()
+				 , 0, 0
+				 , Nums[fir]->GetWidth()
+				 , Nums[fir]->GetHeight()
+				 , blend2);
+		 }
+
+		 case 2:
+		 {
+			 // 십의 자리
+			 blend2.BlendOp = AC_SRC_OVER;
+			 blend2.BlendFlags = 0;
+
+			 blend2.SourceConstantAlpha = alphaCnt; // 0 ~ 255
+			 blend2.AlphaFormat = AC_SRC_ALPHA; // 0
+
+			 AlphaBlend(_dc
+				 , int((vRenderPos.x - vScale.x / 2.f) + 9)
+				 , int((vRenderPos.y - vScale.y / 2.f) - 19)
+				 , Nums[sec]->GetWidth() * 0.43
+				 , Nums[sec]->GetHeight() * 0.43
+				 , Nums[sec]->GetDC()
+				 , 0, 0
+				 , Nums[sec]->GetWidth()
+				 , Nums[sec]->GetHeight()
+				 , blend2);
+		 }
+
+		 case 1:
+		 {
+			 // 일의 자리
+			 blend2.BlendOp = AC_SRC_OVER;
+			 blend2.BlendFlags = 0;
+
+			 blend2.SourceConstantAlpha = alphaCnt; // 0 ~ 255
+			 blend2.AlphaFormat = AC_SRC_ALPHA; // 0
+
+			 AlphaBlend(_dc
+				 , int((vRenderPos.x - vScale.x / 2.f) + 20)
+				 , int((vRenderPos.y - vScale.y / 2.f) - 19)
+				 , Nums[thi]->GetWidth() * 0.43
+				 , Nums[thi]->GetHeight() * 0.43
+				 , Nums[thi]->GetDC()
+				 , 0, 0
+				 , Nums[thi]->GetWidth()
+				 , Nums[thi]->GetHeight()
+				 , blend2);
+
+			 break;
+		 }
+		 case 0:
+		 {
+			 break;
+		 }
+		 case -1:
+		 {
+			 LOG(ERR, L"데미지가 이상해요..");
+			 break;
+		 }
+		 default:
+		 {
+			 LOG(ERR, L"이상한 게 찍힘");
+		 }
+	}
+
+	// ----------------------------------------------------------------------------------------------------
 	if (!DEBUG_RENDER)
 		return;
 
@@ -229,6 +374,12 @@ void COrb::render(HDC _dc)
 		, int(m_colPos.y - 3.f)
 		, int(m_colPos.x + 3.f)
 		, int(m_colPos.y + 3.f));
+
+
+	// ------------------------------------------------------
+
+
+
 }
 
 

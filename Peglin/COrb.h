@@ -14,6 +14,14 @@ private:
 
     vector<OrbInfo> orbs; // 오브들 정보들이 담겨 있다.
 
+    vector<CTexture*> Nums; // 데미지 숫자 텍스쳐들 담김.
+    int alphaCnt;
+
+    int accDamage;
+    Vec2 accDamagePos;
+    //int accCnt;
+
+
     vector<std::pair<PEG_TYPE, int>> hitOrbs;
 
     ORB_TYPE curOrbType;
@@ -21,6 +29,7 @@ private:
     int curDamage;
     int curCritDamage; 
     int curAttackCnt;
+
 
 public:
     Vec2 prevPos;
@@ -51,6 +60,20 @@ public:
     { return hitOrbs;}
 
     void SetCurTurnOrb(ORB_TYPE _type);
+
+    int digitCal(int _accDamage);
+
+    void SetAccDamage(int _damage);
+
+    int GetAccDamage()
+    {
+        return accDamage;
+    }
+
+
+
+
+    void SetAccDamagePos(Vec2 _pos);
 
     virtual void begin() override;
     virtual void tick(float _DT) override;

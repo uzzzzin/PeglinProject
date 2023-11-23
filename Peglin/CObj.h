@@ -22,6 +22,7 @@ private:
 	const float UBoundaryY = 315.f;
 	const float DBoundaryY = 870.f;
 
+
 public:
 	float GetLBoundaryX()
 	{

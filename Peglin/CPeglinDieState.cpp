@@ -2,7 +2,6 @@
 #include "CPeglinDieState.h"
 
 #include "CLogMgr.h"
-
 #include "CGeneralLevel.h"
 #include "CPeglinPlayer.h"
 
@@ -21,6 +20,7 @@ void CPeglinDieState::Enter()
 
 	m_Peglin->GetComponent<CAnimator>()->LoadAnimation(L"animdata\\PeglinDie.txt");
 	m_Peglin->GetComponent<CAnimator>()->Play(L"PeglinDie",false);
+	CCamera::GetInst()->FadeOut(1.f);
 
 }
 
