@@ -36,11 +36,6 @@ void CAttackProjectile::tick(float _DT)
 	 //GetOwnerSM()->ChangeState((UINT)MONSTER_ATTACK);
 }
 
-void CAttackProjectile::finaltick(float _DT)
-{
-	Super::finaltick(_DT);
-}
-
 void CAttackProjectile::begin()
 {
 	//m_Transform->MoveTo(), 2.f);
