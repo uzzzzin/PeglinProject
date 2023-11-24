@@ -6,6 +6,9 @@
 #include "CEnemy.h"
 #include "CPeglinPlayer.h"
 
+#include "CSound.h"
+#include "CAssetMgr.h"
+
 #include "CGeneralLevel.h"
 #include "CStage1Level.h"
 #include "CLogMgr.h"
@@ -84,6 +87,7 @@ void CPeglinAttackState::Enter()
 void CPeglinAttackState::Exit()
 {
 	m_Peglin->SetAttackDamage(0);
+	m_Peglin->GetProjSound()->Play(false);
 
 	vector<std::pair<class CEnemy*, int>>& vector1 = m_curLevel->GetEnemyCheck();
 	

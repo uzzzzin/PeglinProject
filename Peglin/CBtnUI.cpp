@@ -6,12 +6,15 @@
 #include "CKeyMgr.h"
 #include "CAssetMgr.h"
 #include "CLogMgr.h"
+#include "CSound.h"
 
 #include "CTexture.h"
 
 CBtnUI::CBtnUI()
 	: m_CallBackFunc(nullptr)
 	, m_Animator(nullptr)
+	, m_SndEffectH(nullptr)
+	, m_SndEffectC(nullptr)
 	, m_Inst(nullptr)
 	, m_Delegate(nullptr)
 	, wNAnimName(L"")
@@ -20,6 +23,8 @@ CBtnUI::CBtnUI()
 
 {
 	m_Animator = AddComponent<CAnimator>();
+	m_SndEffectH = CAssetMgr::GetInst()->LoadSound(L"BtnHovered", L"sound\\BtnHovered.wav");
+	m_SndEffectC= CAssetMgr::GetInst()->LoadSound(L"BtnClicked", L"sound\\BtnClicked.wav");
 }
 
 CBtnUI::CBtnUI(const wstring& _strName, const wstring& _strKey, const wstring& _strRelativePath)
@@ -72,6 +77,7 @@ void CBtnUI::begin()
 void CBtnUI::OnHovered(Vec2 _vMousePos)
 {
 	m_Animator->Play(wHAnimName, true);
+	m_SndEffectH->Play(false);
 }
 
 void CBtnUI::MouseOn(Vec2 _vMousePos)
@@ -106,6 +112,7 @@ void CBtnUI::LBtnClicked(Vec2 _vMousePos)
 
 	if (nullptr != m_CallBackFunc)
 	{
+		m_SndEffectC->Play(false);
 		m_CallBackFunc();
 	}
 	

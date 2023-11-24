@@ -5,6 +5,9 @@ class CBombPeg :
 {
     GENERATED_OBJECT(CPeg);
 
+    class CSound* m_SE;
+    class CSound* m_SE2;
+
 
 public:
     virtual void begin();

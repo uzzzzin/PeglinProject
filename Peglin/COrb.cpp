@@ -9,6 +9,7 @@
 #include "CKeyMgr.h"
 #include "CLogMgr.h"
 #include "CTexture.h"
+#include "CSound.h"
 
 #include "components.h"
 #include "CPeglinPlayer.h"
@@ -25,6 +26,7 @@ COrb::COrb()
 	, m_Movement(nullptr)
 	, curOrbType(ORB_TYPE_END)
 	, alphaCnt(255)
+	, m_SE(nullptr)
 {
 	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
@@ -72,6 +74,8 @@ COrb::COrb()
 		CTexture* pTexture = CAssetMgr::GetInst()->LoadTexture(name, pngname);
 		Nums[i] = pTexture;
 	}
+
+	m_SE = CAssetMgr::GetInst()->LoadSound(L"ObstacleColSE", L"sound\\ObstacleColSE.wav");
 
 }
 
@@ -123,17 +127,19 @@ void COrb::tick(float _DT)
 	if (GetLBoundaryX() > curPos.x)
 	{
 		//LOG(ERR, L"LEFT holy....");
-
+		m_SE->Play(false);
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 	}
 	else if (GetRBoundaryX() < curPos.x)
 	{
 		//	LOG(ERR, L"RIGHT holy....");
+		m_SE->Play(false);
 		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 	}
 	else if (GetUBoundaryY() > curPos.y)
 	{
 		//	LOG(ERR, L"UP holy....");
+		m_SE->Play(false);
 		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 	}
 	else if (GetDBoundaryY() < curPos.y)
@@ -394,25 +400,25 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 	if (GetLBoundaryX() >= curPos.x)
 	{
 		curPos.x = GetLBoundaryX();
-		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
+		//m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 		return;
 	}
 	if (GetRBoundaryX() <= curPos.x)
 	{
 		curPos.x = GetRBoundaryX();
-		m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
+		//m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x * -1), m_Movement->GetVelocity().y));
 		return;
 	}
 	if (GetUBoundaryY() >= curPos.y)
 	{
 		curPos.y = GetUBoundaryY();
-		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
+		//m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 		return;
 	}
 	if (GetDBoundaryY() <= curPos.y)
 	{
 		curPos.y = GetDBoundaryY();
-		m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
+		//m_Movement->SetVelocity(Vec2(m_Movement->GetVelocity().x, (m_Movement->GetVelocity().y) * -1));
 		return;
 	}
 	if (_OtherCol->GetPos().x - _OwnCol->GetPos().x != 0 && _OtherCol->GetPos().y - _OwnCol->GetPos().y != 0)

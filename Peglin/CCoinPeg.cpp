@@ -4,12 +4,15 @@
 
 #include "CAssetMgr.h"
 #include "CKeyMgr.h"
+#include "CSound.h"
 
 #include "components.h"
 
 
 CCoinPeg::CCoinPeg()
 	:bSlimed(false)
+	, m_SE(nullptr)
+	, m_SE2(nullptr)
 {
 	SetName(L"CoinPeg");
 	m_Animator->LoadAnimation(L"animdata\\CoinPeg.txt");
@@ -19,6 +22,10 @@ CCoinPeg::CCoinPeg()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24, 24));
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+
+	m_SE = CAssetMgr::GetInst()->LoadSound(L"CoinPegColSE", L"sound\\CoinPegColSE.wav");
+	m_SE2 = CAssetMgr::GetInst()->LoadSound(L"CoinPegColSE2", L"sound\\CoinPegColSE2.wav");
+
 }
 
 CCoinPeg::~CCoinPeg()
@@ -70,4 +77,25 @@ void CCoinPeg::Refresh()
 	m_Collider->SetBOnOff(true);
 	bCrashed = false;
 	iDieCnt = 0;
+}
+
+void CCoinPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+{
+	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+
+	if (!(m_Collider->GetBOnOff()))
+	{
+		return;
+	}
+
+	if (bColSnd == true)
+	{
+		m_SE->Play(false);
+		bColSnd = false;
+	}
+	else
+	{
+		m_SE2->Play(false);
+		bColSnd = true;
+	}
 }

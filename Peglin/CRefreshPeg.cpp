@@ -3,10 +3,13 @@
 
 #include "CLevelMgr.h"
 
+#include "CAssetMgr.h"
+#include "CSound.h"
 #include "CLevel.h"
 
 
 CRefreshPeg::CRefreshPeg()
+	: m_SE(nullptr)
 {
 	SetName(L"RefreshPeg");
 	m_Animator->LoadAnimation(L"animdata\\RefreshPeg.txt");
@@ -15,6 +18,8 @@ CRefreshPeg::CRefreshPeg()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24, 24));
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+
+	m_SE = CAssetMgr::GetInst()->LoadSound(L"RefreshPegColSE", L"sound\\RefreshPegColSE.wav");
 }
 
 CRefreshPeg::~CRefreshPeg()
@@ -41,6 +46,7 @@ void CRefreshPeg::Reload()
 
 void CRefreshPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	m_SE->Play(false);
 	CCamera::GetInst()->Shake(0.06f, 4);
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	vector <CPeg*> &allPegs = pCurLevel->GetPegs();

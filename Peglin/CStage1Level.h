@@ -5,6 +5,7 @@ class CStage1Level :
 {
 private:
     class CPeglinPlayer* my_Peglin; // Æä±Û¸°
+    class CSound* m_BGM;
 
 public:
     virtual void init() override;

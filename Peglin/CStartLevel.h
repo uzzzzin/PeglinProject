@@ -3,6 +3,9 @@
 class CStartLevel :
     public CLevel
 {
+private:
+    class CSound* m_BGM;
+
 
 public:
     virtual void init() override;
@@ -10,5 +13,9 @@ public:
     virtual void exit() override;
 
     virtual void tick() override;
+
+public:
+    CStartLevel();
+    ~CStartLevel();
 };
 

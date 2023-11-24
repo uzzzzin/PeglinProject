@@ -30,6 +30,7 @@ private:
     int curCritDamage; 
     int curAttackCnt;
 
+    class CSound* m_SE;
 
 public:
     Vec2 prevPos;

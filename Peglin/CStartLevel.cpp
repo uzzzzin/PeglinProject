@@ -6,6 +6,8 @@
 #include "CKeyMgr.h"
 #include "CLevelMgr.h"
 #include "CLogMgr.h"
+#include "CAssetMgr.h"
+#include "CSound.h"
 
 #include "CStartBG.h"
 #include "CStartLogo.h"
@@ -18,6 +20,9 @@ void CStartLevel::init()
 void CStartLevel::enter()
 {
 	LOG( LOGLOG, L"StartLevel 들어옴");
+
+	m_BGM->SetPosition(0.f);
+	m_BGM->Play(true);
 
 	// 카메라 설정
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
@@ -66,6 +71,7 @@ void CStartLevel::enter()
 void CStartLevel::exit()
 {
 	LOG( LOGLOG, L"StartLevel 빠져나감");
+	m_BGM->Stop();
 	DeleteAllObjects();
 }
 
@@ -78,4 +84,14 @@ void CStartLevel::tick()
 	{
 		ChangeLevel(LEVEL_TYPE::STAGE_1_LEVEL);
 	}
+}
+
+CStartLevel::CStartLevel()
+ : m_BGM(nullptr)
+{
+	m_BGM = CAssetMgr::GetInst()->LoadSound(L"StartLevelBgm", L"sound\\StartLevelBgm.wav");
+}
+
+CStartLevel::~CStartLevel()
+{
 }

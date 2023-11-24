@@ -8,6 +8,10 @@ class CGreyPeg :
 private:
     bool    bSlimed; // 슬라임화 된 페그인지
 
+
+    class CSound* m_SndEffect_Col;
+    class CSound* m_SndEffect_Col2;
+
 public:
     void SetbSlimed(bool _bSlimed)
     {
@@ -23,7 +27,7 @@ public:
 
     virtual void Refresh() override;
 
-   // virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
+    virtual void BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol);
 
 
 public:

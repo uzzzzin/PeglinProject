@@ -2,6 +2,8 @@
 #include "CAttackProjectile.h"
 
 #include "CLevelMgr.h"
+#include "CAssetMgr.h"
+#include "CSound.h"
 
 #include "COrb.h"
 #include "components.h"
@@ -21,7 +23,6 @@ CAttackProjectile::CAttackProjectile()
 	m_Animator->LoadAnimation(L"animdata\\Sphear.txt");
 	m_Animator->LoadAnimation(L"animdata\\Rubborb.txt");
 	m_Animator->LoadAnimation(L"animdata\\EnemyStoneProjectile.txt");
-
 }
 
 CAttackProjectile::~CAttackProjectile()

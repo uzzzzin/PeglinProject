@@ -16,13 +16,19 @@ private:
     int HP;
     int AttackDamage; // 공격할 데미지 양
 
+    class CSound* m_SE_Proj;
+    class CSound* m_SE_Attacked;
+
 public:
     int GetMyOrbIdx() { return myOrbsIdx; } // 현재 턴의 오브를 들고 올
     vector<ORB_TYPE> GetOrbs() { return myOrbs; } // 페글린이 보유한 오브들 벡터를 들고 올
     int GetAttackDamage() { return AttackDamage; }
     void SetAttackDamage(int _damage) { AttackDamage = _damage;  }
     void AddAttackDamage(int _damage) { AttackDamage = AttackDamage + _damage;   }
-    
+   
+    CSound* GetProjSound();
+    CSound* GetAttackedSound();
+
     void AddMyOrbsIdx();
     //{
     //    if (myOrbs.size() <= myOrbsIdx + 1)

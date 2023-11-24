@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CStateClearState.h"
 #include "CGeneralLevel.h"
+#include "CSound.h"
 
 
 CStateClearState::CStateClearState()
@@ -25,4 +26,5 @@ void CStateClearState::Enter()
 void CStateClearState::Exit()
 {
 	m_curLevel->ResetTurn();
+	m_curLevel->GetStageClearBGM()->Play(false);
 }

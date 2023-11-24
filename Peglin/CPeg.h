@@ -12,9 +12,13 @@ protected:
     bool                            bCrashed; // 현재 죽었는지 안 죽었는지 -> 엔터티에 있지 않나 // false 
 
     bool                            bCritMode;
+
+    bool                            bColSnd;
     
     class CAnimator* m_Animator;
     class CColliderCircle* m_Collider;
+
+
 
 public:
     void SetiDieCnt(int _iDieCnt)

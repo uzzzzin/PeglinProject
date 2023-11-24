@@ -3,16 +3,14 @@
 
 #include "CAssetMgr.h"
 #include "CKeyMgr.h"
+#include "CSound.h"
 #include "components.h"
 
 
-
-//CGreyPeg::CGreyPeg(const CGreyPeg& _Origin)
-//{
-//}
-
 CGreyPeg::CGreyPeg()
 	:bSlimed(true)
+	, m_SndEffect_Col(nullptr)
+	, m_SndEffect_Col2(nullptr)
 {
 	SetName(L"GreyPeg");
 	m_Animator->LoadAnimation(L"animdata\\firstGreyPeg.txt");
@@ -25,6 +23,9 @@ CGreyPeg::CGreyPeg()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 
 	m_Animator->Play(L"firstGreyPeg", true);
+
+	m_SndEffect_Col = CAssetMgr::GetInst()->LoadSound(L"PegColSE", L"sound\\PegColSE.wav");
+	m_SndEffect_Col2 = CAssetMgr::GetInst()->LoadSound(L"PegColSE2", L"sound\\PegColSE2.wav");
 
 }
 
@@ -71,10 +72,26 @@ void CGreyPeg::Refresh()
 	iDieCnt = 0;
 }
 
-//void CGreyPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
-//{
-//	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
-//
-//	
-//}
+void CGreyPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
+{
+	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+
+	if (!(m_Collider->GetBOnOff()))
+	{
+		return;
+	}
+
+	if (bColSnd == true)
+	{
+		m_SndEffect_Col->Play(false);
+		bColSnd = false;
+	}
+	else
+	{
+		m_SndEffect_Col2->Play(false);
+		bColSnd = true;
+	}
+
+	
+}
 

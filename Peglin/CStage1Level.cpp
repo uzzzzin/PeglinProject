@@ -8,6 +8,7 @@
 #include "CLevelMgr.h"
 #include "CLogMgr.h"
 #include "CCollisionMgr.h"
+#include "CAssetMgr.h"
 #include "components.h"
 
 #include "CImg.h"
@@ -16,6 +17,7 @@
 #include "CGreyPeg.h"
 #include "COrb.h"
 #include "CObstacle.h"
+#include "CSound.h"
 
 #include "COrbQueue.h"
 #include "COrbQueueHeadOrb.h"
@@ -37,6 +39,10 @@ void CStage1Level::enter()
 	CCamera::GetInst()->SetLookAt(vLookAt);
 	GetEnemyCheck().clear();
 	//my_Peglin->GetComponent<class CStateMachine>()->ChangeState(UINT(STATE_INIT));
+
+
+	m_BGM->SetPosition(0.f);
+	m_BGM->Play(true);
 
 	my_Peglin = new CPeglinPlayer;
 	my_Peglin->SetPos(Vec2(440.f, 207.f));
@@ -227,6 +233,7 @@ void CStage1Level::enter()
 void CStage1Level::exit()
 {
 	LOG(LOGLOG, L"CStage1Level 빠져나감");
+	m_BGM->Stop();
 	DeleteAllObjects();
 }
 
@@ -243,8 +250,9 @@ void CStage1Level::tick()
 
 CStage1Level::CStage1Level()
 	: my_Peglin(nullptr)
+	, m_BGM(nullptr)
 {
-
+	m_BGM = CAssetMgr::GetInst()->LoadSound(L"StageLevelBgm", L"sound\\StageLevelBgm.wav");
 }
 
 CStage1Level::~CStage1Level()

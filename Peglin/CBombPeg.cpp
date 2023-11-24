@@ -4,10 +4,13 @@
 #include "CAssetMgr.h"
 #include "CTexture.h"
 #include "CKeyMgr.h"
+#include "CSound.h"
 
 #include "components.h"
 
 CBombPeg::CBombPeg()
+	: m_SE(nullptr)
+	, m_SE2(nullptr)
 {
 	SetiDieCnt(2);
 	SetName(L"BombPeg");
@@ -21,6 +24,11 @@ CBombPeg::CBombPeg()
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
 	m_Collider->SetScale(Vec2(24, 24));
 	m_Collider->SetOffsetPos(Vec2(0.f, 0.f));
+
+	m_SE = CAssetMgr::GetInst()->LoadSound(L"BombPegColSE1", L"sound\\BombPegColSE1.wav");
+	m_SE2 = CAssetMgr::GetInst()->LoadSound(L"BombPegColSE2", L"sound\\BombPegColSE2.wav");
+
+
 }
 
 CBombPeg::~CBombPeg()
@@ -79,6 +87,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 		CCamera::GetInst()->Shake(0.06f, 6);
 		bCrashed = true;
 		m_Animator->Play(L"CrashedBombPeg", false);
+		m_SE2->Play(false);
 	}
 
 	if (_OtherObj->GetLayerIdx() == ORB)
@@ -87,6 +96,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 		{
 			m_Animator->Play(L"BombPeg", true);
 			m_Collider->SetBOnOff(true);
+			m_SE->Play(false);
 		}
 		
 	}

@@ -1,5 +1,6 @@
 #pragma once
 #include "CLevel.h"
+
 class CGeneralLevel :
     public CLevel
 {
@@ -8,6 +9,8 @@ private:
     int turnCnt; // 현재 몇 턴까지 왔는지
 
     vector<std::pair<class CEnemy*, int>> EnemysCheck; // 레벨이 보유한 적 쉑들
+
+    class CSound* StageClearBGM;
 
 public:
     vector<float> EnemyXPos;
@@ -19,6 +22,8 @@ public:
     int GetCurTurn() { return turnCnt; }
     void CurTurnPP() { ++turnCnt; }
     void ResetTurn() { turnCnt = 0; }
+
+    CSound* GetStageClearBGM();
 
 public:
     CLONE_DISABLE(CGeneralLevel);

@@ -3,7 +3,7 @@
 
 #include "CAssetMgr.h"
 #include "CTexture.h"
-
+#include "CSound.h"
 #include "CEnemy.h"
 #include "CPeglinPlayer.h"
 #include "CGeneralLevel.h"
@@ -38,6 +38,8 @@ void CMonsterAttackState::finaltick(float _DT)
 			m_PeglinDamageUI->finaltick(_DT);
 			int damage = m_AttackEnemy->GetDamage();
 			m_Peglin->ReduceHP(damage);
+			CCamera::GetInst()->Shake(0.8f, 10);
+			m_Peglin->GetAttackedSound()->Play(false);
 
 			if (0 >= m_Peglin->GetHP())
 			{
@@ -91,6 +93,7 @@ void CMonsterAttackState::render(HDC _dc)
 
 void CMonsterAttackState::Exit()
 {
+
 	m_PeglinDamageUI->alphaCntReset();
 	m_PeglinDamageUI->SetPos(m_PeglinDamageUI->GetInitPos());
 }

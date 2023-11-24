@@ -5,6 +5,8 @@ class CCritPeg :
 {
     GENERATED_OBJECT(CPeg);
 
+    class CSound* m_SE;
+
 public:
     virtual void begin();
     virtual void tick(float _DT);

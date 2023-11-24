@@ -7,6 +7,7 @@ class CObstacle :
 
 private:
     CColliderCircle* m_Collider;
+    class CSound* m_SE;
 
 public:
     virtual void tick(float _DT) override;

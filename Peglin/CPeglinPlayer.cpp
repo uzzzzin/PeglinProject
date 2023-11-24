@@ -4,7 +4,7 @@
 #include "CMonsterAttackState.h"
 
 #include "CKeyMgr.h"
-
+#include "CSound.h"
 #include "components.h"
 
 #include "CInitState.h"
@@ -16,6 +16,7 @@
 #include "CStateClearState.h"
 #include "CGeneralLevel.h"
 #include "CStartLevelEnterState.h"
+#include "CAssetMgr.h"
 
 
 
@@ -27,6 +28,8 @@ CPeglinPlayer::CPeglinPlayer()
 	, HP(100)
 	, AttackDamage(0)
 	, myOrbsIdx(0)
+	, m_SE_Proj(nullptr)
+	, m_SE_Attacked(nullptr)
 	//, m_Movement(nullptr)
 {
 	SetName(L"PeglinPlayer");
@@ -57,11 +60,28 @@ CPeglinPlayer::CPeglinPlayer()
 	myOrbs.push_back(SPHEAR);
 	myOrbs.push_back(RUBBORB);
 
+	
+
+	m_SE_Proj = CAssetMgr::GetInst()->LoadSound(L"EnemyAttackedSE", L"sound\\EnemyAttackedSE.wav");
+	m_SE_Attacked = CAssetMgr::GetInst()->LoadSound(L"PeglinAttackedSE", L"sound\\PeglinAttackedSE.wav");
+
  	//m_AI->ChangeState(UINT(STATE_INIT));
 }
 
 CPeglinPlayer::~CPeglinPlayer()
 {
+}
+
+CSound* CPeglinPlayer::GetProjSound()
+{
+
+	return m_SE_Proj;
+
+}
+
+CSound* CPeglinPlayer::GetAttackedSound()
+{
+	return m_SE_Attacked;
 }
 
 void CPeglinPlayer::AddMyOrbsIdx()

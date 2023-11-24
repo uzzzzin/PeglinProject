@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CPeg.h"
 
+#include "CAssetMgr.h"
+#include "CSound.h"
+
 #include "CColliderWall.h"
 #include "COrb.h"
 
@@ -10,6 +13,7 @@ CPeg::CPeg()
 , bCrashed(false)
 , bCritMode(false)
 , m_Animator(nullptr)
+
 , m_Collider(nullptr)
 {
 	m_Animator = AddComponent<CAnimator>(L"PegAnimator");
@@ -47,7 +51,7 @@ void CPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 		// 데미지 여기에 띄워주세요
 		COrb* orb = dynamic_cast<COrb*>(_OtherObj);
 		orb->SetAccDamagePos(Vec2(GetPos().x, GetPos().y - (GetScale().y/2) - 2.f));
-
+		
 
 		++iCurCnt;
 		if (0 >=iDieCnt- iCurCnt)

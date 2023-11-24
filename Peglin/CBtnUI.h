@@ -17,6 +17,9 @@ private:
 
     CAnimator* m_Animator;
 
+    class CSound* m_SndEffectH;
+    class CSound* m_SndEffectC;
+
     wstring wNAnimName;
     wstring wHAnimName;
     wstring wPAnimName;
