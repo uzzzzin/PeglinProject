@@ -6,7 +6,7 @@ class CImg :
     GENERATED_OBJECT(CObj);
 
 private:
-    wstring         m_AnimName;
+    //wstring         m_AnimName;
     CAnimator* m_Animator;
     //CCollider*    m_Collider;
 

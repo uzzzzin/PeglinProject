@@ -35,8 +35,9 @@ void CStage1Level::enter()
 	Vec2 vLookAt = CEngine::GetInst()->GetResolution();
 	vLookAt /= 2.f;
 	CCamera::GetInst()->SetLookAt(vLookAt);
-
+	GetEnemyCheck().clear();
 	//my_Peglin->GetComponent<class CStateMachine>()->ChangeState(UINT(STATE_INIT));
+
 	my_Peglin = new CPeglinPlayer;
 	my_Peglin->SetPos(Vec2(440.f, 207.f));
 	my_Peglin->SetScale(Vec2(110.f, 110.f));

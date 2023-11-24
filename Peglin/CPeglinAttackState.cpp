@@ -23,6 +23,7 @@ CPeglinAttackState::CPeglinAttackState()
 
 CPeglinAttackState::~CPeglinAttackState()
 {
+	delete m_Projectile;
 }
 
 void CPeglinAttackState::finaltick(float _DT)

@@ -22,7 +22,7 @@ CMonsterAttackState::CMonsterAttackState()
 
 CMonsterAttackState::~CMonsterAttackState()
 {
-
+	delete m_PeglinDamageUI;
 }
 
 void CMonsterAttackState::finaltick(float _DT)

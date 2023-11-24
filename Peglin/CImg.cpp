@@ -18,8 +18,7 @@ CImg::~CImg()
 void CImg::SetImg(const wstring& _strRelativePath, const wstring& _animName)
 {
 	m_Animator->LoadAnimation(_strRelativePath);
-	m_AnimName = _animName;
-	m_Animator->Play(m_AnimName, true);
+	m_Animator->Play(_animName, true);
 }
 
 void CImg::tick(float _DT)
