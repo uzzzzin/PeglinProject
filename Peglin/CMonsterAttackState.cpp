@@ -38,7 +38,7 @@ void CMonsterAttackState::finaltick(float _DT)
 			m_PeglinDamageUI->finaltick(_DT);
 			int damage = m_AttackEnemy->GetDamage();
 			m_Peglin->ReduceHP(damage);
-			CCamera::GetInst()->Shake(0.8f, 10);
+			CCamera::GetInst()->Shake(0.7f, 10);
 			m_Peglin->GetAttackedSound()->Play(false);
 
 			if (0 >= m_Peglin->GetHP())

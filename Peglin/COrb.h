@@ -18,8 +18,11 @@ private:
     int alphaCnt;
 
     int accDamage;
+    int accCritDamage;
     Vec2 accDamagePos;
     //int accCnt;
+
+    bool PegCritMode;
 
 
     vector<std::pair<PEG_TYPE, int>> hitOrbs;
@@ -45,6 +48,15 @@ public:
     Vec2 m_colPos;
     
 public:
+    bool GetPegCritMode()
+    {
+        return PegCritMode;
+    }
+    void SetCritMode(bool _mode)
+    {
+        PegCritMode = _mode;
+    }
+
     ORB_TYPE GetCurOrbType()
     { return curOrbType; }
 
@@ -66,9 +78,22 @@ public:
 
     void SetAccDamage(int _damage);
 
+    void SetAccCritDamage(int _damage)
+    {
+        accCritDamage = _damage;
+    }
+
     int GetAccDamage()
     {
-        return accDamage;
+        if (PegCritMode)
+        {
+            return accCritDamage;
+        }
+        else
+        {
+            return accDamage;
+        }
+
     }
     void alphaCntMM()
     {
@@ -81,9 +106,6 @@ public:
     {
         alphaCnt = 255;
     }
-
-
-
 
     void SetAccDamagePos(Vec2 _pos);
 

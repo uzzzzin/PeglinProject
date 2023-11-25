@@ -11,6 +11,8 @@
 #include "CTexture.h"
 #include "CSound.h"
 
+
+#include "CPeg.h"
 #include "components.h"
 #include "CPeglinPlayer.h"
 
@@ -25,6 +27,7 @@ COrb::COrb()
 	, m_Animator(nullptr)
 	, m_Movement(nullptr)
 	, curOrbType(ORB_TYPE_END)
+	, PegCritMode(false)
 	, alphaCnt(255)
 	, m_SE(nullptr)
 {
@@ -108,7 +111,10 @@ void COrb::SetCurTurnOrb(ORB_TYPE _type)
 void COrb::SetAccDamagePos(Vec2 _pos)
 {
 	accDamagePos = _pos;
+
 	accDamage = accDamage + orbs[curOrbType].damage;
+	accCritDamage = accCritDamage + orbs[curOrbType].critDamage;
+
 	alphaCntReset();
 }
 
@@ -396,6 +402,7 @@ void COrb::render(HDC _dc)
 
 void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+
 	// collision wall
 	if (GetLBoundaryX() >= curPos.x)
 	{
@@ -463,6 +470,7 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 			}
 			else if (L"CritPeg" == _OtherObj->GetName())
 			{
+				accDamage = accCritDamage;
 				++(hitOrbs[2].second);
 			}
 			else if (L"RefreshPeg" == _OtherObj->GetName())
@@ -477,15 +485,15 @@ void COrb::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 			{
 				LOG(ERR, L"페그 데미지 이상한 게 들어왔는데? 사곤데?");
 			}
-			//pPlayer->AddAttackDamage(orbs[UINT(curOrbType)].damage);
 		}
 
 		if ((_OtherObj->GetName() == L"Obstacle"))
 		{
-			//pPlayer->AttackDamage -= pPlayer->AttackDamage + orbs[UINT(curOrbType)].damage;
 		}
 
 	}
+
+
 	else if (_OtherCol->GetPos().x - _OwnCol->GetPos().x == 0 && (_OtherCol->GetPos().y - _OwnCol->GetPos().y != 0))
 	{
 	m_Movement->SetVelocity(Vec2((m_Movement->GetVelocity().x ), m_Movement->GetVelocity().y*-1));

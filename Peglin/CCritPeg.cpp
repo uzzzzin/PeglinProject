@@ -8,6 +8,7 @@
 #include "CLevel.h"
 
 #include "components.h"
+#include "COrb.h"
 
 
 CCritPeg::CCritPeg()
@@ -57,14 +58,15 @@ void CCritPeg::Refresh()
 
 void CCritPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
+	COrb* curOrb = dynamic_cast<COrb*>(_OtherObj);
+	curOrb->SetCritMode(true);
+
 	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
 
 	if (!(m_Collider->GetBOnOff()))
 	{
 		return;
 	}
-
-
 	m_SE->Play(false);
 	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurLevel();
 	vector <CPeg*> allPegs = pCurLevel->GetPegs();
