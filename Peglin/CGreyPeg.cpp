@@ -9,6 +9,7 @@
 
 CGreyPeg::CGreyPeg()
 	:bSlimed(true)
+	, bAgain(false)
 	, m_SndEffect_Col(nullptr)
 	, m_SndEffect_Col2(nullptr)
 {
@@ -35,7 +36,14 @@ CGreyPeg::~CGreyPeg()
 
 void CGreyPeg::begin()
 {
-	m_Animator->Play(L"firstGreyPeg", true);
+	if (bAgain)
+	{
+		m_Animator->Play(L"GreyPeg", true);
+	}
+	else
+	{
+		m_Animator->Play(L"firstGreyPeg", true);
+	}
 }
 
 void CGreyPeg::tick(float _DT)
@@ -51,7 +59,14 @@ void CGreyPeg::tick(float _DT)
 	}
 	else
 	{
-		m_Animator->Play(L"firstGreyPeg", true);
+		if (bAgain)
+		{
+			m_Animator->Play(L"GreyPeg", true);
+		}
+		else
+		{
+			m_Animator->Play(L"firstGreyPeg", true);
+		}
 	}
 	Super::tick(_DT);
 }
@@ -75,6 +90,7 @@ void CGreyPeg::Refresh()
 void CGreyPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
 	Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
+	bAgain = true;
 
 	if (!(m_Collider->GetBOnOff()))
 	{

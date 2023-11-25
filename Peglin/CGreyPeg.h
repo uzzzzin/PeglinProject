@@ -8,6 +8,8 @@ class CGreyPeg :
 private:
     bool    bSlimed; // 슬라임화 된 페그인지
 
+    bool bAgain;
+
 
     class CSound* m_SndEffect_Col;
     class CSound* m_SndEffect_Col2;
