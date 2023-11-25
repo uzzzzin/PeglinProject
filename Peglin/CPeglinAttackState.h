@@ -8,10 +8,12 @@ private:
     class CEnemy* m_Target;
 
     class CPeglinPlayer* m_Peglin;
-
+    class COrb* m_Orb;
     class CAttackProjectile* m_Projectile;
 
     int damage;
+
+    int  attackRange;
 public:
     virtual void finaltick(float _DT);
     virtual void Enter();

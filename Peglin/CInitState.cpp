@@ -46,12 +46,6 @@ void CInitState::Enter()
 	{
 		m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[0]);
 		bRealInit = true;
-		//GetOwnerSM()->AddDataToBlackboard(L"orbs", m_Orb->GetOrbsInfo());
-		//GetOwnerSM()->AddDataToBlackboard(L"Pebball Data", &m_Orb->GetOrbsInfo()[0]);
-		//GetOwnerSM()->AddDataToBlackboard(L"Daggorb Data", &m_Orb->GetOrbsInfo()[1]);
-		//GetOwnerSM()->AddDataToBlackboard(L"Infernorb Data", &m_Orb->GetOrbsInfo()[2]);
-		//GetOwnerSM()->AddDataToBlackboard(L"Sphear Data", &m_Orb->GetOrbsInfo()[3]);
-		//GetOwnerSM()->AddDataToBlackboard(L"Rubborb Data", &m_Orb->GetOrbsInfo()[4]);
 		return;
 	}
 
@@ -99,7 +93,12 @@ void CInitState::Enter()
 
 void CInitState::Exit()
 {
-	
+	GetOwnerSM()->AddDataToBlackboard(L"orbs", m_Orb->GetOrbsInfo());
+	GetOwnerSM()->AddDataToBlackboard(L"Pebball Range", &m_Orb->GetOrbsInfo()[0].attackCnt);
+	GetOwnerSM()->AddDataToBlackboard(L"Daggorb Range", &m_Orb->GetOrbsInfo()[1].attackCnt);
+	GetOwnerSM()->AddDataToBlackboard(L"Infernorb Range", &m_Orb->GetOrbsInfo()[2].attackCnt);
+	GetOwnerSM()->AddDataToBlackboard(L"Sphear Range", &m_Orb->GetOrbsInfo()[3].attackCnt);
+	GetOwnerSM()->AddDataToBlackboard(L"Rubborb Range", &m_Orb->GetOrbsInfo()[4].attackCnt);
 }
 
 

@@ -60,6 +60,14 @@ void CPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCo
 			m_Animator->Play(L"CrashedPeg",false);
 			//m_Collider->SetBOnOff(false);
 		}
+		if (!(dynamic_cast<COrb*>(_OtherObj)->GetCurOrbType() == ORB_TYPE(RUBBORB)))
+		{
+			//dynamic_cast<COrb*>(_OtherObj)->GetComponent<CMovement>()->AddVelocity(Vec2(800.f, 800.f));
+		}
+		else
+		{
+			dynamic_cast<COrb*>(_OtherObj)->GetComponent<CMovement>()->AddVelocity(Vec2(800.f, 800.f));
+		}
 	}
 }
 

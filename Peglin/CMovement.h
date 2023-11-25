@@ -81,6 +81,11 @@ public:
         m_MaxSpeed = _Speed;
     }
 
+    //void AddSpeed(float _Speed)
+    //{
+    //    m_
+    //}
+
     float GetInitSpeed()
     {
         return m_InitSpeed;

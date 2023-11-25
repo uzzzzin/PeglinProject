@@ -34,9 +34,9 @@ COrb::COrb()
 	SetName(L"Orb");
 	OrbInfo Pebball = { PEBBALL, 2,4,200.f,1.f, 1, L"animdata\\Pebball.txt", L"Pebball"};
 	OrbInfo Daggorb = { DAGGORB, 1,7,200.f,1.f, 1, L"animdata\\Daggorb.txt", L"Daggorb"};
-	OrbInfo Infernorb = { INFERNORB, 3,5,400.f,1.f, 1, L"animdata\\Infernorb.txt", L"Infernorb"};
+	OrbInfo Infernorb = { INFERNORB, 3,5,350.f,1.f, 1, L"animdata\\Infernorb.txt", L"Infernorb"};
 	OrbInfo Sphear = { SPHEAR, 2,4,200.f,1.f, 2, L"animdata\\Sphear.txt", L"Sphear"};
-	OrbInfo Rubborb = { RUBBORB, 2,4,200.f,0.5f, 1 , L"animdata\\Rubborb.txt", L"Rubborb"};
+	OrbInfo Rubborb = { RUBBORB, 2,4,400.f,0.2f, 1 , L"animdata\\Rubborb.txt", L"Rubborb"};
 	orbs.push_back(Pebball);
 	orbs.push_back(Daggorb);
 	orbs.push_back(Infernorb);
