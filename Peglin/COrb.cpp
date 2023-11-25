@@ -257,6 +257,11 @@ void COrb::render(HDC _dc)
 {
 	Super::render(_dc); 
 
+	if (PegCritMode)
+	{
+		accDamage = accCritDamage;
+	}
+
 	Vec2 vRenderPos = accDamagePos; //= GetPos();
 	Vec2 vScale = GetScale();
 
