@@ -7,6 +7,7 @@
 #include "CSound.h"
 
 #include "components.h"
+#include "COrb.h"
 
 CBombPeg::CBombPeg()
 	: m_SE(nullptr)
@@ -45,10 +46,6 @@ void CBombPeg::begin()
 void CBombPeg::tick(float _DT)
 {
 	Super::tick(_DT);
-	//if (KEY_RELEASED(A))
-	//{
-	//	m_Animator->Play(L"BombPeg", true);
-	//}
 }
 
 void CBombPeg::render(HDC _dc)
@@ -66,11 +63,6 @@ void CBombPeg::Refresh()
 
 void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _OtherCol)
 {
-	//if (!(m_Collider->GetBOnOff()))
-	//{
-	//	return;
-	//}
-	//Super::BeginOverlap(_OwnCol, _OtherObj, _OtherCol);
 	if (0 >= iDieCnt - iCurCnt)
 	{
 		m_Collider->SetBOnOff(false);
@@ -78,7 +70,6 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	}
 
 	++iCurCnt;
-
 	bCrashed = false;
 	m_Collider->SetBOnOff(true);
 
@@ -94,6 +85,15 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	{
 		if (1 == iDieCnt - iCurCnt)
 		{
+			if (dynamic_cast<COrb*>(_OtherObj)->GetCurOrbType() == ORB_TYPE(INFERNORB))
+			{
+				CCamera::GetInst()->Shake(0.06f, 6);
+				bCrashed = true;
+				m_Animator->Play(L"CrashedBombPeg", false);
+				m_SE2->Play(false);
+				++iCurCnt;
+				return;
+			}
 			m_Animator->Play(L"BombPeg", true);
 			m_Collider->SetBOnOff(true);
 			m_SE->Play(false);
@@ -101,22 +101,14 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 		
 	}
 
-	//bCrashed = false;
-	//m_Collider->SetBOnOff(true);
-
-	//if (_OtherObj->GetLayerIdx() == ORB)
+	//if (dynamic_cast<COrb*>(_OtherObj)->GetCurOrbType() == ORB_TYPE(INFERNORB)) // È­¿°±¸ ÀÏ ¶§
 	//{
-	//	++iCurCnt;
-	//	if (1 == iDieCnt - iCurCnt)
-	//	{
-	//		m_Animator->Play(L"BombPeg", true);
-	//		m_Collider->SetBOnOff(true);
-	//	}
-	//	if (0 >= iDieCnt - iCurCnt)
-	//	{
-	//		bCrashed = true;
-	//		m_Animator->Play(L"CrashedPeg", false);
-	//	}
+	//	CCamera::GetInst()->Shake(0.06f, 6);
+	//	bCrashed = true;
+	//	m_Animator->Play(L"CrashedBombPeg", false);
+	//	m_SE2->Play(false);
+	//	m_Collider->SetBOnOff(false);
+	//	return;
 	//}
 
 }
