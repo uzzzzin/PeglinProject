@@ -329,6 +329,7 @@
     </ClInclude>
     <ClInclude Include="CPeglinDamaged.h" />
     <ClInclude Include="CStartLevelEnterState.h" />
+    <ClInclude Include="COrbInfoUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Peglin.rc">
@@ -594,6 +595,7 @@
     </ClCompile>
     <ClCompile Include="CPeglinDamaged.cpp" />
     <ClCompile Include="CStartLevelEnterState.cpp" />
+    <ClCompile Include="COrbInfoUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cursor1.cur">

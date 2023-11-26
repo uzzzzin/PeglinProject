@@ -16,6 +16,8 @@
 #include "COrbQueueBodyOrbCase.h"
 #include "CImg.h"
 
+#include "COrbInfoUI.h"
+
 CInitState::CInitState()
 {
 }
@@ -34,6 +36,10 @@ void CInitState::Enter()
 	m_Queue = dynamic_cast<COrbQueue*>(m_curLevel->FindObjectByName(L"OrbQueue"));
 	m_HeadOrb = dynamic_cast<COrbQueueHeadOrb*>(m_Queue->QueueHeadOrb);
 	m_Orb = dynamic_cast<COrb*>(m_curLevel->FindObjectByName(L"Orb"));
+
+	m_OrbInfoUI = dynamic_cast<COrbInfoUI*>(m_curLevel->FindObjectByName(L"OrbInfoUI"));
+	m_OrbInfoUI->SetOrbType(m_Peglin->GetOrbs()[0]);
+
 
 	vector <CPeg*> allPegs = m_curLevel->GetPegs();
 	vector<std::pair<class CEnemy*, int>>& EnemysInLevel = m_curLevel->GetEnemyCheck();
@@ -54,6 +60,7 @@ void CInitState::Enter()
 	m_Peglin->AddMyOrbsIdx();
 	m_Orb->SetCurTurnOrb(m_Peglin->GetOrbs()[m_curLevel->GetCurTurn() % m_Peglin->GetOrbs().size()]);
 	m_HeadOrb->OrbAnimPlay(m_Peglin->GetCurOrbType());
+	m_OrbInfoUI->SetOrbType(m_Peglin->GetCurOrbType());
 
 	// 몬스터 한칸씩 땡겨주기
 	for (int i = 0; i < EnemysInLevel.size(); ++i) // vector<std::pair<class CEnemy*, int>> EnemysInLevel = m_curLevel->GetEnemyCheck();

@@ -189,6 +189,7 @@
     <ClInclude Include="CObstacle.h" />
     <ClInclude Include="components.h" />
     <ClInclude Include="COrb.h" />
+    <ClInclude Include="COrbInfoUI.h" />
     <ClInclude Include="COrbQueueBody.h" />
     <ClInclude Include="COrbQueueBodyOrbCase.h" />
     <ClInclude Include="COrbQueueChain.h" />
@@ -304,6 +305,7 @@
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="COrb.cpp" />
+    <ClCompile Include="COrbInfoUI.cpp" />
     <ClCompile Include="COrbQueueBody.cpp" />
     <ClCompile Include="COrbQueueBodyOrbCase.cpp" />
     <ClCompile Include="COrbQueueChain.cpp" />

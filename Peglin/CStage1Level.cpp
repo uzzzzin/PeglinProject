@@ -25,6 +25,7 @@
 
 #include "CPeglinHealth.h"
 #include "CAttackProjectile.h"
+#include "COrbInfoUI.h"
 
 
 void CStage1Level::init()
@@ -219,6 +220,11 @@ void CStage1Level::enter()
 	AddObject(PLATFORM, pObstacle4);
 	
 	LoadPegs(L"Board\\Board1.txt");
+
+	COrbInfoUI* pOrbInfoUI = new COrbInfoUI;
+	pOrbInfoUI->SetPos(Vec2(190, 610));
+	pOrbInfoUI->SetScale(Vec2(460, 430)*0.75);
+	AddObject(PLATFORM, pOrbInfoUI);
 
 
 	CCollisionMgr::GetInst()->CheckCollision(ORB, PLATFORM);

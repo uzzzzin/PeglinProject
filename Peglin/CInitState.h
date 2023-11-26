@@ -12,6 +12,7 @@ private:
     class COrbQueueHeadOrb* m_HeadOrb;
     class COrb* m_Orb;
 
+    class COrbInfoUI* m_OrbInfoUI;
 
 
     //vector<std::pair<class CEnemy*, int>> EnemysInLevel;
