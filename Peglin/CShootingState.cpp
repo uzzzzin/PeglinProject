@@ -2,6 +2,7 @@
 #include "CShootingState.h"
 
 #include "CLogMgr.h"
+#include "CKeyMgr.h"
 
 #include "COrb.h"
 #include "CPeglinPlayer.h"
@@ -44,8 +45,13 @@ void CShootingState::Enter()
 void CShootingState::Exit()
 {
 	// 오브들이 충돌한 페그 -> 데미지 수치 계산
-
 	pPeglin->SetAttackDamage(m_Orb->GetAccDamage());
+
+
+	if (KEY_PRESSED(I))
+	{
+		pPeglin->SetAttackDamage(3000);
+	}
 
 	m_Orb->SetAccDamage(0);
 	m_Orb->SetAccCritDamage(0);

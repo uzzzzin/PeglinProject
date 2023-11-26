@@ -76,6 +76,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 	if (0 >= iDieCnt - iCurCnt)
 	{
 		dynamic_cast<COrb*>(_OtherObj)->GetComponent<CMovement>()->AddVelocity(Vec2(400.f, 400.f));
+		dynamic_cast<COrb*>(_OtherObj)->SetAccDamage(dynamic_cast<COrb*>(_OtherObj)->GetAccDamage() + 50);
 		CCamera::GetInst()->Shake(0.06f, 6);
 		bCrashed = true;
 		m_Animator->Play(L"CrashedBombPeg", false);
@@ -89,6 +90,7 @@ void CBombPeg::BeginOverlap(CCollider* _OwnCol, CObj* _OtherObj, CCollider* _Oth
 			if (dynamic_cast<COrb*>(_OtherObj)->GetCurOrbType() == ORB_TYPE(INFERNORB))
 			{
 				dynamic_cast<COrb*>(_OtherObj)->GetComponent<CMovement>()->AddVelocity(Vec2(600.f,600.f));
+				dynamic_cast<COrb*>(_OtherObj)->SetAccDamage(dynamic_cast<COrb*>(_OtherObj)->GetAccDamage()+50);
 				CCamera::GetInst()->Shake(0.04f, 6);
 				bCrashed = true;
 				m_Animator->Play(L"CrashedBombPeg", false);
